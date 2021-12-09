@@ -8,8 +8,8 @@ namespace WinFormsApp1
     public partial class Form6 : Form
     {
         public Form6()
-        { //pos
-            InitializeComponent();;;
+        { //pos222
+            InitializeComponent();
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             cn.Open();
