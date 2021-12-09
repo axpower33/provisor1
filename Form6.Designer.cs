@@ -9,7 +9,7 @@ namespace WinFormsApp1
     {
         public Form6()
         {
-            InitializeComponent();
+            InitializeComponent();;
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             cn.Open();
