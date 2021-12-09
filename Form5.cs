@@ -17,7 +17,7 @@ namespace WinFormsApp1
             InitializeComponent();
             
             string con2 = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            string sql2 = (@"SELECT Id, DataDoc, NomerDoc, Kontragent.naimenovanie FROM TableDoc left join kontragent on kontragent.id=kontragent");
+            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.naimenovanie as kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
             var adapt = new SqlDataAdapter(sql2, con2);
             // Создаем объект Dataset
             var ds = new DataSet();
