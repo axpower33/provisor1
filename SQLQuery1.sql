@@ -1,0 +1,1 @@
+﻿SELECT DataDoc, NomerDoc, Kontragent.Naimenovanie FROM TableDoc left join Kontragent ON Kontragent.Id = Kontragent
