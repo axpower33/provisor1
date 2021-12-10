@@ -36,7 +36,7 @@ namespace WinFormsApp1
             {
                this.comboBox1.Items.Add((object)r3.GetValue(1)); }
             r3.Close();
-            var sql1 = (@"Select DataDoc, NomerDoc, B.Naimenovanie as kontragent from TableDoc left join Kontragent as B ON B.Id = Kontragent");
+            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent");
 
             da = new SqlDataAdapter(sql1, con);
             SqlCommand cc = new SqlCommand(sql1, connection);
@@ -73,13 +73,13 @@ namespace WinFormsApp1
             SqlCommandBuilder cmdBuilder2, cmdBuilder;
             SqlDataAdapter da;
             int pEdIzm;
-            var sql1 = (@"Select DataDoc, NomerDoc, B.Naimenovanie from TableDoc left join Kontragent as B ON B.Id=Kontragent");
+            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent from TableDoc left join Kontragent ON Kontragent.Id=Kontragent");
             DataSet TableDocDataSet = new DataSet();
 
             da = new SqlDataAdapter(sql1, con);
             //Initialize the SqlCommand object that will be used as the DataAdapter's UpdateCommand
             ////Notice that the WHERE clause uses only the CustId field to locate the record to be updated
-            SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc where id=3");
+            SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=3");
 
             DAUpdate.Parameters.Add(new SqlParameter("@pDataDoc", SqlDbType.DateTime));
             DAUpdate.Parameters["@pDataDoc"].SourceVersion = DataRowVersion.Current;
@@ -89,20 +89,26 @@ namespace WinFormsApp1
             DAUpdate.Parameters["@pNomerDoc"].SourceVersion = DataRowVersion.Current;
             DAUpdate.Parameters["@pNomerDoc"].SourceColumn = "NomerDoc";
 
+            DAUpdate.Parameters.Add(new SqlParameter("@pKont", SqlDbType.Int));
+            DAUpdate.Parameters["@pKont"].SourceVersion = DataRowVersion.Current;
+            DAUpdate.Parameters["@pKont"].SourceColumn = "Kontragent";
+
             cmdBuilder = new SqlCommandBuilder(da);
             da.Fill(TableDocDataSet, "TableDoc");
 
             var pDataDoc = this.textBox1.Text;
             string pNomerDoc = (string)this.textBox2.Text;
+            int pKont = (int)this.comboBox1.SelectedIndex+1;
 
             da.UpdateCommand = DAUpdate;
 
             TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"] = pDataDoc;
             TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"] = pNomerDoc;
-
+            TableDocDataSet.Tables["TableDoc"].Rows[0]["Kontragent"] = pKont;
             da.Update(TableDocDataSet, "TableDoc");
             this.textBox1.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"].ToString();
             this.textBox2.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"].ToString();
+            this.comboBox1.Text = this.comboBox1.Items[pKont-1].ToString();
 
 
             ///for tablePart
