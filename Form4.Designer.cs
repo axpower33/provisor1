@@ -37,11 +37,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            //this.Nomenklatura = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            //this.EdIzm = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            //this.Kolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nomenklatura = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.EdIzm = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Kolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +118,11 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            //this.Nomenklatura,
-            //this.EdIzm,
-            //this.Kolichestvo,
-            //this.Cena,
-            /*this.Summa*/});
+            this.Nomenklatura,
+            this.EdIzm,
+            this.Kolichestvo,
+            this.Cena,
+            this.Summa});
             this.dataGridView1.Location = new System.Drawing.Point(12, 90);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
@@ -133,35 +133,34 @@
             // 
             // Nomenklatura
             // 
-            //this.Nomenklatura.HeaderText = "Nomenklatura";
-            //this.Nomenklatura.Name = "Nomenklatura";
+            this.Nomenklatura.HeaderText = "Nomenklatura";
+            this.Nomenklatura.Name = "Nomenklatura";
             //// 
             //// EdIzm
             //// 
-            //this.EdIzm.HeaderText = "Edinica Izmerenia";
-            //this.EdIzm.Name = "EdIzm";
+            this.EdIzm.HeaderText = "EdIzm";
+            this.EdIzm.Name = "EdIzm";
             //// 
             //// Kolichestvo
             //// 
-            //this.Kolichestvo.HeaderText = "Kolichestvo";
-            //this.Kolichestvo.Name = "Kolichestvo";
+            this.Kolichestvo.HeaderText = "Kolichestvo";
+            this.Kolichestvo.Name = "Kolichestvo";
             //// 
             //// Cena
             //// 
-            //this.Cena.HeaderText = "Cena";
-            //this.Cena.Name = "Cena";
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
             //// 
             //// Summa
             //// 
-            //this.Summa.HeaderText = "Summa";
-            //this.Summa.Name = "Summa";
+            this.Summa.HeaderText = "Summa";
+            this.Summa.Name = "Summa";
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 333);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -170,6 +169,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+
             this.Name = "Form4";
             this.Text = "Form4";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -189,10 +190,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        //private System.Windows.Forms.DataGridViewComboBoxColumn Nomenklatura;
-        //private System.Windows.Forms.DataGridViewComboBoxColumn EdIzm;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Kolichestvo;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn Summa;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Nomenklatura;
+        private System.Windows.Forms.DataGridViewComboBoxColumn EdIzm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kolichestvo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summa;
     }
 }
