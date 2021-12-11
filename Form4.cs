@@ -120,17 +120,19 @@ namespace WinFormsApp1
             da2 = new SqlDataAdapter(@"SELECT Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast left join EdIzm on EdIzm.Id=EdIzm where UID=3", cn);
             cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             cn.Open();
+            
 
             DAUpdateCmd = new SqlCommand("Update TableTableChast set Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa =@pSumma where Id=3", da.SelectCommand.Connection);
 
             DAUpdateCmd.Parameters.Add(new SqlParameter("@pNomen", SqlDbType.NVarChar));
             DAUpdateCmd.Parameters["@pNomen"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pNomen"].SourceColumn = "Nomenklatura";
+            
 
             DAUpdateCmd.Parameters.Add(new SqlParameter("@pEdIzm", SqlDbType.Int));
             DAUpdateCmd.Parameters["@pEdIzm"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pEdIzm"].SourceColumn = "EdIzm";
-
+            
             DAUpdateCmd.Parameters.Add(new SqlParameter("@pKol", SqlDbType.Int));
             DAUpdateCmd.Parameters["@pKol"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pKol"].SourceColumn = "Kolichestvo";
