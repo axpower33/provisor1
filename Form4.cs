@@ -65,6 +65,7 @@ namespace WinFormsApp1
 
             while (r4.Read())
             {
+                ii++;
                 this.Nomenklatura.Items.Add((object)r4.GetValue(1));
                 idNomen[ii] = (int)r4.GetValue(0);
 
@@ -109,7 +110,7 @@ namespace WinFormsApp1
             string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             var connection = new SqlConnection(con);
             connection.Open();
-
+            
             SqlDataAdapter da4;
             var sql4 = (@"select Id, Naimenovanie as Nomenklatura from Nomenklatura");
             da4 = new SqlDataAdapter(sql4, con);
@@ -117,7 +118,6 @@ namespace WinFormsApp1
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
             int[] idNomen = new int[10];
-
             while (r4.Read())
             {
                 ii++;
@@ -180,8 +180,7 @@ namespace WinFormsApp1
             da.Update(TableDocDataSet, "TableDoc");
             this.textBox1.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"].ToString();
             this.textBox2.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"].ToString();
-            this.comboBox1.Text = this.comboBox1.Items[pKont-1].ToString();
-
+            
 
             ///for tablePart
             SqlConnection cn = new SqlConnection();
@@ -203,15 +202,15 @@ namespace WinFormsApp1
             DAUpdateCmd.Parameters["@pEdIzm"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pEdIzm"].SourceColumn = "EdIzm";
 
-            DAUpdateCmd.Parameters.Add(new SqlParameter("@pKol", SqlDbType.Int));
+            DAUpdateCmd.Parameters.Add(new SqlParameter("@pKol", SqlDbType.NVarChar));
             DAUpdateCmd.Parameters["@pKol"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pKol"].SourceColumn = "Kolichestvo";
 
-            DAUpdateCmd.Parameters.Add(new SqlParameter("@pCena", SqlDbType.Decimal));
+            DAUpdateCmd.Parameters.Add(new SqlParameter("@pCena", SqlDbType.NVarChar));
             DAUpdateCmd.Parameters["@pCena"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pCena"].SourceColumn = "Cena";
 
-            DAUpdateCmd.Parameters.Add(new SqlParameter("@pSumma", SqlDbType.Decimal));
+            DAUpdateCmd.Parameters.Add(new SqlParameter("@pSumma", SqlDbType.NVarChar));
             DAUpdateCmd.Parameters["@pSumma"].SourceVersion = DataRowVersion.Current;
             DAUpdateCmd.Parameters["@pSumma"].SourceColumn = "Summa";
 
@@ -219,9 +218,9 @@ namespace WinFormsApp1
             cmdBuilder2 = new SqlCommandBuilder(da2);
             da2.Fill(NomenDataSet, "TableTableChast");
 
-
+            
             int tt = 0;
-            int pNomen = 0;
+            int pNomen = 1;
             while (tt <= 6)
             {
                 tt++;
@@ -231,9 +230,8 @@ namespace WinFormsApp1
                     break;
                 }
             }
-
             tt = 0;
-            int pEdIzm = 0;
+            int pEdIzm = 1;
             while (tt <= 6)
             {
                 tt++;
@@ -243,10 +241,9 @@ namespace WinFormsApp1
                     break;
                 }
             }
-            
-            int pKol = (int)dataGridView1.Rows[0].Cells[2].Value;
-            decimal pCena = (decimal)dataGridView1.Rows[0].Cells[3].Value;
-            decimal pSumma = (decimal)dataGridView1.Rows[0].Cells[4].Value;
+            string pKol =(string) dataGridView1.Rows[0].Cells[2].Value;
+            string pCena =(string)  dataGridView1.Rows[0].Cells[3].Value;
+            string pSumma =(string) dataGridView1.Rows[0].Cells[4].Value;
 
             da2.UpdateCommand = DAUpdateCmd;
 
@@ -254,9 +251,9 @@ namespace WinFormsApp1
 
             NomenDataSet.Tables["TableTableChast"].Rows[0]["Nomenklatura"] = (int)pNomen;
             NomenDataSet.Tables["TableTableChast"].Rows[0]["EdIzm"] =(int) pEdIzm;
-            NomenDataSet.Tables["TableTableChast"].Rows[0]["Kolichestvo"] = pKol;
-            NomenDataSet.Tables["TableTableChast"].Rows[0]["Cena"] = pCena;
-            NomenDataSet.Tables["TableTableChast"].Rows[0]["Summa"] = pSumma;
+            NomenDataSet.Tables["TableTableChast"].Rows[0]["Kolichestvo"] = (string) pKol;
+            NomenDataSet.Tables["TableTableChast"].Rows[0]["Cena"] = (string)pCena;
+            NomenDataSet.Tables["TableTableChast"].Rows[0]["Summa"] = (string) pSumma;
 
             //Assign the SqlCommand to the UpdateCommand property of the SqlDataAdapter
 
@@ -266,8 +263,11 @@ namespace WinFormsApp1
             Form4.ActiveForm.Close();
         }
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {   
-            //this.dataGridView1.Rows[e.RowIndex].Cells["Summa"].Value = (decimal)this.dataGridView1.Rows[e.RowIndex].Cells["Cena"].Value * (int)this.dataGridView1.Rows[e.RowIndex].Cells["Kolichestvo"].Value;
+        {
+             //MessageBox.Show(this.dataGridView1.Rows[0].Cells[3].Value.ToString());
+             //int nsum = (int)this.dataGridView1.Rows[0].Cells[3].Value * (int)this.dataGridView1.Rows[0].Cells[2].Value;
+             //this.dataGridView1.Rows[0].Cells[4].Value=nsum.ToString();
+            
         }
     }
 }
