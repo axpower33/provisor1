@@ -1,16 +1,17 @@
-﻿namespace WinFormsApp1
+﻿
+namespace WindowsFormsApp8
 {
     partial class Form1
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Обязательная переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Освободить все используемые ресурсы.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,104 +21,99 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.номенклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.контрагентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.докприходнаянакладнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProvisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
+            this.dataTable1BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.provisorBaseDataDataSet11 = new WindowsFormsApp8.ProvisorBaseDataDataSet1();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.dataTable1TableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.DataTable1TableAdapter();
+            this.dataTable1TableAdapter1 = new WindowsFormsApp8.ProvisorBaseDataDataSet1TableAdapters.DataTable1TableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet11)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // dataTable1BindingSource
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem,
-            this.документыToolStripMenuItem,
-            this.отчетToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(284, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.dataTable1BindingSource.DataMember = "DataTable1";
+            this.dataTable1BindingSource.DataSource = this.ProvisorBaseDataDataSet;
             // 
-            // справочникиToolStripMenuItem
+            // ProvisorBaseDataDataSet
             // 
-            this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.номенклатураToolStripMenuItem,
-            this.контрагентыToolStripMenuItem});
-            this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.справочникиToolStripMenuItem.Text = "Справочники";
-
+            this.ProvisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
+            this.ProvisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // номенклатураToolStripMenuItem
+            // dataTable1BindingSource2
             // 
-            this.номенклатураToolStripMenuItem.Name = "номенклатураToolStripMenuItem";
-            this.номенклатураToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.номенклатураToolStripMenuItem.Text = "Номенклатура";
-            this.номенклатураToolStripMenuItem.Click += new System.EventHandler(this.номенклатураToolStripMenuItem_Click);
+            this.dataTable1BindingSource2.DataMember = "DataTable1";
+            this.dataTable1BindingSource2.DataSource = this.provisorBaseDataDataSet11;
             // 
-            // контрагентыToolStripMenuItem
+            // provisorBaseDataDataSet11
             // 
-            this.контрагентыToolStripMenuItem.Name = "контрагентыToolStripMenuItem";
-            this.контрагентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.контрагентыToolStripMenuItem.Text = "Контрагенты";
-            this.контрагентыToolStripMenuItem.Click += new System.EventHandler(this.контрагентыToolStripMenuItem_Click);
+            this.provisorBaseDataDataSet11.DataSetName = "ProvisorBaseDataDataSet1";
+            this.provisorBaseDataDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // документыToolStripMenuItem
+            // reportViewer1
             // 
-            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.документыToolStripMenuItem.Text = "Документы";
-            
-            this.документыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.докприходнаянакладнаяToolStripMenuItem});
-            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.документыToolStripMenuItem.Text = "Документы";
-            
-            this.докприходнаянакладнаяToolStripMenuItem.Name = "докприходнаянакладнаяToolStripMenuItem";
-            this.докприходнаянакладнаяToolStripMenuItem.Size = new System.Drawing.Size(82, 42);
-            this.докприходнаянакладнаяToolStripMenuItem.Text = "Приходная накладная";
-            this.докприходнаянакладнаяToolStripMenuItem.Click += new System.EventHandler(this.докприходнаянакладнаяToolStripMenuItem_Click);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.dataTable1BindingSource;
+            reportDataSource2.Name = "DataSet2";
+            reportDataSource2.Value = this.dataTable1BindingSource2;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp8.Report2.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(12, -1);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(792, 437);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
-            this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
-            this.отчетToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
-            this.отчетToolStripMenuItem.Text = "Отчет";
-            this.отчетToolStripMenuItem.Click += new System.EventHandler(this.отчетToolStripMenuItem_Click);
+            // dataTable1TableAdapter
+            // 
+            this.dataTable1TableAdapter.ClearBeforeFill = true;
+            // 
+            // dataTable1TableAdapter1
+            // 
+            this.dataTable1TableAdapter1.ClearBeforeFill = true;
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.reportViewer1);
             this.Name = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet11)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
-        }
 
+        }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem номенклатураToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem контрагентыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem докприходнаянакладнаяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчетToolStripMenuItem;
-
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private ProvisorBaseDataDataSet ProvisorBaseDataDataSet;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource;
+        private ProvisorBaseDataDataSetTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        private ProvisorBaseDataDataSet1 provisorBaseDataDataSet11;
+        private ProvisorBaseDataDataSet1TableAdapters.DataTable1TableAdapter dataTable1TableAdapter1;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource2;
     }
 }
 

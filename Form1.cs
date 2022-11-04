@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Sql;
-using System.Data.SqlClient;
 
-namespace WinFormsApp1
+namespace WindowsFormsApp8
 {
     public partial class Form1 : Form
     {
@@ -19,28 +17,16 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void номенклатураToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Form2 xForm2 = new Form2();
-            xForm2.Show();
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet.DataTable1". При необходимости она может быть перемещена или удалена.
+            this.dataTable1TableAdapter.Fill(this.ProvisorBaseDataDataSet.DataTable1);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet.TableTableChast". При необходимости она может быть перемещена или удалена.
+            this.dataTable1TableAdapter1.Fill(this.provisorBaseDataDataSet11.DataTable1);
 
-        }
-
-        private void контрагентыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form3 xForm = new Form3();
-            xForm.Show();
-        }
-        private void докприходнаянакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form5 xForm = new Form5();
-            xForm.Show();
-        }
-        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form6 xForm = new Form6();
-            xForm.Show();
+            this.reportViewer1.RefreshReport();
         }
 
+        
     }
 }

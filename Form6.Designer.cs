@@ -1,134 +1,120 @@
-﻿using System.Data;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using Microsoft.Reporting.WinForms;
-
-namespace WinFormsApp1
+﻿
+namespace WindowsFormsApp8
 {
-    public partial class Form6 : Form
+    partial class Form6
     {
-        public Form6()
-        { //pos222
-            InitializeComponent();
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            cn.Open();
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-            DataSet NomenDataSet = new DataSet();
-            SqlDataAdapter da;
-
-            da = new SqlDataAdapter(@"Select A.Id, A.Naimenovanie, Kontragent.Naimenovanie as Kontragent, EdIzm.Naimenovanie as EdIzm from Nomenklatura as A left join Kontragent ON Kontragent.Id = A.Kontragent left join EdIzm ON EdIzm.Id = A.EdIzm", cn);
-
-            SqlCommand c = new SqlCommand(@"Select  A.Id, A.Naimenovanie, Kontragent.Naimenovanie as Kontragent, EdIzm.Naimenovanie as EdIzm from Nomenklatura as A left join EdIzm ON EdIzm.Id = A.EdIzm  left join Kontragent ON Kontragent.Id = A.Kontragent", cn);
-
-            da.Fill(NomenDataSet, "Nomenklatura");
-
-            SqlDataReader r = c.ExecuteReader();
-
-            int i = 0;
-            while (r.Read())
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
             {
-                i++;
-                for (int j = 0; j <= 3; j++)
-                {
-                   
-                    if ((j == 1) & (i==1))
-                    {
-                        this.textBox1.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((j == 2)&(i==1))
-                    {
-                        this.textBox2.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((j == 3) & (i == 1))
-                    {
-                        this.textBox3.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 2) & (j==1))
-                    {
-                        this.textBox4.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 2) & (j == 2))
-                    {
-                        this.textBox5.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 2) & (j == 3))
-                    {
-                        this.textBox6.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 3) & (j == 1))
-                    {
-                        this.textBox7.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 3) & (j == 2))
-                    {
-                        this.textBox8.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 3) & (j == 3))
-                    {
-                        this.textBox9.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 4) & (j == 1))
-                    {
-                        this.textBox10.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 4) & (j == 2))
-                    {
-                        this.textBox11.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 4) & (j == 3))
-                    {
-                        this.textBox12.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 5) & (j == 1))
-                    {
-                        this.textBox13.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 5) & (j == 2))
-                    {
-                        this.textBox14.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 5) & (j == 3))
-                    {
-                        this.textBox15.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 6) & (j == 1))
-                    {
-                        this.textBox16.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 6) & (j == 2))
-                    {
-                        this.textBox17.Text = r.GetValue(j).ToString();
-                    }
-                    else if ((i == 6) & (j == 3))
-                    {
-                        this.textBox18.Text = r.GetValue(j).ToString();
-                    }
-                }
+                components.Dispose();
             }
+            base.Dispose(disposing);
         }
 
-     
-        //public Microsoft.Reporting.WinForms.Report reportPanel1;
-        private System.ComponentModel.IContainer components;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private TextBox textBox11;
-        private TextBox textBox12;
-        private TextBox textBox13;
-        private TextBox textBox14;
-        private TextBox textBox15;
-        private TextBox textBox16;
-        private TextBox textBox17;
-        private TextBox textBox18;
-        private Button button1;
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomerDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kontragent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(-2, 39);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(452, 171);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // DataDoc
+            // 
+            this.DataDoc.HeaderText = "DataDoc";
+            this.DataDoc.Name = "DataDoc";
+            // 
+            // NomerDoc
+            // 
+            this.NomerDoc.HeaderText = "NomerDoc";
+            this.NomerDoc.Name = "NomerDoc";
+            // 
+            // Kontragent
+            // 
+            this.Kontragent.HeaderText = "Kontragent";
+            this.Kontragent.Name = "Kontragent";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(375, 216);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "ОК";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(425, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Список документов приходная накладная";
+            // 
+            // Form6
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(472, 256);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+            this.Location = new System.Drawing.Point(110, 90);
+            this.Name = "Form6";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Список документов";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomerDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kontragent;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

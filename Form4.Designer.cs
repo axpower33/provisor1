@@ -1,6 +1,7 @@
-﻿namespace WinFormsApp1
+﻿
+namespace WindowsFormsApp8
 {
-     partial class Form4
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.
@@ -28,152 +29,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nomenklatura = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EdIzm = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Kolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
+            this.kontragentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kontragentTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.KontragentTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.naimenovanieDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.kontragentBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(33, 50);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(310, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // provisorBaseDataDataSet
+            // 
+            this.provisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
+            this.provisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kontragentBindingSource
+            // 
+            this.kontragentBindingSource.DataMember = "Kontragent";
+            this.kontragentBindingSource.DataSource = this.provisorBaseDataDataSet;
+            // 
+            // kontragentTableAdapter
+            // 
+            this.kontragentTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // naimenovanieDataGridViewTextBoxColumn
+            // 
+            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
+            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Naimenovanie";
+            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(516, 309);
+            this.button1.Location = new System.Drawing.Point(255, 206);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ОК";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Save Changes";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            
-           // 
-           // textBox1
-           // 
-           this.textBox1.Location = new System.Drawing.Point(61, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(257, 42);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 45);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(34, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Дата док:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Номер док:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(362, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Контрагент:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(219, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Приходная накладная";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(434, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 8;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nomenklatura,
-            this.EdIzm,
-            this.Kolichestvo,
-            this.Cena,
-            this.Summa});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 211);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-
-            // 
-            // Nomenklatura
-            // 
-            this.Nomenklatura.HeaderText = "Nomenklatura";
-            this.Nomenklatura.Name = "Nomenklatura";
-            //// 
-            //// EdIzm
-            //// 
-            this.EdIzm.HeaderText = "EdIzm";
-            this.EdIzm.Name = "EdIzm";
-            //// 
-            //// Kolichestvo
-            //// 
-            this.Kolichestvo.HeaderText = "Kolichestvo";
-            this.Kolichestvo.Name = "Kolichestvo";
-            //// 
-            //// Cena
-            //// 
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            //// 
-            //// Summa
-            //// 
-            this.Summa.HeaderText = "Summa";
-            this.Summa.Name = "Summa";
+            this.label1.Size = new System.Drawing.Size(261, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Справочник контрагенты";
             // 
             // Form4
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 333);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(365, 249);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "Контрагенты";
+            this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,19 +123,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Nomenklatura;
-        private System.Windows.Forms.DataGridViewComboBoxColumn EdIzm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kolichestvo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summa;
+        private ProvisorBaseDataDataSet provisorBaseDataDataSet;
+        private System.Windows.Forms.BindingSource kontragentBindingSource;
+        private ProvisorBaseDataDataSetTableAdapters.KontragentTableAdapter kontragentTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naimenovanieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
