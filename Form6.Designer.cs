@@ -33,7 +33,7 @@ namespace WindowsFormsApp8
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomerDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kontragent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kontragent = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -41,6 +41,7 @@ namespace WindowsFormsApp8
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(-2, 39);
             this.dataGridView1.Name = "dataGridView1";
@@ -113,7 +114,7 @@ namespace WindowsFormsApp8
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomerDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kontragent;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Kontragent;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
     }

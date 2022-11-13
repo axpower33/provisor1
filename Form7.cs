@@ -37,7 +37,7 @@ namespace WindowsFormsApp8
                 this.comboBox1.Items.Add((object)r3.GetValue(1));
             }
             r3.Close();
-            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent");
+            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc.Id as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent");
 
             da = new SqlDataAdapter(sql1, con);
             SqlCommand cc = new SqlCommand(sql1, connection);
@@ -54,6 +54,7 @@ namespace WindowsFormsApp8
             this.textBox1.Text = (string)r.GetValue(0).ToString();
             this.textBox2.Text = (string)r.GetValue(1);
             this.comboBox1.Text = (string)r.GetValue(2);
+            this.tId.Text = (string)r.GetValue(3).ToString();
             r.Close();
 
             SqlDataAdapter da4;
@@ -62,7 +63,7 @@ namespace WindowsFormsApp8
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
-            int[] idNomen = new int[10];
+            int[] idNomen = new int[100];
             this.Nomenklatura.Items.Clear();
             while (r4.Read())
             {
@@ -79,7 +80,7 @@ namespace WindowsFormsApp8
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
-            int[] idEdIzm = new int[10];
+            int[] idEdIzm = new int[100];
             this.EdIzm.Items.Clear();
             while (r7.Read())
             {
@@ -110,8 +111,8 @@ namespace WindowsFormsApp8
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string pId1 = (string)(this.dataGridView1.Rows[0].Cells[0].Value.ToString().Trim());
-
+            //string pId1 = (string)(this.dataGridView1.Rows[0].Cells[0].Value.ToString().Trim());
+            string pId1 = (string) this.tId.Text.Trim();
             string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             var connection = new SqlConnection(con);
             connection.Open();
@@ -122,7 +123,7 @@ namespace WindowsFormsApp8
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
-            int[] idNomen = new int[10];
+            int[] idNomen = new int[100];
             this.Nomenklatura.Items.Clear();
             while (r4.Read())
             {
@@ -139,7 +140,7 @@ namespace WindowsFormsApp8
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
-            int[] idEdIzm = new int[10];
+            int[] idEdIzm = new int[100];
             this.EdIzm.Items.Clear();
             while (r7.Read())
             {
@@ -195,10 +196,10 @@ namespace WindowsFormsApp8
             SqlDataAdapter da2;
             SqlCommand DAUpdateCmd;
 
-            da2 = new SqlDataAdapter(@"SELECT TableTableChast.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast.Id=" + pId1+" ORDER BY UID", cn);
             cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             cn.Open();
-
+            da2 = new SqlDataAdapter(@"SELECT TableTableChast.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast.Id=" + pId1+" ORDER BY UID", cn);
+    
             int nn = 0;
             int pId = Convert.ToInt32(pId1);
             int pNomen;
@@ -252,35 +253,14 @@ namespace WindowsFormsApp8
                         DAUpdateCmd.Parameters.AddWithValue("@pSumma", pSumma);
                         DAUpdateCmd.Parameters.AddWithValue("@pUid", pUid);
                         
-                        cmdBuilder2 = new SqlCommandBuilder(da2);
-
-                        da2.Fill(NomenDataSet, "TableTableChast");
-
-
-                        da2.UpdateCommand = DAUpdateCmd;
-                        
-                        //MessageBox.Show(NomenDataSet.Tables["TableTableChast"].Rows[0]["Nomenklatura"].ToString()+"/"+ this.Nomenklatura.Items[pNomen]);
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["Nomenklatura"] = (int)pNomen;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["EdIzm"] = (int)pEdIzm;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["Kolichestvo"] = (string)pKol;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["Cena"] = (string)pCena;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["Summa"] = (string)pSumma;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["UID"] = pUid;
-                        NomenDataSet.Tables["TableTableChast"].Rows[nn]["Id"] = pId;
-                        //Assign the SqlCommand to the UpdateCommand property of the SqlDataAdapter
-
-                        //da2.Update(NomenDataSet, "TableTableChast");
                         DAUpdateCmd.ExecuteNonQuery();
-                        //dataGridView1.DataSource = NomenDataSet;
                     }
-
                     else if (this.dataGridView1.Rows[nn].Cells[0].Value.ToString() == pId1)
                     {
-
                         pUid = (nn + 1).ToString();
                         DAUpdateCmd = new SqlCommand("Update TableTableChast set TableTableChast.Id=@pId, Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa=@pSumma, UID=@pUid  where TableTableChast.Id = " + pId1+ " AND UID = " + pUid, da.SelectCommand.Connection);
 
-                        DAUpdateCmd.Parameters.Add(new SqlParameter("@pId", SqlDbType.NVarChar));
+                        DAUpdateCmd.Parameters.Add(new SqlParameter("@pId", SqlDbType.Int));
                         DAUpdateCmd.Parameters["@pId"].SourceVersion = DataRowVersion.Current;
                         DAUpdateCmd.Parameters["@pId"].SourceColumn = "Id";
 
@@ -351,11 +331,12 @@ namespace WindowsFormsApp8
                         //Assign the SqlCommand to the UpdateCommand property of the SqlDataAdapter
 
                         da2.Update(NomenDataSet, "TableTableChast");
-                        //dataGridView1.DataSource = NomenDataSet;
-
+                        //dataGridView1.DataSource = NomenDataSet.Tables[0];
                     }
                 }
                 if (nn >= this.dataGridView1.Rows.Count - 2)
+
+
                 {
                     break;
                 }
@@ -379,7 +360,5 @@ namespace WindowsFormsApp8
             }
             catch { }
         }
-
-     
     }
 }

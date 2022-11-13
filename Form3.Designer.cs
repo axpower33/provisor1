@@ -31,21 +31,22 @@ namespace WindowsFormsApp8
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edIzmBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
             this.edIzmTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.EdIzmTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edIzmBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -56,15 +57,27 @@ namespace WindowsFormsApp8
             this.dataGridView1.Size = new System.Drawing.Size(299, 150);
             this.dataGridView1.TabIndex = 0;
             // 
-            // provisorBaseDataDataSet
+            // idDataGridViewTextBoxColumn
             // 
-            this.provisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
-            this.provisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "НН";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // naimenovanieDataGridViewTextBoxColumn
+            // 
+            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
+            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Наименование";
+            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
             // 
             // edIzmBindingSource
             // 
             this.edIzmBindingSource.DataMember = "EdIzm";
             this.edIzmBindingSource.DataSource = this.provisorBaseDataDataSet;
+            // 
+            // provisorBaseDataDataSet
+            // 
+            this.provisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
+            this.provisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // edIzmTableAdapter
             // 
@@ -90,18 +103,6 @@ namespace WindowsFormsApp8
             this.label1.TabIndex = 2;
             this.label1.Text = "Справочник единиц измерений";
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "НН";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // naimenovanieDataGridViewTextBoxColumn
-            // 
-            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
-            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Наименование";
-            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,12 +111,14 @@ namespace WindowsFormsApp8
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Справочник ед. измерений";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edIzmBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

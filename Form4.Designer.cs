@@ -31,21 +31,22 @@ namespace WindowsFormsApp8
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
-            this.kontragentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kontragentTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.KontragentTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kontragentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
+            this.kontragentTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.KontragentTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -55,20 +56,6 @@ namespace WindowsFormsApp8
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(310, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // provisorBaseDataDataSet
-            // 
-            this.provisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
-            this.provisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // kontragentBindingSource
-            // 
-            this.kontragentBindingSource.DataMember = "Kontragent";
-            this.kontragentBindingSource.DataSource = this.provisorBaseDataDataSet;
-            // 
-            // kontragentTableAdapter
-            // 
-            this.kontragentTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -81,6 +68,20 @@ namespace WindowsFormsApp8
             this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
             this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Naimenovanie";
             this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
+            // 
+            // kontragentBindingSource
+            // 
+            this.kontragentBindingSource.DataMember = "Kontragent";
+            this.kontragentBindingSource.DataSource = this.provisorBaseDataDataSet;
+            // 
+            // provisorBaseDataDataSet
+            // 
+            this.provisorBaseDataDataSet.DataSetName = "ProvisorBaseDataDataSet";
+            this.provisorBaseDataDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kontragentTableAdapter
+            // 
+            this.kontragentTableAdapter.ClearBeforeFill = true;
             // 
             // button1
             // 
@@ -110,12 +111,14 @@ namespace WindowsFormsApp8
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form4";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Контрагенты";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

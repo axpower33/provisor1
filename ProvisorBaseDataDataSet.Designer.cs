@@ -1978,6 +1978,10 @@ namespace WindowsFormsApp8 {
             
             private global::System.Data.DataColumn columnSumma;
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnUID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTable1DataTable() {
@@ -2053,6 +2057,22 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UIDColumn {
+                get {
+                    return this.columnUID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2088,14 +2108,16 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string Nomenkltura, string EdIzm, string Kolichestvo, string Cena, string Summa) {
+            public DataTable1Row AddDataTable1Row(string Nomenkltura, string EdIzm, string Kolichestvo, string Cena, string Summa, int Id, int UID) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nomenkltura,
                         EdIzm,
                         Kolichestvo,
                         Cena,
-                        Summa};
+                        Summa,
+                        Id,
+                        UID};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -2123,6 +2145,8 @@ namespace WindowsFormsApp8 {
                 this.columnKolichestvo = base.Columns["Kolichestvo"];
                 this.columnCena = base.Columns["Cena"];
                 this.columnSumma = base.Columns["Summa"];
+                this.columnId = base.Columns["Id"];
+                this.columnUID = base.Columns["UID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2138,11 +2162,20 @@ namespace WindowsFormsApp8 {
                 base.Columns.Add(this.columnCena);
                 this.columnSumma = new global::System.Data.DataColumn("Summa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSumma);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnUID = new global::System.Data.DataColumn("UID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUID);
                 this.columnNomenkltura.MaxLength = 10;
                 this.columnEdIzm.MaxLength = 10;
+                this.columnKolichestvo.AllowDBNull = false;
                 this.columnKolichestvo.MaxLength = 10;
+                this.columnCena.AllowDBNull = false;
                 this.columnCena.MaxLength = 10;
+                this.columnSumma.AllowDBNull = false;
                 this.columnSumma.MaxLength = 50;
+                this.columnId.AllowDBNull = false;
+                this.columnUID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2767,12 +2800,7 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Kolichestvo {
                 get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.KolichestvoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Kolichestvo\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDataTable1.KolichestvoColumn]));
                 }
                 set {
                     this[this.tableDataTable1.KolichestvoColumn] = value;
@@ -2783,12 +2811,7 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Cena {
                 get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.CenaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Cena\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDataTable1.CenaColumn]));
                 }
                 set {
                     this[this.tableDataTable1.CenaColumn] = value;
@@ -2799,15 +2822,32 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Summa {
                 get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.SummaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Summa\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDataTable1.SummaColumn]));
                 }
                 set {
                     this[this.tableDataTable1.SummaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableDataTable1.IdColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int UID {
+                get {
+                    return ((int)(this[this.tableDataTable1.UIDColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.UIDColumn] = value;
                 }
             }
             
@@ -2833,42 +2873,6 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEdIzmNull() {
                 this[this.tableDataTable1.EdIzmColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKolichestvoNull() {
-                return this.IsNull(this.tableDataTable1.KolichestvoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKolichestvoNull() {
-                this[this.tableDataTable1.KolichestvoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCenaNull() {
-                return this.IsNull(this.tableDataTable1.CenaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCenaNull() {
-                this[this.tableDataTable1.CenaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSummaNull() {
-                return this.IsNull(this.tableDataTable1.SummaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSummaNull() {
-                this[this.tableDataTable1.SummaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5090,6 +5094,8 @@ SELECT Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableCha
             tableMapping.ColumnMappings.Add("Kolichestvo", "Kolichestvo");
             tableMapping.ColumnMappings.Add("Cena", "Cena");
             tableMapping.ColumnMappings.Add("Summa", "Summa");
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("UID", "UID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5106,10 +5112,10 @@ SELECT Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableCha
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Nomenklatura.Naimenovanie AS Nomenkltura, EdIzm.Naimenovanie AS EdIzm, TableTableChast.Kolichestvo, TableTableChast.Cena, TableTableChast.Summa
+            this._commandCollection[0].CommandText = @"SELECT        Nomenklatura.Naimenovanie AS Nomenkltura, EdIzm.Naimenovanie AS EdIzm, TableTableChast.Kolichestvo, TableTableChast.Cena, TableTableChast.Summa, TableTableChast.Id, TableTableChast.UID
 FROM            TableTableChast LEFT OUTER JOIN
                          Nomenklatura ON TableTableChast.Nomenklatura = Nomenklatura.Id LEFT OUTER JOIN
-                         EdIzm ON TableTableChast.EdIzm = EdIzm.Id";
+                         EdIzm ON TableTableChast.EdIzm = EdIzm.Id order by TableTableChast.Id,TableTableChast.UID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

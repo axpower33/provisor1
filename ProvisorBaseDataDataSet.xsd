@@ -317,13 +317,13 @@ SELECT Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableCha
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProvisorBaseDataConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProvisorBaseDataConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Nomenklatura.Naimenovanie AS Nomenkltura, EdIzm.Naimenovanie AS EdIzm, TableTableChast.Kolichestvo, TableTableChast.Cena, TableTableChast.Summa
+                    <CommandText>SELECT        Nomenklatura.Naimenovanie AS Nomenkltura, EdIzm.Naimenovanie AS EdIzm, TableTableChast.Kolichestvo, TableTableChast.Cena, TableTableChast.Summa, TableTableChast.Id, TableTableChast.UID
 FROM            TableTableChast LEFT OUTER JOIN
                          Nomenklatura ON TableTableChast.Nomenklatura = Nomenklatura.Id LEFT OUTER JOIN
-                         EdIzm ON TableTableChast.EdIzm = EdIzm.Id</CommandText>
+                         EdIzm ON TableTableChast.EdIzm = EdIzm.Id order by TableTableChast.Id,TableTableChast.UID</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -335,6 +335,8 @@ FROM            TableTableChast LEFT OUTER JOIN
               <Mapping SourceColumn="Kolichestvo" DataSetColumn="Kolichestvo" />
               <Mapping SourceColumn="Cena" DataSetColumn="Cena" />
               <Mapping SourceColumn="Summa" DataSetColumn="Summa" />
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -346,7 +348,7 @@ FROM            TableTableChast LEFT OUTER JOIN
   <xs:element name="ProvisorBaseDataDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ProvisorBaseDataDataSet" msprop:Generator_UserDSName="ProvisorBaseDataDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="EdIzm" msprop:Generator_TableClassName="EdIzmDataTable" msprop:Generator_TableVarName="tableEdIzm" msprop:Generator_RowChangedName="EdIzmRowChanged" msprop:Generator_TablePropName="EdIzm" msprop:Generator_RowDeletingName="EdIzmRowDeleting" msprop:Generator_RowChangingName="EdIzmRowChanging" msprop:Generator_RowEvHandlerName="EdIzmRowChangeEventHandler" msprop:Generator_RowDeletedName="EdIzmRowDeleted" msprop:Generator_RowClassName="EdIzmRow" msprop:Generator_UserTableName="EdIzm" msprop:Generator_RowEvArgName="EdIzmRowChangeEvent">
+        <xs:element name="EdIzm" msprop:Generator_TableClassName="EdIzmDataTable" msprop:Generator_TableVarName="tableEdIzm" msprop:Generator_TablePropName="EdIzm" msprop:Generator_RowDeletingName="EdIzmRowDeleting" msprop:Generator_RowChangingName="EdIzmRowChanging" msprop:Generator_RowEvHandlerName="EdIzmRowChangeEventHandler" msprop:Generator_RowDeletedName="EdIzmRowDeleted" msprop:Generator_UserTableName="EdIzm" msprop:Generator_RowChangedName="EdIzmRowChanged" msprop:Generator_RowEvArgName="EdIzmRowChangeEvent" msprop:Generator_RowClassName="EdIzmRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -360,7 +362,7 @@ FROM            TableTableChast LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Kontragent" msprop:Generator_TableClassName="KontragentDataTable" msprop:Generator_TableVarName="tableKontragent" msprop:Generator_RowChangedName="KontragentRowChanged" msprop:Generator_TablePropName="Kontragent" msprop:Generator_RowDeletingName="KontragentRowDeleting" msprop:Generator_RowChangingName="KontragentRowChanging" msprop:Generator_RowEvHandlerName="KontragentRowChangeEventHandler" msprop:Generator_RowDeletedName="KontragentRowDeleted" msprop:Generator_RowClassName="KontragentRow" msprop:Generator_UserTableName="Kontragent" msprop:Generator_RowEvArgName="KontragentRowChangeEvent">
+        <xs:element name="Kontragent" msprop:Generator_TableClassName="KontragentDataTable" msprop:Generator_TableVarName="tableKontragent" msprop:Generator_TablePropName="Kontragent" msprop:Generator_RowDeletingName="KontragentRowDeleting" msprop:Generator_RowChangingName="KontragentRowChanging" msprop:Generator_RowEvHandlerName="KontragentRowChangeEventHandler" msprop:Generator_RowDeletedName="KontragentRowDeleted" msprop:Generator_UserTableName="Kontragent" msprop:Generator_RowChangedName="KontragentRowChanged" msprop:Generator_RowEvArgName="KontragentRowChangeEvent" msprop:Generator_RowClassName="KontragentRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -374,7 +376,7 @@ FROM            TableTableChast LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Nomenklatura" msprop:Generator_TableClassName="NomenklaturaDataTable" msprop:Generator_TableVarName="tableNomenklatura" msprop:Generator_RowChangedName="NomenklaturaRowChanged" msprop:Generator_TablePropName="Nomenklatura" msprop:Generator_RowDeletingName="NomenklaturaRowDeleting" msprop:Generator_RowChangingName="NomenklaturaRowChanging" msprop:Generator_RowEvHandlerName="NomenklaturaRowChangeEventHandler" msprop:Generator_RowDeletedName="NomenklaturaRowDeleted" msprop:Generator_RowClassName="NomenklaturaRow" msprop:Generator_UserTableName="Nomenklatura" msprop:Generator_RowEvArgName="NomenklaturaRowChangeEvent">
+        <xs:element name="Nomenklatura" msprop:Generator_TableClassName="NomenklaturaDataTable" msprop:Generator_TableVarName="tableNomenklatura" msprop:Generator_TablePropName="Nomenklatura" msprop:Generator_RowDeletingName="NomenklaturaRowDeleting" msprop:Generator_RowChangingName="NomenklaturaRowChanging" msprop:Generator_RowEvHandlerName="NomenklaturaRowChangeEventHandler" msprop:Generator_RowDeletedName="NomenklaturaRowDeleted" msprop:Generator_UserTableName="Nomenklatura" msprop:Generator_RowChangedName="NomenklaturaRowChanged" msprop:Generator_RowEvArgName="NomenklaturaRowChangeEvent" msprop:Generator_RowClassName="NomenklaturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -390,7 +392,7 @@ FROM            TableTableChast LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TableDoc" msprop:Generator_TableClassName="TableDocDataTable" msprop:Generator_TableVarName="tableTableDoc" msprop:Generator_RowChangedName="TableDocRowChanged" msprop:Generator_TablePropName="TableDoc" msprop:Generator_RowDeletingName="TableDocRowDeleting" msprop:Generator_RowChangingName="TableDocRowChanging" msprop:Generator_RowEvHandlerName="TableDocRowChangeEventHandler" msprop:Generator_RowDeletedName="TableDocRowDeleted" msprop:Generator_RowClassName="TableDocRow" msprop:Generator_UserTableName="TableDoc" msprop:Generator_RowEvArgName="TableDocRowChangeEvent">
+        <xs:element name="TableDoc" msprop:Generator_TableClassName="TableDocDataTable" msprop:Generator_TableVarName="tableTableDoc" msprop:Generator_TablePropName="TableDoc" msprop:Generator_RowDeletingName="TableDocRowDeleting" msprop:Generator_RowChangingName="TableDocRowChanging" msprop:Generator_RowEvHandlerName="TableDocRowChangeEventHandler" msprop:Generator_RowDeletedName="TableDocRowDeleted" msprop:Generator_UserTableName="TableDoc" msprop:Generator_RowChangedName="TableDocRowChanged" msprop:Generator_RowEvArgName="TableDocRowChangeEvent" msprop:Generator_RowClassName="TableDocRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -407,7 +409,7 @@ FROM            TableTableChast LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TableTableChast" msprop:Generator_TableClassName="TableTableChastDataTable" msprop:Generator_TableVarName="tableTableTableChast" msprop:Generator_RowChangedName="TableTableChastRowChanged" msprop:Generator_TablePropName="TableTableChast" msprop:Generator_RowDeletingName="TableTableChastRowDeleting" msprop:Generator_RowChangingName="TableTableChastRowChanging" msprop:Generator_RowEvHandlerName="TableTableChastRowChangeEventHandler" msprop:Generator_RowDeletedName="TableTableChastRowDeleted" msprop:Generator_RowClassName="TableTableChastRow" msprop:Generator_UserTableName="TableTableChast" msprop:Generator_RowEvArgName="TableTableChastRowChangeEvent">
+        <xs:element name="TableTableChast" msprop:Generator_TableClassName="TableTableChastDataTable" msprop:Generator_TableVarName="tableTableTableChast" msprop:Generator_TablePropName="TableTableChast" msprop:Generator_RowDeletingName="TableTableChastRowDeleting" msprop:Generator_RowChangingName="TableTableChastRowChanging" msprop:Generator_RowEvHandlerName="TableTableChastRowChangeEventHandler" msprop:Generator_RowDeletedName="TableTableChastRowDeleted" msprop:Generator_UserTableName="TableTableChast" msprop:Generator_RowChangedName="TableTableChastRowChanged" msprop:Generator_RowEvArgName="TableTableChastRowChangeEvent" msprop:Generator_RowClassName="TableTableChastRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -444,7 +446,7 @@ FROM            TableTableChast LEFT OUTER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nomenkltura" msprop:Generator_ColumnVarNameInTable="columnNomenkltura" msprop:Generator_ColumnPropNameInRow="Nomenkltura" msprop:Generator_ColumnPropNameInTable="NomenklturaColumn" msprop:Generator_UserColumnName="Nomenkltura" minOccurs="0">
@@ -461,27 +463,29 @@ FROM            TableTableChast LEFT OUTER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Kolichestvo" msprop:Generator_ColumnVarNameInTable="columnKolichestvo" msprop:Generator_ColumnPropNameInRow="Kolichestvo" msprop:Generator_ColumnPropNameInTable="KolichestvoColumn" msprop:Generator_UserColumnName="Kolichestvo" minOccurs="0">
+              <xs:element name="Kolichestvo" msprop:Generator_ColumnVarNameInTable="columnKolichestvo" msprop:Generator_ColumnPropNameInRow="Kolichestvo" msprop:Generator_ColumnPropNameInTable="KolichestvoColumn" msprop:Generator_UserColumnName="Kolichestvo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Cena" msprop:Generator_ColumnVarNameInTable="columnCena" msprop:Generator_ColumnPropNameInRow="Cena" msprop:Generator_ColumnPropNameInTable="CenaColumn" msprop:Generator_UserColumnName="Cena" minOccurs="0">
+              <xs:element name="Cena" msprop:Generator_ColumnVarNameInTable="columnCena" msprop:Generator_ColumnPropNameInRow="Cena" msprop:Generator_ColumnPropNameInTable="CenaColumn" msprop:Generator_UserColumnName="Cena">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Summa" msprop:Generator_ColumnVarNameInTable="columnSumma" msprop:Generator_ColumnPropNameInRow="Summa" msprop:Generator_ColumnPropNameInTable="SummaColumn" msprop:Generator_UserColumnName="Summa" minOccurs="0">
+              <xs:element name="Summa" msprop:Generator_ColumnVarNameInTable="columnSumma" msprop:Generator_ColumnPropNameInRow="Summa" msprop:Generator_ColumnPropNameInTable="SummaColumn" msprop:Generator_UserColumnName="Summa">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="UID" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ColumnPropNameInTable="UIDColumn" msprop:Generator_UserColumnName="UID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

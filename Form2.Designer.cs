@@ -120,8 +120,10 @@ namespace WindowsFormsApp8
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
+            this.Location = new System.Drawing.Point(80, 40);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form2";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

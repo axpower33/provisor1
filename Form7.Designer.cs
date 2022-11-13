@@ -35,8 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nomenklatura = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.EdIzm = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -44,6 +42,9 @@
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,6 +99,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -112,26 +114,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(571, 150);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(502, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Save changes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(236, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(226, 24);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Приходная накладная";
             // 
             // Id
             // 
@@ -174,11 +156,40 @@
             this.UID.Name = "UID";
             this.UID.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(502, 266);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Save changes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(236, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(226, 24);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Приходная накладная";
+            // 
+            // tId
+            // 
+            this.tId.Location = new System.Drawing.Point(556, 53);
+            this.tId.Name = "tId";
+            this.tId.Size = new System.Drawing.Size(50, 20);
+            this.tId.TabIndex = 9;
+            this.tId.Visible = false;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 333);
+            this.Controls.Add(this.tId);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -188,7 +199,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form7";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Документ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -214,5 +227,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summa;
         private System.Windows.Forms.DataGridViewTextBoxColumn UID;
+        private System.Windows.Forms.TextBox tId;
     }
 }

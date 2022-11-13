@@ -34,14 +34,14 @@ namespace WindowsFormsApp8
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edizm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kontragent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edizm = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.kontragent = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(446, 227);
+            this.button1.Location = new System.Drawing.Point(446, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 23);
             this.button1.TabIndex = 1;
@@ -61,6 +61,7 @@ namespace WindowsFormsApp8
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -69,13 +70,14 @@ namespace WindowsFormsApp8
             this.kontragent});
             this.dataGridView1.Location = new System.Drawing.Point(22, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(521, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(521, 175);
             this.dataGridView1.TabIndex = 3;
             // 
             // id
             // 
             this.id.HeaderText = "id";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // naimenovanie
             // 
@@ -96,11 +98,13 @@ namespace WindowsFormsApp8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(565, 262);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form5";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form5";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -114,7 +118,7 @@ namespace WindowsFormsApp8
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn naimenovanie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn edizm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kontragent;
+        private System.Windows.Forms.DataGridViewComboBoxColumn edizm;
+        private System.Windows.Forms.DataGridViewComboBoxColumn kontragent;
     }
 }

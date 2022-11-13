@@ -17,15 +17,16 @@ namespace WindowsFormsApp8
             InitializeComponent();
 
             string con2 = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.naimenovanie as kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
+            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
             var adapt = new SqlDataAdapter(sql2, con2);
+
             // Создаем объект Dataset
             var ds = new DataSet();
             // Заполняем Dataset
             adapt.Fill(ds);
-            // Отображаем данные
             this.dataGridView1.Rows.Clear();
             this.dataGridView1.DataSource = ds.Tables[0];
+            this.dataGridView1.ReadOnly = true;
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

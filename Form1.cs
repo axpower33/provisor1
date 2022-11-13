@@ -23,10 +23,9 @@ namespace WindowsFormsApp8
             this.dataTable1TableAdapter.Fill(this.ProvisorBaseDataDataSet.DataTable1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet.TableTableChast". При необходимости она может быть перемещена или удалена.
             this.dataTable1TableAdapter1.Fill(this.provisorBaseDataDataSet11.DataTable1);
-
+            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.RefreshReport();
         }
-
-        
     }
 }
