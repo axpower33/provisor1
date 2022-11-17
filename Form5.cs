@@ -14,7 +14,6 @@ namespace WindowsFormsApp8
         {
             InitializeComponent();
 
-            this.dataGridView1.AutoGenerateColumns = false;
             SqlConnection Con;
             Con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 30");
             Con.Open();

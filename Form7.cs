@@ -12,7 +12,7 @@ using System.Data.SqlTypes;
 
 namespace WindowsFormsApp8
 {
-  public partial class Form7 : Form
+    public partial class Form7 : Form
     {
         public Form7(int pId1)
         {
@@ -22,9 +22,19 @@ namespace WindowsFormsApp8
             var connection = new SqlConnection(con);
             connection.Open();
 
+            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc.Id as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent where TableDoc.Id=" + pId1);
             DataSet TableDocDataSet = new DataSet();
             SqlDataAdapter da;
+            da = new SqlDataAdapter(sql1, con);
+            SqlCommand cc = new SqlCommand(sql1, connection);
+            SqlDataReader r = cc.ExecuteReader();
+            r.Read();
 
+            this.textBox1.Text = (string)r.GetValue(0).ToString();
+            this.textBox2.Text = (string)r.GetValue(1);
+            this.comboBox1.Text = (string)r.GetValue(2);
+            this.tId.Text = (string)r.GetValue(3).ToString();
+            r.Close();
 
             DataSet KontDataSet = new DataSet();
             SqlDataAdapter da3;
@@ -37,26 +47,7 @@ namespace WindowsFormsApp8
                 this.comboBox1.Items.Add((object)r3.GetValue(1));
             }
             r3.Close();
-            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc.Id as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent");
-
-            da = new SqlDataAdapter(sql1, con);
-            SqlCommand cc = new SqlCommand(sql1, connection);
-            SqlDataReader r = cc.ExecuteReader();
-            int iu = 0;
-            while (r.Read())
-            {
-                iu++;
-                if (pId1 == iu)
-                {
-                    break;
-                }
-            }
-            this.textBox1.Text = (string)r.GetValue(0).ToString();
-            this.textBox2.Text = (string)r.GetValue(1);
-            this.comboBox1.Text = (string)r.GetValue(2);
-            this.tId.Text = (string)r.GetValue(3).ToString();
-            r.Close();
-
+            
             SqlDataAdapter da4;
             var sql4 = (@"select Id, Naimenovanie as Nomenklatura from Nomenklatura");
             da4 = new SqlDataAdapter(sql4, con);
@@ -117,12 +108,27 @@ namespace WindowsFormsApp8
             var connection = new SqlConnection(con);
             connection.Open();
 
+            DataSet KontDataSet = new DataSet();
+            SqlDataAdapter da3;
+            var sql3 = (@"select Id, Kontragent.naimenovanie as Kontragent from Kontragent");
+            da3 = new SqlDataAdapter(sql3, con);
+            SqlCommand c3 = new SqlCommand(sql3, connection);
+            SqlDataReader r3 = c3.ExecuteReader();
+            int[] idKont = new int[100];
+            int ii = 0;
+            while (r3.Read())
+            {   ii++;
+                this.comboBox1.Items.Add((object)r3.GetValue(1));
+                idKont[ii] = (int)r3.GetValue(0);
+            }
+            r3.Close();
+
             SqlDataAdapter da4;
             var sql4 = (@"select Id, Naimenovanie as Nomenklatura from Nomenklatura");
             da4 = new SqlDataAdapter(sql4, con);
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
-            int ii = 0;
+            ii = 0;
             int[] idNomen = new int[100];
             this.Nomenklatura.Items.Clear();
             while (r4.Read())
@@ -153,7 +159,7 @@ namespace WindowsFormsApp8
 
             SqlCommandBuilder cmdBuilder2, cmdBuilder;
             SqlDataAdapter da;
-            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent from TableDoc left join Kontragent ON Kontragent.Id=Kontragent");
+            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc");
             DataSet TableDocDataSet = new DataSet();
 
             da = new SqlDataAdapter(sql1, con);
@@ -178,7 +184,17 @@ namespace WindowsFormsApp8
 
             var pDataDoc = this.textBox1.Text;
             string pNomerDoc = (string)this.textBox2.Text;
-            int pKont = (int)this.comboBox1.SelectedIndex + 1;
+            int tt = -1;
+            int pKont = 1;
+            while (tt <= this.comboBox1.Items.Count - 1)
+            {
+                tt++;
+                if (this.comboBox1.Text.Trim() == this.comboBox1.Items[idKont[tt]].ToString().Trim())
+                {
+                    pKont = (int)idKont[tt] + 1;
+                    break;
+                }
+            }
 
             da.UpdateCommand = DAUpdate;
 
@@ -186,11 +202,11 @@ namespace WindowsFormsApp8
             TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"] = pNomerDoc;
             TableDocDataSet.Tables["TableDoc"].Rows[0]["Kontragent"] = pKont;
             da.Update(TableDocDataSet, "TableDoc");
-            this.textBox1.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"].ToString();
-            this.textBox2.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"].ToString();
-
-
-            ///for tablePart
+            //this.textBox1.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"].ToString();
+            //this.textBox2.Text = TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"].ToString();
+            //this.comboBox1.Text = (string)this.comboBox1.Items[pKont-1].ToString(); 
+            
+            //for tablePart
             SqlConnection cn= new SqlConnection(); 
             DataSet NomenDataSet = new DataSet();
             SqlDataAdapter da2;
@@ -201,13 +217,15 @@ namespace WindowsFormsApp8
             da2 = new SqlDataAdapter(@"SELECT TableTableChast.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast.Id=" + pId1+" ORDER BY UID", cn);
     
             int nn = 0;
-            int pId = Convert.ToInt32(pId1);
             int pNomen;
             int pEdIzm;
             string pKol;
             string pCena;
             string pSumma;
             string pUid = "0";
+            int pId = Convert.ToInt32(pId1.Trim());
+            bool pZ = false;
+            string sqli = "";
             do
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
@@ -215,12 +233,12 @@ namespace WindowsFormsApp8
                     if (this.dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
 
-                        int tt = -1;
+                        tt = -1;
                         pNomen = 1;
                         while (tt <= this.Nomenklatura.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[idNomen[tt]].ToString().Trim())
                             {
                                 pNomen = (int)idNomen[tt] + 1;
                                 break;
@@ -231,7 +249,7 @@ namespace WindowsFormsApp8
                         while (tt <= this.EdIzm.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[idEdIzm[tt]].ToString().Trim())
                             {
                                 pEdIzm = (int)idEdIzm[tt] + 1;
                                 break;
@@ -240,7 +258,29 @@ namespace WindowsFormsApp8
                         pKol = (string)dataGridView1.Rows[nn].Cells[3].Value;
                         pCena = (string)dataGridView1.Rows[nn].Cells[4].Value;
                         pSumma = (string)dataGridView1.Rows[nn].Cells[5].Value;
-                        pUid = (nn+1).ToString();
+
+                        if (!pZ)
+                        {
+                            sqli = "Select Max(UID) as mUid from TableTableChast where Id="+pId1;
+                            SqlDataAdapter da9 = new SqlDataAdapter(sqli, con);
+                            SqlCommand c9 = new SqlCommand(sqli, connection);
+                            SqlDataReader r9 = c9.ExecuteReader();
+                            try 
+                            {
+                                r9.Read();
+                                pUid = (string)r9.GetValue(0).ToString();
+                                pUid = (Convert.ToInt32(pUid) + 1).ToString();
+                            }
+                            catch 
+                            {
+                                pUid = "1";
+                            }
+                            pZ = true;
+                        }
+                        else 
+                        {
+                            pUid = (Convert.ToInt32(pUid) + 1).ToString();
+                        }
 
                         string query = "INSERT INTO TableTableChast (Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID) VALUES(@pId, @pNomen, @pEdIzm, @pKol, @pCena, @pSumma, @pUid)";
                         DAUpdateCmd = new SqlCommand(query, cn);
@@ -257,7 +297,7 @@ namespace WindowsFormsApp8
                     }
                     else if (this.dataGridView1.Rows[nn].Cells[0].Value.ToString() == pId1)
                     {
-                        pUid = (nn + 1).ToString();
+                        pUid = this.dataGridView1.Rows[nn].Cells[6].Value.ToString();
                         DAUpdateCmd = new SqlCommand("Update TableTableChast set TableTableChast.Id=@pId, Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa=@pSumma, UID=@pUid  where TableTableChast.Id = " + pId1+ " AND UID = " + pUid, da.SelectCommand.Connection);
 
                         DAUpdateCmd.Parameters.Add(new SqlParameter("@pId", SqlDbType.Int));
@@ -292,12 +332,12 @@ namespace WindowsFormsApp8
 
                         da2.Fill(NomenDataSet, "TableTableChast");
 
-                        int tt = -1;
+                        tt = -1;
                         pNomen = 1;
                         while (tt <= this.Nomenklatura.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[idNomen[tt]].ToString().Trim())
                             {
                                 pNomen = (int)idNomen[tt] + 1;
                                 break;
@@ -308,7 +348,7 @@ namespace WindowsFormsApp8
                         while (tt <= this.EdIzm.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[idEdIzm[tt]].ToString().Trim())
                             {
                                 pEdIzm = (int)idEdIzm[tt] + 1;
                                 break;
@@ -331,12 +371,10 @@ namespace WindowsFormsApp8
                         //Assign the SqlCommand to the UpdateCommand property of the SqlDataAdapter
 
                         da2.Update(NomenDataSet, "TableTableChast");
-                        //dataGridView1.DataSource = NomenDataSet.Tables[0];
+                        //dataGridView1.DataSource = NomenDataSet.Tables["TableTableChast"];
                     }
                 }
                 if (nn >= this.dataGridView1.Rows.Count - 2)
-
-
                 {
                     break;
                 }
@@ -359,6 +397,26 @@ namespace WindowsFormsApp8
                 this.dataGridView1.Rows[e.RowIndex].Cells[5].Value = nsum2.ToString();
             }
             catch { }
+        }
+
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("  Удалить строку?", "Удаление", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+
+            var connection = new SqlConnection(con);
+            connection.Open();
+            int pId = (int)this.dataGridView1.Rows[e.Row.Index].Cells[0].Value;
+            string pUid = (string)this.dataGridView1.Rows[e.Row.Index].Cells[6].Value.ToString();
+            string sql1 = "Delete from TableTableChast where Id="+pId+" AND UID= "+pUid;
+            SqlCommand SqlC = new SqlCommand();
+            SqlC.Connection = connection;
+            SqlC.CommandText = sql1;
+            SqlC.ExecuteNonQuery();
         }
     }
 }
