@@ -10,15 +10,14 @@ using System.Data.SqlClient;
 namespace WindowsFormsApp8
 {
 
-    public partial class Form6 : Form
+    public partial class Form8: Form
     {
-        public Form6()
+        public Form8()
         {
             InitializeComponent();
 
             string con2 = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
-            var adapt = new SqlDataAdapter(sql2, con2);
+            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc2 left join Kontragent ON Kontragent.id=Kontragent");
             SqlConnection connection = new SqlConnection(con2);
             SqlCommand daCmd = new SqlCommand();
             daCmd.CommandText = sql2;
@@ -55,14 +54,14 @@ namespace WindowsFormsApp8
         {
             try { 
             int pId = (int)this.dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            Form xForm = new Form7(pId);
+            Form xForm = new Form9(pId);
             xForm.Show();
             } catch { MessageBox.Show("Сохраните изменения!");}
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form6.ActiveForm.Close();
+            Form8.ActiveForm.Close();
             Form2.ActiveForm.Activate();
         }
 
@@ -132,7 +131,7 @@ namespace WindowsFormsApp8
                         
                         if (!pZ)
                         {
-                            sqli = "Select Max(Id) as mId from TableDoc";
+                            sqli = "Select Max(Id) as mId from TableDoc2";
                             SqlCommand c9 = new SqlCommand(sqli, connection);
                             SqlDataReader r9 = c9.ExecuteReader();
                             try
@@ -153,7 +152,8 @@ namespace WindowsFormsApp8
                             pId = Convert.ToInt32(pId) + 1;
                         }
 
-                        string query = "INSERT INTO TableDoc (Id, DataDoc, NomerDoc, Kontragent, UID) VALUES(@pId, @pDataDoc, @pNomerDoc, @pKont, @pId)";
+
+                        string query = "INSERT INTO TableDoc2 (Id, DataDoc, NomerDoc, Kontragent, UID) VALUES(@pId, @pDataDoc, @pNomerDoc, @pKont, @pId)";
 
                         SqlCommand DAUpdateCmd = new SqlCommand(query, connection);
 
@@ -169,13 +169,13 @@ namespace WindowsFormsApp8
                         int pId1 = (int)this.dataGridView1.Rows[nn].Cells[0].Value;
                         SqlCommandBuilder cmdBuilder;
                         SqlDataAdapter da;
-                        var sql1 = (@"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc");
-                        DataSet TableDocDataSet = new DataSet();
+                        var sql1 = (@"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc2");
+                        DataSet TableDoc2DataSet = new DataSet();
 
                         da = new SqlDataAdapter(sql1, con);
                         //Initialize the SqlCommand object that will be used as the DataAdapter's UpdateCommand
                         ////Notice that the WHERE clause uses only the CustId field to locate the record to be updated
-                        SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=" + pId1);
+                        SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc2 SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=" + pId1);
 
                         DAUpdate.Parameters.Add(new SqlParameter("@pDataDoc", SqlDbType.DateTime));
                         DAUpdate.Parameters["@pDataDoc"].SourceVersion = DataRowVersion.Current;
@@ -190,7 +190,7 @@ namespace WindowsFormsApp8
                         DAUpdate.Parameters["@pKont"].SourceColumn = "Kontragent";
 
                         cmdBuilder = new SqlCommandBuilder(da);
-                        da.Fill(TableDocDataSet, "TableDoc");
+                        da.Fill(TableDoc2DataSet, "TableDoc2");
 
                         pDataDoc = dataGridView1.Rows[nn].Cells[1].Value.ToString();
                         pNomerDoc = dataGridView1.Rows[nn].Cells[2].Value.ToString();
@@ -208,10 +208,10 @@ namespace WindowsFormsApp8
 
                         da.UpdateCommand = DAUpdate;
 
-                        TableDocDataSet.Tables["TableDoc"].Rows[0]["DataDoc"] = pDataDoc;
-                        TableDocDataSet.Tables["TableDoc"].Rows[0]["NomerDoc"] = pNomerDoc;
-                        TableDocDataSet.Tables["TableDoc"].Rows[0]["Kontragent"] = pKont;
-                        da.Update(TableDocDataSet, "TableDoc");
+                        TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["DataDoc"] = pDataDoc;
+                        TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["NomerDoc"] = pNomerDoc;
+                        TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["Kontragent"] = pKont;
+                        da.Update(TableDoc2DataSet, "TableDoc2");
                     }
                 }
                 if (nn >= this.dataGridView1.Rows.Count - 2)
@@ -221,7 +221,7 @@ namespace WindowsFormsApp8
                 nn++;
             } while (1 == 1);
   
-            string sql2 = (@"SELECT TableDoc.id, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
+            string sql2 = (@"SELECT TableDoc2.id, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc2 left join Kontragent ON Kontragent.id=Kontragent");
             SqlCommand daCmd = new SqlCommand();
             daCmd.CommandText = sql2;
             daCmd.Connection = connection;
@@ -254,15 +254,16 @@ namespace WindowsFormsApp8
 
             var connection = new SqlConnection(con);
             connection.Open();
-            bool pDel = false;         
+
+            bool pDel = false;
             foreach (DataGridViewRow ppRow in this.dataGridView1.SelectedRows)
             {
                 pDel = true;
                 try
                 {
                     string pId = ppRow.Cells[0].Value.ToString().Trim();
-                    string sql2 = "Delete from TableTableChast where Id=" + pId;
-                    string sql1 = "Delete from TableDoc where Id=" + pId;
+                    string sql2 = "Delete from TableTableChast2 where Id=" + pId;
+                    string sql1 = "Delete from TableDoc2 where Id=" + pId;
                     SqlCommand SqlC2 = new SqlCommand();
                     SqlC2.Connection = connection;
                     SqlC2.CommandText = sql2;
@@ -274,7 +275,8 @@ namespace WindowsFormsApp8
                     dataGridView1.Rows.Remove(ppRow);
                 }
                 catch
-                {  try
+                {
+                    try
                     {
                         dataGridView1.Rows.Remove(ppRow);
                     }

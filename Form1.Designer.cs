@@ -67,6 +67,7 @@ namespace WindowsFormsApp8
             // 
             // reportViewer1
             // 
+            this.reportViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.dataTable1BindingSource;
             reportDataSource2.Name = "DataSet2";
@@ -77,7 +78,7 @@ namespace WindowsFormsApp8
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(10);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(801, 741);
+            this.reportViewer1.Size = new System.Drawing.Size(733, 741);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -93,9 +94,11 @@ namespace WindowsFormsApp8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 741);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(732, 733);
             this.Controls.Add(this.reportViewer1);
             this.Location = new System.Drawing.Point(110, 90);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp8
 {
-    partial class Form7
+    partial class Form9
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tId = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nomenklatura = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.EdIzm = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -49,6 +45,10 @@
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tId = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,44 +121,6 @@
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(502, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Save changes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(236, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(226, 24);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Приходная накладная";
-            // 
-            // tId
-            // 
-            this.tId.Location = new System.Drawing.Point(556, 53);
-            this.tId.Name = "tId";
-            this.tId.Size = new System.Drawing.Size(50, 20);
-            this.tId.TabIndex = 9;
-            this.tId.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(421, 266);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Delete rows";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Id
             // 
             this.Id.HeaderText = "Id";
@@ -214,7 +176,45 @@
             this.UID.Name = "UID";
             this.UID.Visible = false;
             // 
-            // Form7
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(502, 266);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Save changes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(236, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(223, 24);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Расходная накладная";
+            // 
+            // tId
+            // 
+            this.tId.Location = new System.Drawing.Point(556, 53);
+            this.tId.Name = "tId";
+            this.tId.Size = new System.Drawing.Size(50, 20);
+            this.tId.TabIndex = 9;
+            this.tId.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(421, 266);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Delete rows";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -232,7 +232,7 @@
             this.Controls.Add(this.textBox1);
             this.Location = new System.Drawing.Point(110, 90);
             this.MaximizeBox = false;
-            this.Name = "Form7";
+            this.Name = "Form9";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Документ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

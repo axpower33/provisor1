@@ -1,10 +1,10 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlTypes;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
-
 
 namespace WindowsFormsApp8
 {
@@ -70,15 +70,17 @@ namespace WindowsFormsApp8
         private void button1_Click(object sender, System.EventArgs e)
         {
             SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            cn.Open();
+
             DataSet NomenDataSet = new DataSet();
             SqlDataAdapter da;
 
             SqlCommandBuilder cmdBuilder;
             da = new SqlDataAdapter(@"Select A.Id, A.Naimenovanie, Kontragent.Naimenovanie as Kontragent, EdIzm.Naimenovanie as EdIzm from Nomenklatura as A left join Kontragent ON Kontragent.Id = A.Kontragent left join EdIzm ON EdIzm.Id = A.EdIzm", cn);
 
-            SqlCommand DAUpdateCmd = da.UpdateCommand;
-            cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            cn.Open();
+            SqlCommand DAUpdateCmd;
+            
             SqlDataAdapter da7;
             var sql7 = (@"select Id, Naimenovanie as EdIzm from EdIzm");
             da7 = new SqlDataAdapter(sql7, cn);
@@ -111,20 +113,36 @@ namespace WindowsFormsApp8
             r7.Close();
 
             int nn = 0;
+            bool pZ = false;
+            string sqli = "";
+            int pId = 0;
             do
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
                     if (this.dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
+                        string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value;
+                        if (pNaim == null)
+                        {
+                            MessageBox.Show("Naimenovanie не может быть пустым!");
+                            return;
+                        }
+
                         int tt = -1;
                         int pEdIzm = 1;
                         while (tt <= this.edizm.Items.Count - 1)
                         {
                             tt++;
+                            if (dataGridView1.Rows[nn].Cells[2].Value == null)
+                            {
+                                MessageBox.Show("EdIzm не может быть пустым!");
+                                return;
+                            }
+
                             if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.edizm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt] + 1;
+                                pEdIzm = (int)idEdIzm[tt+1];
                                 break;
                             }
                         }
@@ -133,15 +151,41 @@ namespace WindowsFormsApp8
                         while (tt <= this.kontragent.Items.Count - 1)
                         {
                             tt++;
+                            if (dataGridView1.Rows[nn].Cells[3].Value == null)
+                            {
+                                MessageBox.Show("Kontragent не может быть пустым!");
+                                return;
+                            }
                             if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt] + 1;
+                                pKont = (int)idKont[tt+1];
                                 break;
                             }
                         }
 
-                        string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value;
-                        int pId = nn + 1;
+                        if (!pZ)
+                        {
+                            sqli = "Select Max(Id) as mId from Nomenklatura";
+                            SqlDataAdapter da9 = new SqlDataAdapter(sqli, cn);
+                            SqlCommand c9 = new SqlCommand(sqli, cn);
+                            SqlDataReader r9 = c9.ExecuteReader();
+                            try
+                            {
+                                r9.Read();
+                                pId = (int)r9.GetValue(0);
+                                pId = Convert.ToInt32(pId) + 1;
+                            }
+                            catch
+                            {
+                                pId = 1;
+                            }
+                            pZ = true;
+                            r9.Close();
+                        }
+                        else
+                        {
+                            pId = Convert.ToInt32(pId) + 1;
+                        }
 
                         string query = "INSERT INTO Nomenklatura (id, naimenovanie, edizm, kontragent) VALUES(@pId, @pNaim, @pEdIzm, @pKont)";
                         DAUpdateCmd = new SqlCommand(query, cn);
@@ -162,7 +206,7 @@ namespace WindowsFormsApp8
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.edizm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt] + 1;
+                                pEdIzm = (int)idEdIzm[tt+1];
                                 break;
                             }
                         }
@@ -174,13 +218,13 @@ namespace WindowsFormsApp8
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt] + 1;
+                                pKont = (int)idKont[tt+1];
                                 break;
                             }
                         }
 
-                        string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value;
-                        int pId = (int)dataGridView1.Rows[nn].Cells[0].Value;
+                        string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value.ToString();
+                        pId = (int)dataGridView1.Rows[nn].Cells[0].Value;
                         DAUpdateCmd = new SqlCommand("Update Nomenklatura set naimenovanie = @pNaim, edizm=@pEdIzm, kontragent=@pKont where id=@pId", da.SelectCommand.Connection);
 
                         ////Create and append the parameters for the Update command
@@ -225,6 +269,64 @@ namespace WindowsFormsApp8
 
             cn.Close();
             Form5.ActiveForm.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("  Удалить строки?", "Удаление", MessageBoxButtons.OKCancel);
+
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+
+            var connection = new SqlConnection(con);
+            connection.Open();
+            this.dataGridView1.Sort(this.dataGridView1.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+            bool pDel = false;
+            foreach (DataGridViewRow ppRow in this.dataGridView1.SelectedRows)
+            {
+                pDel = true;
+                try
+                {
+                    string pId = ppRow.Cells[0].Value.ToString().Trim();
+                    string sql1 = "Delete from Nomenklatura where Id=" + pId;
+                    string sql2 = "Select Nomenklatura from TableTableChast where Nomenklatura=" + pId+" Order By Id";
+                    SqlCommand SqlC2 = new SqlCommand();
+                    SqlC2.Connection = connection;
+                    SqlC2.CommandText = sql2;
+                    SqlDataReader rr = SqlC2.ExecuteReader();
+                    bool pJ = false;
+                    while (rr.Read())
+                    {
+                        if (!pJ)
+                        {
+                            MessageBox.Show("Элемент для удаления есть в документе! Удаление не будет произведено!");
+                            ppRow.Selected = false;
+                            pJ = true;
+                        }
+                    }
+                    rr.Close();
+                    if (!pJ)
+                    {
+                        SqlCommand SqlC = new SqlCommand();
+                        SqlC.Connection = connection;
+                        SqlC.CommandText = sql1;
+                        SqlC.ExecuteNonQuery();
+                        dataGridView1.Rows.Remove(ppRow);
+                    }
+                }
+                catch
+                {
+                    try 
+                    { 
+                        dataGridView1.Rows.Remove(ppRow);
+                    } catch { ppRow.Selected = false; }
+                }
+            }
+            if (!pDel) MessageBox.Show("0 строк выбрано!");
         }
     }
 }

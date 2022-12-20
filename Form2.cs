@@ -49,5 +49,31 @@ namespace WindowsFormsApp8
             Form x = new Form6();
             x.Show();
         }
+
+        private void расходнаяНакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form8();
+            x.Show();
+        }
+
+        private void расходнаяНакладнаяToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form x = new Form10();
+            x.Show();
+        }
+
+        private void приходрасходНоменклатурыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form11();
+            x.Show();
+
+        }
+
+        private void оборотнаяВедомостьНоменклатураToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form12();
+            x.Show();
+
+        }
     }
 }

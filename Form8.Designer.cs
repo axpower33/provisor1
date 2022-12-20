@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp8
 {
-    partial class Form6
+    partial class Form8
     {
         /// <summary>
         /// Required designer variable.
@@ -94,9 +94,9 @@ namespace WindowsFormsApp8
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 24);
+            this.label1.Size = new System.Drawing.Size(423, 24);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Список документов приходная накладная";
+            this.label1.Text = "Список документов расходная накладная";
             // 
             // button2
             // 
@@ -118,7 +118,7 @@ namespace WindowsFormsApp8
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Form6
+            // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,7 @@ namespace WindowsFormsApp8
             this.Controls.Add(this.dataGridView1);
             this.Location = new System.Drawing.Point(110, 90);
             this.MaximizeBox = false;
-            this.Name = "Form6";
+            this.Name = "Form8";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Список документов";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
