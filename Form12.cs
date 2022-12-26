@@ -20,11 +20,11 @@ namespace WindowsFormsApp8
         private void Form12_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet5.DataTable1". При необходимости она может быть перемещена или удалена.
-            this.DataTable1TableAdapter.Fill(this.ProvisorBaseDataDataSet5.DataTable1);
-            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
-            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            DataTable1TableAdapter.Fill(ProvisorBaseDataDataSet5.DataTable1);
+            reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
 
-            this.reportViewer1.RefreshReport();
+            reportViewer1.RefreshReport();
         }
     }
 }

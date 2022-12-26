@@ -18,76 +18,76 @@ namespace WindowsFormsApp8
         public Form9(int pId1)
         {
             InitializeComponent();
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
             var connection = new SqlConnection(con);
             connection.Open();
 
-            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc2.Id as Kontragent from TableDoc2 left join Kontragent ON Kontragent.Id = Kontragent where TableDoc2.Id=" + pId1);
+            var sql1 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc2.Id as Kontragent from TableDoc2 left join Kontragent ON Kontragent.Id = Kontragent where TableDoc2.Id=" + pId1;
             DataSet TableDoc2DataSet = new DataSet();
             SqlCommand cc = new SqlCommand(sql1, connection);
             SqlDataReader r = cc.ExecuteReader();
             r.Read();
 
-            this.textBox1.Text = (string)r.GetValue(0).ToString();
-            this.textBox2.Text = (string)r.GetValue(1);
-            this.comboBox1.Text = (string)r.GetValue(2);
-            this.tId.Text = (string)r.GetValue(3).ToString();
+            textBox1.Text = r.GetValue(0).ToString();
+            textBox2.Text = (string)r.GetValue(1);
+            comboBox1.Text = (string)r.GetValue(2);
+            tId.Text = r.GetValue(3).ToString();
             r.Close();
 
             DataSet KontDataSet = new DataSet();
-            var sql3 = (@"select Id, Kontragent.naimenovanie as Kontragent from Kontragent");
+            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             while (r3.Read())
             {
-                this.comboBox1.Items.Add((object)r3.GetValue(1));
+                comboBox1.Items.Add(r3.GetValue(1));
             }
             r3.Close();
             
-            var sql4 = (@"select Id, Naimenovanie as Nomenklatura from Nomenklatura");
+            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
             int[] idNomen = new int[100];
-            this.Nomenklatura.Items.Clear();
+            Nomenklatura.Items.Clear();
             while (r4.Read())
             {
                 ii++;
-                this.Nomenklatura.Items.Add((object)r4.GetValue(1));
+                Nomenklatura.Items.Add(r4.GetValue(1));
                 idNomen[ii] = (int)r4.GetValue(0);
 
             }
             r4.Close();
 
-            var sql7 = (@"select Id, Naimenovanie as EdIzm from EdIzm");
+            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
             int[] idEdIzm = new int[100];
-            this.EdIzm.Items.Clear();
+            EdIzm.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.EdIzm.Items.Add((object)r7.GetValue(1));
+                EdIzm.Items.Add(r7.GetValue(1));
                 idEdIzm[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
 
-            var sql2 = (@"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID");
+            var sql2 = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID";
             SqlCommand c2 = new SqlCommand(sql2, connection);
             SqlDataReader rr = c2.ExecuteReader();
 
             //this.dataGridView1.DataSource = r;
-            this.dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Clear();
             int i = 0;
             while (rr.Read())
             {
                 i++;
-                this.dataGridView1.Rows.Add();
+                dataGridView1.Rows.Add();
                 for (int j = 0; j <= 6; j++)
                 {
-                    this.dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
+                    dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
                 }
             }
             rr.Close();
@@ -96,56 +96,56 @@ namespace WindowsFormsApp8
         private void button1_Click(object sender, EventArgs e)
         {
             //string pId1 = (string)(this.dataGridView1.Rows[0].Cells[0].Value.ToString().Trim());
-            string pId1 = (string) this.tId.Text.Trim();
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string pId1 = tId.Text.Trim();
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             var connection = new SqlConnection(con);
             connection.Open();
 
             DataSet KontDataSet = new DataSet();
-            var sql3 = (@"select Id, Kontragent.naimenovanie as Kontragent from Kontragent");
+            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
             int ii = 0;
             while (r3.Read())
             {   ii++;
-                this.comboBox1.Items.Add((object)r3.GetValue(1));
+                comboBox1.Items.Add(r3.GetValue(1));
                 idKont[ii] = (int)r3.GetValue(0);
             }
             r3.Close();
 
-            var sql4 = (@"select Id, Naimenovanie as Nomenklatura from Nomenklatura");
+            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             ii = 0;
             int[] idNomen = new int[100];
-            this.Nomenklatura.Items.Clear();
+            Nomenklatura.Items.Clear();
             while (r4.Read())
             {
                 ii++;
-                this.Nomenklatura.Items.Add((object)r4.GetValue(1));
+                Nomenklatura.Items.Add(r4.GetValue(1));
                 idNomen[ii] = (int)r4.GetValue(0);
 
             }
             r4.Close();
 
-            var sql7 = (@"select Id, Naimenovanie as EdIzm from EdIzm");
+            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
             int[] idEdIzm = new int[100];
-            this.EdIzm.Items.Clear();
+            EdIzm.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.EdIzm.Items.Add((object)r7.GetValue(1));
+                EdIzm.Items.Add(r7.GetValue(1));
                 idEdIzm[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
 
             SqlCommandBuilder cmdBuilder2, cmdBuilder;
             SqlDataAdapter da;
-            var sql1 = (@"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc2");
+            var sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc2";
             DataSet TableDoc2DataSet = new DataSet();
 
             da = new SqlDataAdapter(sql1, con);
@@ -168,16 +168,16 @@ namespace WindowsFormsApp8
             cmdBuilder = new SqlCommandBuilder(da);
             da.Fill(TableDoc2DataSet, "TableDoc2");
 
-            var pDataDoc = this.textBox1.Text;
-            string pNomerDoc = (string)this.textBox2.Text;
+            var pDataDoc = textBox1.Text;
+            string pNomerDoc = textBox2.Text;
             int tt = -1;
             int pKont = 1;
-            while (tt <= this.comboBox1.Items.Count - 1)
+            while (tt <= comboBox1.Items.Count - 1)
             {
                 tt++;
-                if (this.comboBox1.Text.Trim() == this.comboBox1.Items[tt].ToString().Trim())
+                if (comboBox1.Text.Trim() == comboBox1.Items[tt].ToString().Trim())
                 {
-                    pKont = (int)idKont[tt + 1];
+                    pKont = idKont[tt + 1];
                     break;
                 }
             }
@@ -188,17 +188,14 @@ namespace WindowsFormsApp8
             TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["NomerDoc"] = pNomerDoc;
             TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["Kontragent"] = pKont;
             da.Update(TableDoc2DataSet, "TableDoc2");
-            //this.textBox1.Text = TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["DataDoc"].ToString();
-            //this.textBox2.Text = TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["NomerDoc"].ToString();
-            //this.comboBox1.Text = (string)this.comboBox1.Items[pKont-1].ToString(); 
-            
+           
             //for tablePart
             SqlConnection cn= new SqlConnection(); 
             DataSet NomenDataSet = new DataSet();
             SqlDataAdapter da2;
             SqlCommand DAUpdateCmd;
 
-            cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            cn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             cn.Open();
             da2 = new SqlDataAdapter(@"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast2 left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID", cn);
     
@@ -216,12 +213,12 @@ namespace WindowsFormsApp8
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
-                    if (this.dataGridView1.Rows[nn].Cells[0].Value == null)
+                    if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
 
                         tt = -1;
                         pNomen = 1;
-                        while (tt <= this.Nomenklatura.Items.Count - 1)
+                        while (tt <= Nomenklatura.Items.Count - 1)
                         {
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[1].Value == null)
@@ -229,16 +226,16 @@ namespace WindowsFormsApp8
                                 MessageBox.Show("Nomenklatura не может быть пустым!");
                                 return;
                             }
-                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == Nomenklatura.Items[tt].ToString().Trim())
                             {
 
-                                pNomen = (int)idNomen[tt + 1] ;
+                                pNomen = idNomen[tt + 1];
                                 break;
                             }
                         }
                         tt = -1;
                         pEdIzm = 1;
-                        while (tt <= this.EdIzm.Items.Count - 1)
+                        while (tt <= EdIzm.Items.Count - 1)
                         {
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[2].Value == null)
@@ -247,9 +244,9 @@ namespace WindowsFormsApp8
                                 return;
                             }
 
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == EdIzm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt + 1] ;
+                                pEdIzm = idEdIzm[tt + 1];
                                 break;
                             }
                         }
@@ -260,7 +257,7 @@ namespace WindowsFormsApp8
                         }
                         try
                         {
-                            pKol = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[3].Value);
+                            pKol = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[3].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Количество имеет неверный формат!"); return; }
 
@@ -271,7 +268,7 @@ namespace WindowsFormsApp8
                         }
                         try
                         {
-                            pCena = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[4].Value);
+                            pCena = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[4].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Цена имеет неверный формат!"); return; }
 
@@ -282,7 +279,7 @@ namespace WindowsFormsApp8
                         }
                         try
                         {
-                            pSumma = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[5].Value);
+                            pSumma = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[5].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Сумма имеет неверный формат!"); return; }
                         if (!pZ)
@@ -293,7 +290,7 @@ namespace WindowsFormsApp8
                             try
                             {
                                 r9.Read();
-                                pUid = (string)r9.GetValue(0).ToString();
+                                pUid = r9.GetValue(0).ToString();
                                 pUid = (Convert.ToInt32(pUid) + 1).ToString();
                             }
                             catch
@@ -320,9 +317,9 @@ namespace WindowsFormsApp8
                         
                         DAUpdateCmd.ExecuteNonQuery();
                     }
-                    else if (this.dataGridView1.Rows[nn].Cells[0].Value.ToString() == pId1)
+                    else if (dataGridView1.Rows[nn].Cells[0].Value.ToString() == pId1)
                     {
-                        pUid = this.dataGridView1.Rows[nn].Cells[6].Value.ToString();
+                        pUid = dataGridView1.Rows[nn].Cells[6].Value.ToString();
                         DAUpdateCmd = new SqlCommand("Update TableTableChast2 set TableTableChast2.Id=@pId, Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa=@pSumma, UID=@pUid  where TableTableChast2.Id = " + pId1+ " AND UID = " + pUid, connection);
 
                         DAUpdateCmd.Parameters.Add(new SqlParameter("@pId", SqlDbType.Int));
@@ -359,39 +356,39 @@ namespace WindowsFormsApp8
 
                         tt = -1;
                         pNomen = 1;
-                        while (tt <= this.Nomenklatura.Items.Count - 1)
+                        while (tt <= Nomenklatura.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == this.Nomenklatura.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == Nomenklatura.Items[tt].ToString().Trim())
                             {
-                                pNomen = (int)idNomen[tt + 1] ;
+                                pNomen = idNomen[tt + 1];
                                 break;
                             }
                         }
                         tt = -1;
                         pEdIzm = 1;
-                        while (tt <= this.EdIzm.Items.Count - 1)
+                        while (tt <= EdIzm.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.EdIzm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == EdIzm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt + 1] ;
+                                pEdIzm = idEdIzm[tt + 1];
                                 break;
                             }
                         }
                         try
                         {
-                            pKol = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[3].Value);
+                            pKol = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[3].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Количество имеет неверный формат!"); return; }
                         try
                         {
-                            pCena = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[4].Value);
+                            pCena = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[4].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Цена имеет неверный формат!"); return; }
                         try
                         {
-                            pSumma = (decimal)Convert.ToDecimal(dataGridView1.Rows[nn].Cells[5].Value);
+                            pSumma = Convert.ToDecimal(dataGridView1.Rows[nn].Cells[5].Value);
                         }
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Сумма имеет неверный формат!"); return; }
 
@@ -399,11 +396,11 @@ namespace WindowsFormsApp8
                         da2.UpdateCommand = DAUpdateCmd;
 
                         //MessageBox.Show(NomenDataSet.Tables["TableTableChast2"].Rows[0]["Nomenklatura"].ToString()+"/"+ this.Nomenklatura.Items[pNomen]);
-                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Nomenklatura"] = (int)pNomen;
-                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["EdIzm"] = (int)pEdIzm;
-                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Kolichestvo"] = (decimal)pKol;
-                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Cena"] = (decimal)pCena;
-                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Summa"] = (decimal)pSumma;
+                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Nomenklatura"] = pNomen;
+                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["EdIzm"] = pEdIzm;
+                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Kolichestvo"] = pKol;
+                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Cena"] = pCena;
+                        NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Summa"] = pSumma;
                         NomenDataSet.Tables["TableTableChast2"].Rows[nn]["UID"] = pUid;
                         NomenDataSet.Tables["TableTableChast2"].Rows[nn]["Id"] = pId;
 
@@ -411,7 +408,7 @@ namespace WindowsFormsApp8
                         //dataGridView1.DataSource = NomenDataSet.Tables["TableTableChast2"];
                     }
                 }
-                if (nn >= this.dataGridView1.Rows.Count - 2)
+                if (nn >= dataGridView1.Rows.Count - 2)
                 {
                     break;
                 }
@@ -430,10 +427,10 @@ namespace WindowsFormsApp8
             try
             {
                 if ((e.ColumnIndex == 3) || (e.ColumnIndex == 4)) { 
-                    nsum = (decimal) Convert.ToDecimal(this.dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-                    nsum1 = (decimal) Convert.ToDecimal(this.dataGridView1.Rows[e.RowIndex].Cells[3].Value);
-                    nsum2 = (decimal) nsum * nsum1;
-                    this.dataGridView1.Rows[e.RowIndex].Cells[5].Value = nsum2;
+                    nsum = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                    nsum1 = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+                    nsum2 = nsum * nsum1;
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = nsum2;
                 }
             }
             catch { }
@@ -443,12 +440,12 @@ namespace WindowsFormsApp8
         {
             try
             {
-                string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+                string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
                 var connection = new SqlConnection(con);
                 connection.Open();
-                int pId = (int)Convert.ToInt32(this.tId.Text.Trim());
-                string pUid = (string)this.dataGridView1.Rows[e.Row.Index].Cells[6].Value.ToString();
+                int pId = Convert.ToInt32(tId.Text.Trim());
+                string pUid = dataGridView1.Rows[e.Row.Index].Cells[6].Value.ToString();
                 string sql1 = "Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
                 SqlCommand SqlC = new SqlCommand();
                 SqlC.Connection = connection;
@@ -458,7 +455,7 @@ namespace WindowsFormsApp8
             catch {
                 try
                 { 
-                     this.dataGridView1.Rows.Remove(this.dataGridView1.CurrentRow);
+                     dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
                 }
                 catch { }
             }
@@ -473,19 +470,19 @@ namespace WindowsFormsApp8
                 return;
             }
             
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
             var connection = new SqlConnection(con);
             connection.Open();
-            int pId = (int)Convert.ToInt32(this.tId.Text.Trim());
+            int pId = Convert.ToInt32(tId.Text.Trim());
             bool pDel = false;
-            foreach (DataGridViewRow ppRow in this.dataGridView1.SelectedRows)
+            foreach (DataGridViewRow ppRow in dataGridView1.SelectedRows)
             {
                 pDel = true;
                 try
                 {
                     string pUid = ppRow.Cells[6].Value.ToString().Trim();
-                    string sql1 = "Delete from TableTableChast where Id=" + pId + " AND UID= " + pUid;
+                    string sql1 = "Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
                     SqlCommand SqlC = new SqlCommand();
                     SqlC.Connection = connection;
                     SqlC.CommandText = sql1;

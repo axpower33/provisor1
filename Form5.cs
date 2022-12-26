@@ -22,47 +22,47 @@ namespace WindowsFormsApp8
             SqlDataReader r = c.ExecuteReader();
 
             //this.dataGridView1.DataSource = r;
-            this.dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Clear();
             int i = 0;
             while (r.Read())
             {
                 i++;
-                this.dataGridView1.Rows.Add();
+                dataGridView1.Rows.Add();
 
                 for (int j = 0; j <= 3; j++)
                 {
-                    this.dataGridView1.Rows[i - 1].Cells[j].Value = r.GetValue(j);
+                    dataGridView1.Rows[i - 1].Cells[j].Value = r.GetValue(j);
                 }
             }
 
             r.Close();
             SqlDataAdapter da7;
-            var sql7 = (@"select Id, Naimenovanie as EdIzm from EdIzm");
+            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             da7 = new SqlDataAdapter(sql7, Con);
             SqlCommand c7 = new SqlCommand(sql7, Con);
             SqlDataReader r7 = c7.ExecuteReader();
             int ii = 0;
             int[] idEdIzm = new int[100];
-            this.edizm.Items.Clear();
+            edizm.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.edizm.Items.Add((object)r7.GetValue(1));
+                edizm.Items.Add(r7.GetValue(1));
                 idEdIzm[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
 
-            sql7 = (@"select Id, Naimenovanie as kontragent from Kontragent");
+            sql7 = @"select Id, Naimenovanie as kontragent from Kontragent";
             da7 = new SqlDataAdapter(sql7, Con);
             c7 = new SqlCommand(sql7, Con);
             r7 = c7.ExecuteReader();
             ii = 0;
             int[] idKont = new int[100];
-            this.kontragent.Items.Clear();
+            kontragent.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.kontragent.Items.Add((object)r7.GetValue(1));
+                kontragent.Items.Add(r7.GetValue(1));
                 idKont[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
@@ -70,7 +70,7 @@ namespace WindowsFormsApp8
         private void button1_Click(object sender, System.EventArgs e)
         {
             SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            cn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             cn.Open();
 
             DataSet NomenDataSet = new DataSet();
@@ -82,32 +82,32 @@ namespace WindowsFormsApp8
             SqlCommand DAUpdateCmd;
             
             SqlDataAdapter da7;
-            var sql7 = (@"select Id, Naimenovanie as EdIzm from EdIzm");
+            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             da7 = new SqlDataAdapter(sql7, cn);
             SqlCommand c7 = new SqlCommand(sql7, cn);
             SqlDataReader r7 = c7.ExecuteReader();
             int ii = 0;
             int[] idEdIzm = new int[100];
-            this.edizm.Items.Clear();
+            edizm.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.edizm.Items.Add((object)r7.GetValue(1));
+                edizm.Items.Add(r7.GetValue(1));
                 idEdIzm[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
 
-            sql7 = (@"select Id, Naimenovanie as kontragent from Kontragent");
+            sql7 = @"select Id, Naimenovanie as kontragent from Kontragent";
             da7 = new SqlDataAdapter(sql7, cn);
             c7 = new SqlCommand(sql7, cn);
             r7 = c7.ExecuteReader();
             ii = 0;
             int[] idKont = new int[100];
-            this.kontragent.Items.Clear();
+            kontragent.Items.Clear();
             while (r7.Read())
             {
                 ii++;
-                this.kontragent.Items.Add((object)r7.GetValue(1));
+                kontragent.Items.Add(r7.GetValue(1));
                 idKont[ii] = (int)r7.GetValue(0);
             }
             r7.Close();
@@ -120,7 +120,7 @@ namespace WindowsFormsApp8
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
-                    if (this.dataGridView1.Rows[nn].Cells[0].Value == null)
+                    if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
                         string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value;
                         if (pNaim == null)
@@ -131,7 +131,7 @@ namespace WindowsFormsApp8
 
                         int tt = -1;
                         int pEdIzm = 1;
-                        while (tt <= this.edizm.Items.Count - 1)
+                        while (tt <= edizm.Items.Count - 1)
                         {
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[2].Value == null)
@@ -140,15 +140,15 @@ namespace WindowsFormsApp8
                                 return;
                             }
 
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.edizm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == edizm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt+1];
+                                pEdIzm = idEdIzm[tt + 1];
                                 break;
                             }
                         }
                         tt = -1;
                         int pKont = 1;
-                        while (tt <= this.kontragent.Items.Count - 1)
+                        while (tt <= kontragent.Items.Count - 1)
                         {
                             tt++;
                             if (dataGridView1.Rows[nn].Cells[3].Value == null)
@@ -156,9 +156,9 @@ namespace WindowsFormsApp8
                                 MessageBox.Show("Kontragent не может быть пустым!");
                                 return;
                             }
-                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.kontragent.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt+1];
+                                pKont = idKont[tt + 1];
                                 break;
                             }
                         }
@@ -201,29 +201,29 @@ namespace WindowsFormsApp8
                     {
                         int tt = -1;
                         int pEdIzm = 1;
-                        while (tt <= this.edizm.Items.Count - 1)
+                        while (tt <= edizm.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == this.edizm.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[2].Value.ToString().Trim() == edizm.Items[tt].ToString().Trim())
                             {
-                                pEdIzm = (int)idEdIzm[tt+1];
+                                pEdIzm = idEdIzm[tt + 1];
                                 break;
                             }
                         }
 
                         tt = -1;
                         int pKont = 1;
-                        while (tt <= this.kontragent.Items.Count - 1)
+                        while (tt <= kontragent.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.kontragent.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt+1];
+                                pKont = idKont[tt + 1];
                                 break;
                             }
                         }
 
-                        string pNaim = (string)dataGridView1.Rows[nn].Cells[1].Value.ToString();
+                        string pNaim = dataGridView1.Rows[nn].Cells[1].Value.ToString();
                         pId = (int)dataGridView1.Rows[nn].Cells[0].Value;
                         DAUpdateCmd = new SqlCommand("Update Nomenklatura set naimenovanie = @pNaim, edizm=@pEdIzm, kontragent=@pKont where id=@pId", da.SelectCommand.Connection);
 
@@ -259,7 +259,7 @@ namespace WindowsFormsApp8
                         //dataGridView1.DataSource = NomenDataSet.Tables[0];
                     }
                 }
-                if (nn >= this.dataGridView1.Rows.Count - 2)
+                if (nn >= dataGridView1.Rows.Count - 2)
                 {
                     break;
                 }
@@ -280,13 +280,13 @@ namespace WindowsFormsApp8
                 return;
             }
 
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
             var connection = new SqlConnection(con);
             connection.Open();
-            this.dataGridView1.Sort(this.dataGridView1.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+            dataGridView1.Sort(dataGridView1.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
             bool pDel = false;
-            foreach (DataGridViewRow ppRow in this.dataGridView1.SelectedRows)
+            foreach (DataGridViewRow ppRow in dataGridView1.SelectedRows)
             {
                 pDel = true;
                 try

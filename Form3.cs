@@ -20,13 +20,13 @@ namespace WindowsFormsApp8
         private void Form3_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "provisorBaseDataDataSet.EdIzm". При необходимости она может быть перемещена или удалена.
-            this.edIzmTableAdapter.Fill(this.provisorBaseDataDataSet.EdIzm);
+            edIzmTableAdapter.Fill(provisorBaseDataDataSet.EdIzm);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            edIzmTableAdapter.Update(this.provisorBaseDataDataSet);
+            edIzmTableAdapter.Update(provisorBaseDataDataSet);
             Form3.ActiveForm.Close();
 
         }

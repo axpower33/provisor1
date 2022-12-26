@@ -20,13 +20,13 @@ namespace WindowsFormsApp8
         private void Form4_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "provisorBaseDataDataSet.Kontragent". При необходимости она может быть перемещена или удалена.
-            this.kontragentTableAdapter.Fill(this.provisorBaseDataDataSet.Kontragent);
+            kontragentTableAdapter.Fill(provisorBaseDataDataSet.Kontragent);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.kontragentTableAdapter.Update(this.provisorBaseDataDataSet);
+            kontragentTableAdapter.Update(provisorBaseDataDataSet);
             Form4.ActiveForm.Close();
         }
     }

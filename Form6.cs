@@ -16,8 +16,8 @@ namespace WindowsFormsApp8
         {
             InitializeComponent();
 
-            string con2 = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
-            string sql2 = (@"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
+            string con2 = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
+            string sql2 = @"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent";
             var adapt = new SqlDataAdapter(sql2, con2);
             SqlConnection connection = new SqlConnection(con2);
             SqlCommand daCmd = new SqlCommand();
@@ -26,26 +26,26 @@ namespace WindowsFormsApp8
             connection.Open();
             SqlDataReader rr=daCmd.ExecuteReader();
             // Создаем объект Dataset
-            this.dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Clear();
             int i = 0;
             while (rr.Read())
             {
                 i++;
-                this.dataGridView1.Rows.Add();
+                dataGridView1.Rows.Add();
                 for (int j = 0; j <= 3; j++)
                 {
-                    this.dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
+                    dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
                 }
             }
             rr.Close();
             
             DataSet KontDataSet = new DataSet();
-            var sql3 = (@"select Id, Kontragent.naimenovanie as Kontragent from Kontragent");
+            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             while (r3.Read())
             {
-                this.Kontragent.Items.Add((object)r3.GetValue(1));
+                Kontragent.Items.Add(r3.GetValue(1));
             }
             r3.Close();
 
@@ -54,7 +54,7 @@ namespace WindowsFormsApp8
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try { 
-            int pId = (int)this.dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            int pId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
             Form xForm = new Form7(pId);
             xForm.Show();
             } catch { MessageBox.Show("Сохраните изменения!");}
@@ -68,12 +68,12 @@ namespace WindowsFormsApp8
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             var connection = new SqlConnection(con);
             connection.Open();
-            this.Kontragent.Items.Clear();
+            Kontragent.Items.Clear();
             DataSet KontDataSet = new DataSet();
-            var sql3 = (@"select Id, Kontragent.naimenovanie as Kontragent from Kontragent");
+            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
@@ -81,7 +81,7 @@ namespace WindowsFormsApp8
             while (r3.Read())
             {
                 ii++;
-                this.Kontragent.Items.Add((object)r3.GetValue(1));
+                Kontragent.Items.Add(r3.GetValue(1));
                 idKont[ii] = (int)r3.GetValue(0);
             }
             r3.Close();
@@ -96,7 +96,7 @@ namespace WindowsFormsApp8
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
-                    if (this.dataGridView1.Rows[nn].Cells[0].Value == null)
+                    if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
 
                         pDataDoc = (string)dataGridView1.Rows[nn].Cells[1].Value;
@@ -115,7 +115,7 @@ namespace WindowsFormsApp8
 
                         int tt = -1;
                         int pKont = 0;
-                        while (tt <= this.Kontragent.Items.Count - 1)
+                        while (tt <= Kontragent.Items.Count - 1)
                         {
                             if (dataGridView1.Rows[nn].Cells[3].Value==null)
                             {
@@ -123,9 +123,9 @@ namespace WindowsFormsApp8
                                 return;
                             }
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.Kontragent.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == Kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt+1];
+                                pKont = idKont[tt + 1];
                                 break;
                             }
                         }
@@ -166,10 +166,10 @@ namespace WindowsFormsApp8
                     }
                     else
                     {
-                        int pId1 = (int)this.dataGridView1.Rows[nn].Cells[0].Value;
+                        int pId1 = (int)dataGridView1.Rows[nn].Cells[0].Value;
                         SqlCommandBuilder cmdBuilder;
                         SqlDataAdapter da;
-                        var sql1 = (@"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc");
+                        var sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc";
                         DataSet TableDocDataSet = new DataSet();
 
                         da = new SqlDataAdapter(sql1, con);
@@ -196,12 +196,12 @@ namespace WindowsFormsApp8
                         pNomerDoc = dataGridView1.Rows[nn].Cells[2].Value.ToString();
                         int tt = -1;
                         int pKont = 1;
-                        while (tt <= this.Kontragent.Items.Count - 1)
+                        while (tt <= Kontragent.Items.Count - 1)
                         {
                             tt++;
-                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == this.Kontragent.Items[tt].ToString().Trim())
+                            if (dataGridView1.Rows[nn].Cells[3].Value.ToString().Trim() == Kontragent.Items[tt].ToString().Trim())
                             {
-                                pKont = (int)idKont[tt + 1] ;
+                                pKont = idKont[tt + 1];
                                 break;
                             }
                         }
@@ -214,28 +214,28 @@ namespace WindowsFormsApp8
                         da.Update(TableDocDataSet, "TableDoc");
                     }
                 }
-                if (nn >= this.dataGridView1.Rows.Count - 2)
+                if (nn >= dataGridView1.Rows.Count - 2)
                 {
                     break;
                 }
                 nn++;
             } while (1 == 1);
   
-            string sql2 = (@"SELECT TableDoc.id, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent");
+            string sql2 = @"SELECT TableDoc.id, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent";
             SqlCommand daCmd = new SqlCommand();
             daCmd.CommandText = sql2;
             daCmd.Connection = connection;
             SqlDataReader rr = daCmd.ExecuteReader();
     
-            this.dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Clear();
             int i = 0;
             while (rr.Read())
             {
                 i++;
-                this.dataGridView1.Rows.Add();
+                dataGridView1.Rows.Add();
                 for (int j = 0; j <= 3; j++)
                 {
-                    this.dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
+                    dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
                 }
             }
             rr.Close();
@@ -250,12 +250,12 @@ namespace WindowsFormsApp8
                 return;
             }
 
-            string con = (@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
             var connection = new SqlConnection(con);
             connection.Open();
             bool pDel = false;         
-            foreach (DataGridViewRow ppRow in this.dataGridView1.SelectedRows)
+            foreach (DataGridViewRow ppRow in dataGridView1.SelectedRows)
             {
                 pDel = true;
                 try

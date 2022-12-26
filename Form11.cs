@@ -20,12 +20,12 @@ namespace WindowsFormsApp8
         private void Form11_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet4.DataTable1". При необходимости она может быть перемещена или удалена.
-            this.dataTable1TableAdapter.Fill(this.ProvisorBaseDataDataSet4.DataTable1);
+            dataTable1TableAdapter.Fill(ProvisorBaseDataDataSet4.DataTable1);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet4.TableTableChast2". При необходимости она может быть перемещена или удалена.
-            this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
-            this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
 
-            this.reportViewer1.RefreshReport();
+            reportViewer1.RefreshReport();
         }
     }
 }
