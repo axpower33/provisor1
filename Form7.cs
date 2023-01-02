@@ -435,6 +435,25 @@ namespace WindowsFormsApp8
                     nsum2 = nsum * nsum1;
                     dataGridView1.Rows[e.RowIndex].Cells[5].Value = nsum2;
                 }
+                string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
+
+                var connection = new SqlConnection(con);
+                connection.Open();
+                if (e.ColumnIndex == 1)
+                {
+                    {
+                        string sql1 = "Select EdIzm.Naimenovanie as EdIzm1, Nomenklatura.naimenovanie from Nomenklatura  Left join EdIzm ON EdIzm.Id=Nomenklatura.EdIzm where RTRIM(Nomenklatura.naimenovanie)='" + dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim() + "'";
+                        SqlCommand sqlCm = new SqlCommand(sql1, connection);
+                        SqlDataReader SqlR = sqlCm.ExecuteReader();
+                        while (SqlR.Read())
+                        {
+                            dataGridView1.Rows[e.RowIndex].Cells[2].Value = SqlR.GetValue(0);
+                            break;
+                        }
+                        SqlR.Close();
+                    }
+                }
+
             }
             catch { }
         }
@@ -454,6 +473,7 @@ namespace WindowsFormsApp8
                 SqlC.Connection = connection;
                 SqlC.CommandText = sql1;
                 SqlC.ExecuteNonQuery();
+                
             }
             catch {
                 try
@@ -462,6 +482,7 @@ namespace WindowsFormsApp8
                 }
                 catch { }
             }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
