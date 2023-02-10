@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp8
 {
@@ -74,6 +75,20 @@ namespace WindowsFormsApp8
             Form x = new Form12();
             x.Show();
 
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
+
+            var connection = new SqlConnection(con);
+            connection.Open();
+        }
+
+        private void номенToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form13();
+            x.Show();
         }
     }
 }

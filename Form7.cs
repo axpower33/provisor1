@@ -12,17 +12,16 @@ using System.Data.SqlTypes;
 namespace WindowsFormsApp8
 {
     public partial class Form7 : Form
-
     {
         public Form7(int pId1)
         {
             InitializeComponent();
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
 
-            var sql1 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc.Id as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent where TableDoc.Id=" + pId1;
+            string sql1 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc.Id as Kontragent from TableDoc left join Kontragent ON Kontragent.Id = Kontragent where TableDoc.Id=" + pId1;
             DataSet TableDocDataSet = new DataSet();
             SqlCommand cc = new SqlCommand(sql1, connection);
             SqlDataReader r = cc.ExecuteReader();
@@ -35,7 +34,7 @@ namespace WindowsFormsApp8
             r.Close();
 
             DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             while (r3.Read())
@@ -44,7 +43,7 @@ namespace WindowsFormsApp8
             }
             r3.Close();
             
-            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
+            string sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
@@ -59,7 +58,7 @@ namespace WindowsFormsApp8
             }
             r4.Close();
 
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
@@ -73,7 +72,7 @@ namespace WindowsFormsApp8
             }
             r7.Close();
 
-            var sql2 = @"SELECT TableTableChast.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast.Id=" + pId1+" ORDER BY UID";
+            string sql2 = @"SELECT TableTableChast.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast.Id=" + pId1+" ORDER BY UID";
             SqlCommand c2 = new SqlCommand(sql2, connection);
             SqlDataReader rr = c2.ExecuteReader();
 
@@ -97,11 +96,11 @@ namespace WindowsFormsApp8
             //string pId1 = (string)(this.dataGridView1.Rows[0].Cells[0].Value.ToString().Trim());
             string pId1 = tId.Text.Trim();
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
 
             DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
@@ -113,7 +112,7 @@ namespace WindowsFormsApp8
             }
             r3.Close();
 
-            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
+            string sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             ii = 0;
@@ -128,7 +127,7 @@ namespace WindowsFormsApp8
             }
             r4.Close();
 
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
@@ -144,7 +143,7 @@ namespace WindowsFormsApp8
 
             SqlCommandBuilder cmdBuilder2, cmdBuilder;
             SqlDataAdapter da;
-            var sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc";
+            string sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc";
             DataSet TableDocDataSet = new DataSet();
 
             da = new SqlDataAdapter(sql1, con);
@@ -167,7 +166,7 @@ namespace WindowsFormsApp8
             cmdBuilder = new SqlCommandBuilder(da);
             da.Fill(TableDocDataSet, "TableDoc");
 
-            var pDataDoc = textBox1.Text;
+            string pDataDoc = textBox1.Text;
             string pNomerDoc = textBox2.Text;
             int tt = -1;
             int pKont = 1;
@@ -437,9 +436,9 @@ namespace WindowsFormsApp8
                 }
                 string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-                var connection = new SqlConnection(con);
+                SqlConnection connection = new SqlConnection(con);
                 connection.Open();
-                if (e.ColumnIndex == 1)
+                if (e.ColumnIndex == 1) 
                 {
                     {
                         string sql1 = "Select EdIzm.Naimenovanie as EdIzm1, Nomenklatura.naimenovanie from Nomenklatura  Left join EdIzm ON EdIzm.Id=Nomenklatura.EdIzm where RTRIM(Nomenklatura.naimenovanie)='" + dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim() + "'";
@@ -453,7 +452,6 @@ namespace WindowsFormsApp8
                         SqlR.Close();
                     }
                 }
-
             }
             catch { }
         }
@@ -463,9 +461,9 @@ namespace WindowsFormsApp8
             try
             {
                 string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
-
-                var connection = new SqlConnection(con);
+                SqlConnection connection = new SqlConnection(con);
                 connection.Open();
+                
                 int pId = Convert.ToInt32(tId.Text.Trim());
                 string pUid = dataGridView1.Rows[e.Row.Index].Cells[6].Value.ToString();
                 string sql1 = "Delete from TableTableChast where Id=" + pId + " AND UID= " + pUid;
@@ -473,7 +471,6 @@ namespace WindowsFormsApp8
                 SqlC.Connection = connection;
                 SqlC.CommandText = sql1;
                 SqlC.ExecuteNonQuery();
-                
             }
             catch {
                 try
@@ -496,7 +493,7 @@ namespace WindowsFormsApp8
             
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             int pId = Convert.ToInt32(tId.Text.Trim());
             bool pDel = false;
@@ -521,6 +518,7 @@ namespace WindowsFormsApp8
                     }
                     catch { ppRow.Selected = false; }
                 }
+
             }
             if (!pDel) MessageBox.Show("0 строк выбрано!");
         }

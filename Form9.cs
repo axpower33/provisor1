@@ -44,7 +44,7 @@ namespace WindowsFormsApp8
                 comboBox1.Items.Add(r3.GetValue(1));
             }
             r3.Close();
-            
+
             var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
@@ -56,7 +56,6 @@ namespace WindowsFormsApp8
                 ii++;
                 Nomenklatura.Items.Add(r4.GetValue(1));
                 idNomen[ii] = (int)r4.GetValue(0);
-
             }
             r4.Close();
 
@@ -74,7 +73,7 @@ namespace WindowsFormsApp8
             }
             r7.Close();
 
-            var sql2 = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID";
+            var sql2 = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1 + " ORDER BY UID";
             SqlCommand c2 = new SqlCommand(sql2, connection);
             SqlDataReader rr = c2.ExecuteReader();
 
@@ -108,7 +107,8 @@ namespace WindowsFormsApp8
             int[] idKont = new int[100];
             int ii = 0;
             while (r3.Read())
-            {   ii++;
+            {
+                ii++;
                 comboBox1.Items.Add(r3.GetValue(1));
                 idKont[ii] = (int)r3.GetValue(0);
             }
@@ -151,8 +151,8 @@ namespace WindowsFormsApp8
             da = new SqlDataAdapter(sql1, con);
             //Initialize the SqlCommand object that will be used as the DataAdapter's UpdateCommand
             ////Notice that the WHERE clause uses only the CustId field to locate the record to be updated
-            SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc2 SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id="+pId1);
-            
+            SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc2 SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=" + pId1);
+
             DAUpdate.Parameters.Add(new SqlParameter("@pDataDoc", SqlDbType.DateTime));
             DAUpdate.Parameters["@pDataDoc"].SourceVersion = DataRowVersion.Current;
             DAUpdate.Parameters["@pDataDoc"].SourceColumn = "DataDoc";
@@ -188,22 +188,21 @@ namespace WindowsFormsApp8
             TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["NomerDoc"] = pNomerDoc;
             TableDoc2DataSet.Tables["TableDoc2"].Rows[0]["Kontragent"] = pKont;
             da.Update(TableDoc2DataSet, "TableDoc2");
-           
+
             //for tablePart
-            SqlConnection cn= new SqlConnection(); 
+            SqlConnection cn = new SqlConnection();
             DataSet NomenDataSet = new DataSet();
             SqlDataAdapter da2;
             SqlCommand DAUpdateCmd;
 
             cn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             cn.Open();
-            da2 = new SqlDataAdapter(@"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast2 left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID", cn);
-    
+            da2 = new SqlDataAdapter(@"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast2 left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast2.Id=" + pId1 + " ORDER BY UID", cn);
+
             int nn = 0;
             int pNomen;
             int pEdIzm;
             decimal pKol;
-            decimal pCena;
             decimal pSumma;
             string pUid = "0";
             int pId = Convert.ToInt32(pId1.Trim());
@@ -213,6 +212,7 @@ namespace WindowsFormsApp8
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
+                    decimal pCena;
                     if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
 
@@ -284,7 +284,7 @@ namespace WindowsFormsApp8
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Сумма имеет неверный формат!"); return; }
                         if (!pZ)
                         {
-                            sqli = "Select Max(UID) as mUid from TableTableChast2 where Id="+pId1;
+                            sqli = "Select Max(UID) as mUid from TableTableChast2 where Id=" + pId1;
                             SqlCommand c9 = new SqlCommand(sqli, connection);
                             SqlDataReader r9 = c9.ExecuteReader();
                             try
@@ -299,7 +299,7 @@ namespace WindowsFormsApp8
                             }
                             pZ = true;
                         }
-                        else 
+                        else
                         {
                             pUid = (Convert.ToInt32(pUid) + 1).ToString();
                         }
@@ -314,13 +314,13 @@ namespace WindowsFormsApp8
                         DAUpdateCmd.Parameters.AddWithValue("@pCena", pCena);
                         DAUpdateCmd.Parameters.AddWithValue("@pSumma", pSumma);
                         DAUpdateCmd.Parameters.AddWithValue("@pUid", pUid);
-                        
+
                         DAUpdateCmd.ExecuteNonQuery();
                     }
                     else if (dataGridView1.Rows[nn].Cells[0].Value.ToString() == pId1)
                     {
                         pUid = dataGridView1.Rows[nn].Cells[6].Value.ToString();
-                        DAUpdateCmd = new SqlCommand("Update TableTableChast2 set TableTableChast2.Id=@pId, Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa=@pSumma, UID=@pUid  where TableTableChast2.Id = " + pId1+ " AND UID = " + pUid, connection);
+                        DAUpdateCmd = new SqlCommand("Update TableTableChast2 set TableTableChast2.Id=@pId, Nomenklatura=@pNomen, EdIzm=@pEdIzm, Kolichestvo=@pKol, Cena=@pCena, Summa=@pSumma, UID=@pUid  where TableTableChast2.Id = " + pId1 + " AND UID = " + pUid, connection);
 
                         DAUpdateCmd.Parameters.Add(new SqlParameter("@pId", SqlDbType.Int));
                         DAUpdateCmd.Parameters["@pId"].SourceVersion = DataRowVersion.Current;
@@ -345,13 +345,13 @@ namespace WindowsFormsApp8
                         DAUpdateCmd.Parameters.Add(new SqlParameter("@pSumma", SqlDbType.Decimal));
                         DAUpdateCmd.Parameters["@pSumma"].SourceVersion = DataRowVersion.Current;
                         DAUpdateCmd.Parameters["@pSumma"].SourceColumn = "Summa";
-                        
+
                         DAUpdateCmd.Parameters.Add(new SqlParameter("@pUid", SqlDbType.NVarChar));
                         DAUpdateCmd.Parameters["@pUid"].SourceVersion = DataRowVersion.Current;
                         DAUpdateCmd.Parameters["@pUid"].SourceColumn = "UID";
 
                         cmdBuilder2 = new SqlCommandBuilder(da2);
-                   
+
                         da2.Fill(NomenDataSet, "TableTableChast2");
 
                         tt = -1;
@@ -426,7 +426,8 @@ namespace WindowsFormsApp8
             decimal nsum, nsum1, nsum2;
             try
             {
-                if ((e.ColumnIndex == 3) || (e.ColumnIndex == 4)) { 
+                if ((e.ColumnIndex == 3) || (e.ColumnIndex == 4))
+                {
                     nsum = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
                     nsum1 = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
                     nsum2 = nsum * nsum1;
@@ -450,7 +451,6 @@ namespace WindowsFormsApp8
                         SqlR.Close();
                     }
                 }
-
             }
             catch { }
         }
@@ -471,10 +471,11 @@ namespace WindowsFormsApp8
                 SqlC.CommandText = sql1;
                 SqlC.ExecuteNonQuery();
             }
-            catch {
+            catch
+            {
                 try
-                { 
-                     dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                {
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
                 }
                 catch { }
             }
@@ -483,12 +484,12 @@ namespace WindowsFormsApp8
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("  Удалить строки?", "Удаление", MessageBoxButtons.OKCancel);
-            
+
             if (dr == DialogResult.Cancel)
             {
                 return;
             }
-            
+
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
             var connection = new SqlConnection(con);

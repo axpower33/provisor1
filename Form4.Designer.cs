@@ -31,13 +31,13 @@ namespace WindowsFormsApp8
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kontragentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
             this.kontragentTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.KontragentTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
@@ -56,6 +56,19 @@ namespace WindowsFormsApp8
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(310, 150);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "НН";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // naimenovanieDataGridViewTextBoxColumn
+            // 
+            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
+            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Наименование";
+            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
             // 
             // kontragentBindingSource
             // 
@@ -90,18 +103,6 @@ namespace WindowsFormsApp8
             this.label1.Size = new System.Drawing.Size(261, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Справочник контрагенты";
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "НН";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // naimenovanieDataGridViewTextBoxColumn
-            // 
-            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
-            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Наименование";
-            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
             // 
             // Form4
             // 

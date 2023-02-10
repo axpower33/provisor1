@@ -97,7 +97,6 @@ namespace WindowsFormsApp8
                 {
                     if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
-
                         pDataDoc = (string)dataGridView1.Rows[nn].Cells[1].Value;
                         if (pDataDoc == null)
                         {
