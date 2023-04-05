@@ -63,6 +63,7 @@ namespace WindowsFormsApp8
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(681, 650);
             this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
             // 
             // Form11
             // 
@@ -70,8 +71,10 @@ namespace WindowsFormsApp8
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 651);
             this.Controls.Add(this.reportViewer1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form11";
-            this.Text = "Form11";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Отчет";
             this.Load += new System.EventHandler(this.Form11_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet4)).EndInit();

@@ -56,7 +56,7 @@ namespace WindowsFormsApp8
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(310, 150);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridView1_UserDeletingRow);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -92,7 +92,7 @@ namespace WindowsFormsApp8
             this.button1.TabIndex = 1;
             this.button1.Text = "Save Changes";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
@@ -116,7 +116,7 @@ namespace WindowsFormsApp8
             this.MaximizeBox = false;
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Контрагенты";
+            this.Text = "Справочник";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kontragentBindingSource)).EndInit();

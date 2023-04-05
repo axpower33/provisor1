@@ -74,28 +74,28 @@ namespace WindowsFormsApp8
             this.единицаИзмеренияToolStripMenuItem.Name = "единицаИзмеренияToolStripMenuItem";
             this.единицаИзмеренияToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.единицаИзмеренияToolStripMenuItem.Text = "Единица измерения";
-            this.единицаИзмеренияToolStripMenuItem.Click += new System.EventHandler(this.единицаИзмеренияToolStripMenuItem_Click);
+            this.единицаИзмеренияToolStripMenuItem.Click += new System.EventHandler(this.ЕдиницаИзмеренияToolStripMenuItem_Click);
             // 
             // контрагентыToolStripMenuItem
             // 
             this.контрагентыToolStripMenuItem.Name = "контрагентыToolStripMenuItem";
             this.контрагентыToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.контрагентыToolStripMenuItem.Text = "Контрагенты";
-            this.контрагентыToolStripMenuItem.Click += new System.EventHandler(this.контрагентыToolStripMenuItem_Click);
+            this.контрагентыToolStripMenuItem.Click += new System.EventHandler(this.КонтрагентыToolStripMenuItem_Click);
             // 
             // номенклатураToolStripMenuItem
             // 
             this.номенклатураToolStripMenuItem.Name = "номенклатураToolStripMenuItem";
             this.номенклатураToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.номенклатураToolStripMenuItem.Text = "Номенклатура";
-            this.номенклатураToolStripMenuItem.Click += new System.EventHandler(this.номенклатураToolStripMenuItem_Click);
+            this.номенклатураToolStripMenuItem.Click += new System.EventHandler(this.НоменклатураToolStripMenuItem_Click);
             // 
             // номенToolStripMenuItem
             // 
             this.номенToolStripMenuItem.Name = "номенToolStripMenuItem";
             this.номенToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.номенToolStripMenuItem.Text = "Номен";
-            this.номенToolStripMenuItem.Click += new System.EventHandler(this.номенToolStripMenuItem_Click);
+            this.номенToolStripMenuItem.Click += new System.EventHandler(this.НоменToolStripMenuItem_Click);
             // 
             // документыToolStripMenuItem
             // 
@@ -109,16 +109,16 @@ namespace WindowsFormsApp8
             // приходнаяНакладнаяToolStripMenuItem
             // 
             this.приходнаяНакладнаяToolStripMenuItem.Name = "приходнаяНакладнаяToolStripMenuItem";
-            this.приходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.приходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.приходнаяНакладнаяToolStripMenuItem.Text = "Приходная накладная";
-            this.приходнаяНакладнаяToolStripMenuItem.Click += new System.EventHandler(this.приходнаяНакладнаяToolStripMenuItem_Click);
+            this.приходнаяНакладнаяToolStripMenuItem.Click += new System.EventHandler(this.ПриходнаяНакладнаяToolStripMenuItem_Click);
             // 
             // расходнаяНакладнаяToolStripMenuItem
             // 
             this.расходнаяНакладнаяToolStripMenuItem.Name = "расходнаяНакладнаяToolStripMenuItem";
-            this.расходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.расходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.расходнаяНакладнаяToolStripMenuItem.Text = "Расходная накладная";
-            this.расходнаяНакладнаяToolStripMenuItem.Click += new System.EventHandler(this.расходнаяНакладнаяToolStripMenuItem_Click);
+            this.расходнаяНакладнаяToolStripMenuItem.Click += new System.EventHandler(this.РасходнаяНакладнаяToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
             // 
@@ -136,28 +136,28 @@ namespace WindowsFormsApp8
             this.приходнаяНакладнаяToolStripMenuItem1.Name = "приходнаяНакладнаяToolStripMenuItem1";
             this.приходнаяНакладнаяToolStripMenuItem1.Size = new System.Drawing.Size(252, 22);
             this.приходнаяНакладнаяToolStripMenuItem1.Text = "Приходная накладная";
-            this.приходнаяНакладнаяToolStripMenuItem1.Click += new System.EventHandler(this.приходнаяНакладнаяToolStripMenuItem1_Click);
+            this.приходнаяНакладнаяToolStripMenuItem1.Click += new System.EventHandler(this.ПриходнаяНакладнаяToolStripMenuItem1_Click);
             // 
             // расходнаяНакладнаяToolStripMenuItem1
             // 
             this.расходнаяНакладнаяToolStripMenuItem1.Name = "расходнаяНакладнаяToolStripMenuItem1";
             this.расходнаяНакладнаяToolStripMenuItem1.Size = new System.Drawing.Size(252, 22);
             this.расходнаяНакладнаяToolStripMenuItem1.Text = "Расходная накладная";
-            this.расходнаяНакладнаяToolStripMenuItem1.Click += new System.EventHandler(this.расходнаяНакладнаяToolStripMenuItem1_Click);
+            this.расходнаяНакладнаяToolStripMenuItem1.Click += new System.EventHandler(this.РасходнаяНакладнаяToolStripMenuItem1_Click);
             // 
             // приходрасходНоменклатурыToolStripMenuItem
             // 
             this.приходрасходНоменклатурыToolStripMenuItem.Name = "приходрасходНоменклатурыToolStripMenuItem";
             this.приходрасходНоменклатурыToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.приходрасходНоменклатурыToolStripMenuItem.Text = "Приход/расход номенклатуры";
-            this.приходрасходНоменклатурыToolStripMenuItem.Click += new System.EventHandler(this.приходрасходНоменклатурыToolStripMenuItem_Click);
+            this.приходрасходНоменклатурыToolStripMenuItem.Click += new System.EventHandler(this.ПриходрасходНоменклатурыToolStripMenuItem_Click);
             // 
             // оборотнаяВедомостьНоменклатураToolStripMenuItem
             // 
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Name = "оборотнаяВедомостьНоменклатураToolStripMenuItem";
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Text = "Оборотно-сальдовая ведомость";
-            this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Click += new System.EventHandler(this.оборотнаяВедомостьНоменклатураToolStripMenuItem_Click);
+            this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Click += new System.EventHandler(this.ОборотнаяВедомостьНоменклатураToolStripMenuItem_Click);
             // 
             // Form2
             // 
@@ -169,7 +169,7 @@ namespace WindowsFormsApp8
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Form2";
+            this.Text = "Бухгалерия 1.1";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace WindowsFormsApp8
 {
@@ -18,12 +19,10 @@ namespace WindowsFormsApp8
 
             string con2 = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
             string sql2 = @"SELECT Uid, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent";
-            var adapt = new SqlDataAdapter(sql2, con2);
             SqlConnection connection = new SqlConnection(con2);
-            SqlCommand daCmd = new SqlCommand();
-            daCmd.CommandText = sql2;
-            daCmd.Connection = connection;
             connection.Open();
+            SqlCommand daCmd = new SqlCommand(sql2, connection);
+            
             SqlDataReader rr=daCmd.ExecuteReader();
             // Создаем объект Dataset
             dataGridView1.Rows.Clear();
@@ -38,9 +37,8 @@ namespace WindowsFormsApp8
                 }
             }
             rr.Close();
-            
-            DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             while (r3.Read())
@@ -48,32 +46,23 @@ namespace WindowsFormsApp8
                 Kontragent.Items.Add(r3.GetValue(1));
             }
             r3.Close();
-
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try { 
-            int pId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            Form xForm = new Form7(pId);
-            xForm.Show();
-            } catch { MessageBox.Show("Сохраните изменения!");}
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             Form6.ActiveForm.Close();
             Form2.ActiveForm.Activate();
+            Dispose(true);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             Kontragent.Items.Clear();
-            DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+   
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
@@ -88,9 +77,10 @@ namespace WindowsFormsApp8
 
 
             int nn = 0;
-            string pDataDoc, pNomerDoc;
+            string  pD, pNomerDoc;
+            DateTime pDataDoc;
             bool pZ = false;
-            string sqli = "";
+            string sqli;
             int pId = 0;
             do
             {
@@ -98,13 +88,16 @@ namespace WindowsFormsApp8
                 {
                     if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
-
-                        pDataDoc = (string)dataGridView1.Rows[nn].Cells[1].Value;
-                        if (pDataDoc == null)
+                        pD = (string)dataGridView1.Rows[nn].Cells[1].Value;
+                        if (pD == null)
                         {
                             MessageBox.Show("DataDoc не может быть пустым!");
                             return;
                         }
+                        try
+                        { pDataDoc = Convert.ToDateTime(pD, CultureInfo.CurrentCulture); }
+                        catch
+                        { MessageBox.Show("Не удается преобразовать дату. Проверьте формат даты в " + (nn + 1).ToString() + " строке"); return; }
 
                         pNomerDoc = (string)dataGridView1.Rows[nn].Cells[2].Value;
                         if (pNomerDoc == null)
@@ -132,7 +125,7 @@ namespace WindowsFormsApp8
                         
                         if (!pZ)
                         {
-                            sqli = "Select Max(Id) as mId from TableDoc";
+                            sqli = @"Select Max(Id) as mId from TableDoc";
                             SqlCommand c9 = new SqlCommand(sqli, connection);
                             SqlDataReader r9 = c9.ExecuteReader();
                             try
@@ -153,7 +146,7 @@ namespace WindowsFormsApp8
                             pId = Convert.ToInt32(pId) + 1;
                         }
 
-                        string query = "INSERT INTO TableDoc (Id, DataDoc, NomerDoc, Kontragent, UID) VALUES(@pId, @pDataDoc, @pNomerDoc, @pKont, @pId)";
+                        string query = @"INSERT INTO TableDoc (Id, DataDoc, NomerDoc, Kontragent, UID) VALUES(@pId, @pDataDoc, @pNomerDoc, @pKont, @pId)";
 
                         SqlCommand DAUpdateCmd = new SqlCommand(query, connection);
 
@@ -167,15 +160,14 @@ namespace WindowsFormsApp8
                     else
                     {
                         int pId1 = (int)dataGridView1.Rows[nn].Cells[0].Value;
-                        SqlCommandBuilder cmdBuilder;
                         SqlDataAdapter da;
-                        var sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc";
+                        string sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc";
                         DataSet TableDocDataSet = new DataSet();
 
                         da = new SqlDataAdapter(sql1, con);
                         //Initialize the SqlCommand object that will be used as the DataAdapter's UpdateCommand
                         ////Notice that the WHERE clause uses only the CustId field to locate the record to be updated
-                        SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=" + pId1);
+                        SqlCommand DAUpdate = new SqlCommand(@"UPDATE TableDoc SET DataDoc=@pDataDoc, NomerDoc = @pNomerDoc, Kontragent =@pKont where id=" + pId1, connection);
 
                         DAUpdate.Parameters.Add(new SqlParameter("@pDataDoc", SqlDbType.DateTime));
                         DAUpdate.Parameters["@pDataDoc"].SourceVersion = DataRowVersion.Current;
@@ -189,10 +181,15 @@ namespace WindowsFormsApp8
                         DAUpdate.Parameters["@pKont"].SourceVersion = DataRowVersion.Current;
                         DAUpdate.Parameters["@pKont"].SourceColumn = "Kontragent";
 
-                        cmdBuilder = new SqlCommandBuilder(da);
+                        new SqlCommandBuilder(da);
                         da.Fill(TableDocDataSet, "TableDoc");
+                        
+                        pD = dataGridView1.Rows[nn].Cells[1].Value.ToString();
+                        try
+                        { pDataDoc = Convert.ToDateTime(pD, CultureInfo.CurrentCulture); }
+                        catch
+                        { MessageBox.Show("Не удается преобразовать дату. Проверьте формат даты в " + (nn + 1).ToString() + " строке"); return; }
 
-                        pDataDoc = dataGridView1.Rows[nn].Cells[1].Value.ToString();
                         pNomerDoc = dataGridView1.Rows[nn].Cells[2].Value.ToString();
                         int tt = -1;
                         int pKont = 1;
@@ -222,9 +219,8 @@ namespace WindowsFormsApp8
             } while (1 == 1);
   
             string sql2 = @"SELECT TableDoc.id, DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent FROM TableDoc left join Kontragent ON Kontragent.id=Kontragent";
-            SqlCommand daCmd = new SqlCommand();
-            daCmd.CommandText = sql2;
-            daCmd.Connection = connection;
+            
+            SqlCommand daCmd = new SqlCommand(sql2, connection);
             SqlDataReader rr = daCmd.ExecuteReader();
     
             dataGridView1.Rows.Clear();
@@ -241,7 +237,7 @@ namespace WindowsFormsApp8
             rr.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("  Удалить строки?", "Удаление", MessageBoxButtons.OKCancel);
 
@@ -252,7 +248,7 @@ namespace WindowsFormsApp8
 
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             bool pDel = false;         
             foreach (DataGridViewRow ppRow in dataGridView1.SelectedRows)
@@ -261,15 +257,11 @@ namespace WindowsFormsApp8
                 try
                 {
                     string pId = ppRow.Cells[0].Value.ToString().Trim();
-                    string sql2 = "Delete from TableTableChast where Id=" + pId;
-                    string sql1 = "Delete from TableDoc where Id=" + pId;
-                    SqlCommand SqlC2 = new SqlCommand();
-                    SqlC2.Connection = connection;
-                    SqlC2.CommandText = sql2;
+                    string sql2 = @"Delete from TableTableChast where Id=" + pId;
+                    string sql1 = @"Delete from TableDoc where Id=" + pId;
+                    SqlCommand SqlC2 = new SqlCommand(sql2, connection);
                     SqlC2.ExecuteNonQuery();
-                    SqlCommand SqlC = new SqlCommand();
-                    SqlC.Connection = connection;
-                    SqlC.CommandText = sql1;
+                    SqlCommand SqlC = new SqlCommand(sql1, connection);
                     SqlC.ExecuteNonQuery();
                     dataGridView1.Rows.Remove(ppRow);
                 }
@@ -282,6 +274,17 @@ namespace WindowsFormsApp8
                 }
             }
             if (!pDel) MessageBox.Show("0 строк выбрано!");
+        }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int pId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                Form xForm = new Form7(pId);
+                xForm.Show();
+            }
+            catch { return; }
         }
     }
 }

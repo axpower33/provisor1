@@ -27,5 +27,10 @@ namespace WindowsFormsApp8
             reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             reportViewer1.RefreshReport();
         }
+
+        private void reportViewer1_ReportRefresh(object sender, CancelEventArgs e)
+        {
+            Form1_Load(sender, e);
+        }
     }
 }

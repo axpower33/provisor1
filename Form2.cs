@@ -18,32 +18,32 @@ namespace WindowsFormsApp8
             InitializeComponent();
         }
 
-        private void приходнаяНакладнаяToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ПриходнаяНакладнаяToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form x = new Form1();
             x.Show();
         }
 
-        private void единицаИзмеренияToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ЕдиницаИзмеренияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form3();
             x.Show();
         }
 
-        private void контрагентыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void КонтрагентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form4();
             x.Show();
 
         }
 
-        private void номенклатураToolStripMenuItem_Click(object sender, EventArgs e)
+        private void НоменклатураToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form5();
             x.Show();
         }
 
-        private void приходнаяНакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ПриходнаяНакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2.ActiveForm.Activate();
             
@@ -51,26 +51,26 @@ namespace WindowsFormsApp8
             x.Show();
         }
 
-        private void расходнаяНакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
+        private void РасходнаяНакладнаяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form8();
             x.Show();
         }
 
-        private void расходнаяНакладнаяToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void РасходнаяНакладнаяToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form x = new Form10();
             x.Show();
         }
 
-        private void приходрасходНоменклатурыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ПриходрасходНоменклатурыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form11();
             x.Show();
 
         }
 
-        private void оборотнаяВедомостьНоменклатураToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ОборотнаяВедомостьНоменклатураToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form12();
             x.Show();
@@ -81,11 +81,11 @@ namespace WindowsFormsApp8
         {
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
         }
 
-        private void номенToolStripMenuItem_Click(object sender, EventArgs e)
+        private void НоменToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form x = new Form13();
             x.Show();

@@ -32,18 +32,38 @@ namespace WindowsFormsApp8
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ProvisorBaseDataDataSet2 = new WindowsFormsApp8.ProvisorBaseDataDataSet2();
             this.DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataTable1TableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSet2TableAdapters.DataTable1TableAdapter();
-            this.provisorBaseDataDataSet3 = new WindowsFormsApp8.ProvisorBaseDataDataSet3();
+            this.ProvisorBaseDataDataSet2 = new WindowsFormsApp8.ProvisorBaseDataDataSet2();
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.provisorBaseDataDataSet3 = new WindowsFormsApp8.ProvisorBaseDataDataSet3();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.DataTable1TableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSet2TableAdapters.DataTable1TableAdapter();
             this.dataTable1TableAdapter1 = new WindowsFormsApp8.ProvisorBaseDataDataSet3TableAdapters.DataTable1TableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet3)).BeginInit();
             this.SuspendLayout();
+            // 
+            // DataTable1BindingSource
+            // 
+            this.DataTable1BindingSource.DataMember = "DataTable1";
+            this.DataTable1BindingSource.DataSource = this.ProvisorBaseDataDataSet2;
+            // 
+            // ProvisorBaseDataDataSet2
+            // 
+            this.ProvisorBaseDataDataSet2.DataSetName = "ProvisorBaseDataDataSet2";
+            this.ProvisorBaseDataDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataTable1BindingSource1
+            // 
+            this.dataTable1BindingSource1.DataMember = "DataTable1";
+            this.dataTable1BindingSource1.DataSource = this.provisorBaseDataDataSet3;
+            // 
+            // provisorBaseDataDataSet3
+            // 
+            this.provisorBaseDataDataSet3.DataSetName = "ProvisorBaseDataDataSet3";
+            this.provisorBaseDataDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -58,30 +78,11 @@ namespace WindowsFormsApp8
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(756, 454);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // ProvisorBaseDataDataSet2
-            // 
-            this.ProvisorBaseDataDataSet2.DataSetName = "ProvisorBaseDataDataSet2";
-            this.ProvisorBaseDataDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DataTable1BindingSource
-            // 
-            this.DataTable1BindingSource.DataMember = "DataTable1";
-            this.DataTable1BindingSource.DataSource = this.ProvisorBaseDataDataSet2;
+            this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
             // 
             // DataTable1TableAdapter
             // 
             this.DataTable1TableAdapter.ClearBeforeFill = true;
-            // 
-            // provisorBaseDataDataSet3
-            // 
-            this.provisorBaseDataDataSet3.DataSetName = "ProvisorBaseDataDataSet3";
-            this.provisorBaseDataDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataTable1BindingSource1
-            // 
-            this.dataTable1BindingSource1.DataMember = "DataTable1";
-            this.dataTable1BindingSource1.DataSource = this.provisorBaseDataDataSet3;
             // 
             // dataTable1TableAdapter1
             // 
@@ -93,13 +94,15 @@ namespace WindowsFormsApp8
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form10";
-            this.Text = "Form10";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Отчет";
             this.Load += new System.EventHandler(this.Form10_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet3)).EndInit();
             this.ResumeLayout(false);
 
         }

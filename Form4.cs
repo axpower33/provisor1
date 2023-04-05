@@ -25,23 +25,22 @@ namespace WindowsFormsApp8
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             kontragentTableAdapter.Update(provisorBaseDataDataSet);
             Form4.ActiveForm.Close();
+            Dispose(true);
         }
 
-        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             string pUid = dataGridView1.Rows[e.Row.Index].Cells[0].Value.ToString();
             string sql2 = "Select Kontragent from Nomenklatura where kontragent=" + pUid;
-            SqlCommand SqlC2 = new SqlCommand();
-            SqlC2.Connection = connection;
-            SqlC2.CommandText = sql2;
+            SqlCommand SqlC2 = new SqlCommand(sql2, connection);
             SqlDataReader rr = SqlC2.ExecuteReader();
             bool pDel = false;
             while (rr.Read())

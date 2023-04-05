@@ -13,18 +13,16 @@ using System.Data.SqlTypes;
 namespace WindowsFormsApp8
 {
     public partial class Form9 : Form
-
     {
         public Form9(int pId1)
         {
             InitializeComponent();
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
 
-            var sql1 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie, TableDoc2.Id as Kontragent from TableDoc2 left join Kontragent ON Kontragent.Id = Kontragent where TableDoc2.Id=" + pId1;
-            DataSet TableDoc2DataSet = new DataSet();
+            string sql1 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent, TableDoc2.Id from TableDoc2 left join Kontragent ON Kontragent.Id = Kontragent where TableDoc2.Id=" + pId1;
             SqlCommand cc = new SqlCommand(sql1, connection);
             SqlDataReader r = cc.ExecuteReader();
             r.Read();
@@ -35,8 +33,7 @@ namespace WindowsFormsApp8
             tId.Text = r.GetValue(3).ToString();
             r.Close();
 
-            DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             while (r3.Read())
@@ -45,7 +42,7 @@ namespace WindowsFormsApp8
             }
             r3.Close();
 
-            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
+            string sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             int ii = 0;
@@ -59,7 +56,7 @@ namespace WindowsFormsApp8
             }
             r4.Close();
 
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
@@ -73,7 +70,8 @@ namespace WindowsFormsApp8
             }
             r7.Close();
 
-            var sql2 = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1 + " ORDER BY UID";
+            string sql2 = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, EdIzm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID  FROM TableTableChast2 left join EdIzm ON EdIzm.Id=EdIzm left join Nomenklatura ON Nomenklatura.Id = Nomenklatura where TableTableChast2.Id=" + pId1 + " ORDER BY UID";
+            
             SqlCommand c2 = new SqlCommand(sql2, connection);
             SqlDataReader rr = c2.ExecuteReader();
 
@@ -84,7 +82,7 @@ namespace WindowsFormsApp8
             {
                 i++;
                 dataGridView1.Rows.Add();
-                for (int j = 0; j <= 6; j++)
+                for (int j = 0; j <= dataGridView1.Rows[i - 1].Cells.Count - 1; j++)
                 {
                     dataGridView1.Rows[i - 1].Cells[j].Value = rr.GetValue(j);
                 }
@@ -92,16 +90,15 @@ namespace WindowsFormsApp8
             rr.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             //string pId1 = (string)(this.dataGridView1.Rows[0].Cells[0].Value.ToString().Trim());
             string pId1 = tId.Text.Trim();
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
 
-            DataSet KontDataSet = new DataSet();
-            var sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
+            string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
@@ -114,7 +111,7 @@ namespace WindowsFormsApp8
             }
             r3.Close();
 
-            var sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
+            string sql4 = @"select Id, Naimenovanie as Nomenklatura from Nomenklatura";
             SqlCommand c4 = new SqlCommand(sql4, connection);
             SqlDataReader r4 = c4.ExecuteReader();
             ii = 0;
@@ -129,7 +126,7 @@ namespace WindowsFormsApp8
             }
             r4.Close();
 
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, connection);
             SqlDataReader r7 = c7.ExecuteReader();
             ii = 0;
@@ -143,9 +140,8 @@ namespace WindowsFormsApp8
             }
             r7.Close();
 
-            SqlCommandBuilder cmdBuilder2, cmdBuilder;
             SqlDataAdapter da;
-            var sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc2";
+            string sql1 = @"Select DataDoc, NomerDoc, Kontragent as Kontragent from TableDoc2";
             DataSet TableDoc2DataSet = new DataSet();
 
             da = new SqlDataAdapter(sql1, con);
@@ -165,10 +161,10 @@ namespace WindowsFormsApp8
             DAUpdate.Parameters["@pKont"].SourceVersion = DataRowVersion.Current;
             DAUpdate.Parameters["@pKont"].SourceColumn = "Kontragent";
 
-            cmdBuilder = new SqlCommandBuilder(da);
+            new SqlCommandBuilder(da);
             da.Fill(TableDoc2DataSet, "TableDoc2");
 
-            var pDataDoc = textBox1.Text;
+            string pDataDoc = textBox1.Text;
             string pNomerDoc = textBox2.Text;
             int tt = -1;
             int pKont = 1;
@@ -203,19 +199,18 @@ namespace WindowsFormsApp8
             int pNomen;
             int pEdIzm;
             decimal pKol;
+            decimal pCena;
             decimal pSumma;
             string pUid = "0";
             int pId = Convert.ToInt32(pId1.Trim());
             bool pZ = false;
-            string sqli = "";
+            string sqli;
             do
             {
                 if (nn <= dataGridView1.Rows.Count - 2)
                 {
-                    decimal pCena;
                     if (dataGridView1.Rows[nn].Cells[0].Value == null)
                     {
-
                         tt = -1;
                         pNomen = 1;
                         while (tt <= Nomenklatura.Items.Count - 1)
@@ -228,7 +223,6 @@ namespace WindowsFormsApp8
                             }
                             if (dataGridView1.Rows[nn].Cells[1].Value.ToString().Trim() == Nomenklatura.Items[tt].ToString().Trim())
                             {
-
                                 pNomen = idNomen[tt + 1];
                                 break;
                             }
@@ -284,7 +278,7 @@ namespace WindowsFormsApp8
                         catch { MessageBox.Show("В " + (nn + 1).ToString() + " строке значение Сумма имеет неверный формат!"); return; }
                         if (!pZ)
                         {
-                            sqli = "Select Max(UID) as mUid from TableTableChast2 where Id=" + pId1;
+                            sqli = @"Select Max(UID) as mUid from TableTableChast2 where Id=" + pId1;
                             SqlCommand c9 = new SqlCommand(sqli, connection);
                             SqlDataReader r9 = c9.ExecuteReader();
                             try
@@ -304,7 +298,7 @@ namespace WindowsFormsApp8
                             pUid = (Convert.ToInt32(pUid) + 1).ToString();
                         }
 
-                        string query = "INSERT INTO TableTableChast2 (Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID) VALUES(@pId, @pNomen, @pEdIzm, @pKol, @pCena, @pSumma, @pUid)";
+                        string query = @"INSERT INTO TableTableChast2 (Id, Nomenklatura, EdIzm, Kolichestvo, Cena, Summa, UID) VALUES(@pId, @pNomen, @pEdIzm, @pKol, @pCena, @pSumma, @pUid)";
                         DAUpdateCmd = new SqlCommand(query, cn);
 
                         DAUpdateCmd.Parameters.AddWithValue("@pId", pId);
@@ -350,7 +344,7 @@ namespace WindowsFormsApp8
                         DAUpdateCmd.Parameters["@pUid"].SourceVersion = DataRowVersion.Current;
                         DAUpdateCmd.Parameters["@pUid"].SourceColumn = "UID";
 
-                        cmdBuilder2 = new SqlCommandBuilder(da2);
+                        new SqlCommandBuilder(da2);
 
                         da2.Fill(NomenDataSet, "TableTableChast2");
 
@@ -420,8 +414,9 @@ namespace WindowsFormsApp8
             Form2.ActiveForm.Activate();
             Form x = new Form8();
             x.Show();
+            Dispose(true);
         }
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             decimal nsum, nsum1, nsum2;
             try
@@ -435,12 +430,12 @@ namespace WindowsFormsApp8
                 }
                 string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-                var connection = new SqlConnection(con);
+                SqlConnection connection = new SqlConnection(con);
                 connection.Open();
                 if (e.ColumnIndex == 1)
                 {
                     {
-                        string sql1 = "Select EdIzm.Naimenovanie as EdIzm1, Nomenklatura.naimenovanie from Nomenklatura  Left join EdIzm ON EdIzm.Id=Nomenklatura.EdIzm where RTRIM(Nomenklatura.naimenovanie)='" + dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim() + "'";
+                        string sql1 = @"Select EdIzm.Naimenovanie as EdIzm1, Nomenklatura.naimenovanie from Nomenklatura  Left join EdIzm ON EdIzm.Id=Nomenklatura.EdIzm where RTRIM(Nomenklatura.naimenovanie)='" + dataGridView1.CurrentRow.Cells[1].Value.ToString().Trim() + "'";
                         SqlCommand sqlCm = new SqlCommand(sql1, connection);
                         SqlDataReader SqlR = sqlCm.ExecuteReader();
                         while (SqlR.Read())
@@ -455,20 +450,18 @@ namespace WindowsFormsApp8
             catch { }
         }
 
-        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             try
             {
                 string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-                var connection = new SqlConnection(con);
+                SqlConnection connection = new SqlConnection(con);
                 connection.Open();
                 int pId = Convert.ToInt32(tId.Text.Trim());
                 string pUid = dataGridView1.Rows[e.Row.Index].Cells[6].Value.ToString();
-                string sql1 = "Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
-                SqlCommand SqlC = new SqlCommand();
-                SqlC.Connection = connection;
-                SqlC.CommandText = sql1;
+                string sql1 = @"Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
+                SqlCommand SqlC = new SqlCommand(sql1, connection);
                 SqlC.ExecuteNonQuery();
             }
             catch
@@ -481,7 +474,7 @@ namespace WindowsFormsApp8
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("  Удалить строки?", "Удаление", MessageBoxButtons.OKCancel);
 
@@ -492,7 +485,7 @@ namespace WindowsFormsApp8
 
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             int pId = Convert.ToInt32(tId.Text.Trim());
             bool pDel = false;
@@ -502,10 +495,8 @@ namespace WindowsFormsApp8
                 try
                 {
                     string pUid = ppRow.Cells[6].Value.ToString().Trim();
-                    string sql1 = "Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
-                    SqlCommand SqlC = new SqlCommand();
-                    SqlC.Connection = connection;
-                    SqlC.CommandText = sql1;
+                    string sql1 = @"Delete from TableTableChast2 where Id=" + pId + " AND UID= " + pUid;
+                    SqlCommand SqlC = new SqlCommand(sql1, connection);
                     SqlC.ExecuteNonQuery();
                     dataGridView1.Rows.Remove(ppRow);
                 }

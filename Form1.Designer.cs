@@ -81,6 +81,7 @@ namespace WindowsFormsApp8
             this.reportViewer1.Size = new System.Drawing.Size(733, 741);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
             // 
             // dataTable1TableAdapter
             // 
@@ -101,7 +102,7 @@ namespace WindowsFormsApp8
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Form1";
+            this.Text = "Отчет";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet)).EndInit();

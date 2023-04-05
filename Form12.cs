@@ -26,5 +26,10 @@ namespace WindowsFormsApp8
 
             reportViewer1.RefreshReport();
         }
+
+        private void reportViewer1_ReportRefresh(object sender, CancelEventArgs e)
+        {
+            Form12_Load(sender, e);
+        }
     }
 }

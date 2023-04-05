@@ -36,9 +36,8 @@ namespace WindowsFormsApp8
             }
 
             r.Close();
-            SqlDataAdapter da7;
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
-            da7 = new SqlDataAdapter(sql7, Con);
+            
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, Con);
             SqlDataReader r7 = c7.ExecuteReader();
             int ii = 0;
@@ -53,7 +52,6 @@ namespace WindowsFormsApp8
             r7.Close();
 
             sql7 = @"select Id, Naimenovanie as kontragent from Kontragent";
-            da7 = new SqlDataAdapter(sql7, Con);
             c7 = new SqlCommand(sql7, Con);
             r7 = c7.ExecuteReader();
             ii = 0;
@@ -67,23 +65,19 @@ namespace WindowsFormsApp8
             }
             r7.Close();
         }
-        private void button1_Click(object sender, System.EventArgs e)
+        private void Button1_Click(object sender, System.EventArgs e)
         {
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
+            SqlConnection cn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20");
             cn.Open();
 
             DataSet NomenDataSet = new DataSet();
             SqlDataAdapter da;
 
-            SqlCommandBuilder cmdBuilder;
             da = new SqlDataAdapter(@"Select A.Id, A.Naimenovanie, Kontragent.Naimenovanie as Kontragent, EdIzm.Naimenovanie as EdIzm from Nomenklatura as A left join Kontragent ON Kontragent.Id = A.Kontragent left join EdIzm ON EdIzm.Id = A.EdIzm", cn);
 
             SqlCommand DAUpdateCmd;
             
-            SqlDataAdapter da7;
-            var sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
-            da7 = new SqlDataAdapter(sql7, cn);
+            string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
             SqlCommand c7 = new SqlCommand(sql7, cn);
             SqlDataReader r7 = c7.ExecuteReader();
             int ii = 0;
@@ -98,7 +92,6 @@ namespace WindowsFormsApp8
             r7.Close();
 
             sql7 = @"select Id, Naimenovanie as kontragent from Kontragent";
-            da7 = new SqlDataAdapter(sql7, cn);
             c7 = new SqlCommand(sql7, cn);
             r7 = c7.ExecuteReader();
             ii = 0;
@@ -114,7 +107,7 @@ namespace WindowsFormsApp8
 
             int nn = 0;
             bool pZ = false;
-            string sqli = "";
+            string sqli;
             int pId = 0;
             do
             {
@@ -166,7 +159,6 @@ namespace WindowsFormsApp8
                         if (!pZ)
                         {
                             sqli = "Select Max(Id) as mId from Nomenklatura";
-                            SqlDataAdapter da9 = new SqlDataAdapter(sqli, cn);
                             SqlCommand c9 = new SqlCommand(sqli, cn);
                             SqlDataReader r9 = c9.ExecuteReader();
                             try
@@ -244,14 +236,14 @@ namespace WindowsFormsApp8
                         DAUpdateCmd.Parameters["@pKont"].SourceVersion = DataRowVersion.Current;
                         DAUpdateCmd.Parameters["@pKont"].SourceColumn = "kontragent";
 
-                        cmdBuilder = new SqlCommandBuilder(da);
+                        new SqlCommandBuilder(da);
 
                         da.Fill(NomenDataSet, "Nomenklatura");
 
                         da.UpdateCommand = DAUpdateCmd;
 
-                        NomenDataSet.Tables["Nomenklatura"].Rows[nn]["Naimenovanie"] = (string)dataGridView1.Rows[nn].Cells[1].Value;
-                        NomenDataSet.Tables["Nomenklatura"].Rows[nn]["Id"] = (int)dataGridView1.Rows[nn].Cells[0].Value;
+                        NomenDataSet.Tables["Nomenklatura"].Rows[nn]["Naimenovanie"] = pNaim;
+                        NomenDataSet.Tables["Nomenklatura"].Rows[nn]["Id"] = pId;
                         NomenDataSet.Tables["Nomenklatura"].Rows[nn]["EdIzm"] = pEdIzm;
                         NomenDataSet.Tables["Nomenklatura"].Rows[nn]["Kontragent"] = pKont;
 
@@ -269,9 +261,10 @@ namespace WindowsFormsApp8
 
             cn.Close();
             Form5.ActiveForm.Close();
+            Dispose(true);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("  Удалить строки?", "Удаление", MessageBoxButtons.OKCancel);
 
@@ -282,7 +275,7 @@ namespace WindowsFormsApp8
 
             string con = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = ""C:\Users\Basko\SqlBases\ProvisorBaseData.mdf""; Integrated Security = True; Connect Timeout = 20";
 
-            var connection = new SqlConnection(con);
+            SqlConnection connection = new SqlConnection(con);
             connection.Open();
             dataGridView1.Sort(dataGridView1.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
             bool pDel = false;
@@ -294,9 +287,7 @@ namespace WindowsFormsApp8
                     string pId = ppRow.Cells[0].Value.ToString().Trim();
                     string sql1 = "Delete from Nomenklatura where Id=" + pId;
                     string sql2 = "Select Nomenklatura from TableTableChast where Nomenklatura=" + pId+" Order By Id";
-                    SqlCommand SqlC2 = new SqlCommand();
-                    SqlC2.Connection = connection;
-                    SqlC2.CommandText = sql2;
+                    SqlCommand SqlC2 = new SqlCommand(sql2, connection);
                     SqlDataReader rr = SqlC2.ExecuteReader();
                     bool pJ = false;
                     while (rr.Read())
@@ -311,9 +302,7 @@ namespace WindowsFormsApp8
                     rr.Close();
                     if (!pJ)
                     {
-                        SqlCommand SqlC = new SqlCommand();
-                        SqlC.Connection = connection;
-                        SqlC.CommandText = sql1;
+                        SqlCommand SqlC = new SqlCommand(sql1, connection);
                         SqlC.ExecuteNonQuery();
                         dataGridView1.Rows.Remove(ppRow);
                     }

@@ -32,11 +32,11 @@ namespace WindowsFormsApp8
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edizm = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.kontragent = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@ namespace WindowsFormsApp8
             this.button1.TabIndex = 1;
             this.button1.Text = "Save changes";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
@@ -74,16 +74,6 @@ namespace WindowsFormsApp8
             this.dataGridView1.Size = new System.Drawing.Size(521, 175);
             this.dataGridView1.TabIndex = 3;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(365, 224);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Delete rows";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // id
             // 
             this.id.HeaderText = "НН";
@@ -107,6 +97,16 @@ namespace WindowsFormsApp8
             this.kontragent.HeaderText = "Контрагент";
             this.kontragent.Name = "kontragent";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(365, 224);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Delete rows";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,7 +120,7 @@ namespace WindowsFormsApp8
             this.MaximizeBox = false;
             this.Name = "Form5";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Form5";
+            this.Text = "Справочник";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

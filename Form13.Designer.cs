@@ -31,14 +31,14 @@ namespace WindowsFormsApp8
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edIzmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kontragentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomenklaturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.provisorBaseDataDataSet = new WindowsFormsApp8.ProvisorBaseDataDataSet();
             this.nomenklaturaTableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSetTableAdapters.NomenklaturaTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naimenovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edIzmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kontragentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomenklaturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.provisorBaseDataDataSet)).BeginInit();
@@ -60,30 +60,6 @@ namespace WindowsFormsApp8
             this.dataGridView1.Size = new System.Drawing.Size(466, 217);
             this.dataGridView1.TabIndex = 0;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // naimenovanieDataGridViewTextBoxColumn
-            // 
-            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
-            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Naimenovanie";
-            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
-            // 
-            // edIzmDataGridViewTextBoxColumn
-            // 
-            this.edIzmDataGridViewTextBoxColumn.DataPropertyName = "EdIzm";
-            this.edIzmDataGridViewTextBoxColumn.HeaderText = "EdIzm";
-            this.edIzmDataGridViewTextBoxColumn.Name = "edIzmDataGridViewTextBoxColumn";
-            // 
-            // kontragentDataGridViewTextBoxColumn
-            // 
-            this.kontragentDataGridViewTextBoxColumn.DataPropertyName = "Kontragent";
-            this.kontragentDataGridViewTextBoxColumn.HeaderText = "Kontragent";
-            this.kontragentDataGridViewTextBoxColumn.Name = "kontragentDataGridViewTextBoxColumn";
-            // 
             // nomenklaturaBindingSource
             // 
             this.nomenklaturaBindingSource.DataMember = "Nomenklatura";
@@ -100,13 +76,37 @@ namespace WindowsFormsApp8
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(400, 234);
+            this.button1.Location = new System.Drawing.Point(384, 234);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(91, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Save changes";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Ид";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // naimenovanieDataGridViewTextBoxColumn
+            // 
+            this.naimenovanieDataGridViewTextBoxColumn.DataPropertyName = "Naimenovanie";
+            this.naimenovanieDataGridViewTextBoxColumn.HeaderText = "Наименование";
+            this.naimenovanieDataGridViewTextBoxColumn.Name = "naimenovanieDataGridViewTextBoxColumn";
+            // 
+            // edIzmDataGridViewTextBoxColumn
+            // 
+            this.edIzmDataGridViewTextBoxColumn.DataPropertyName = "EdIzm";
+            this.edIzmDataGridViewTextBoxColumn.HeaderText = "Ед. изм.";
+            this.edIzmDataGridViewTextBoxColumn.Name = "edIzmDataGridViewTextBoxColumn";
+            // 
+            // kontragentDataGridViewTextBoxColumn
+            // 
+            this.kontragentDataGridViewTextBoxColumn.DataPropertyName = "Kontragent";
+            this.kontragentDataGridViewTextBoxColumn.HeaderText = "Контрагент";
+            this.kontragentDataGridViewTextBoxColumn.Name = "kontragentDataGridViewTextBoxColumn";
             // 
             // Form13
             // 
@@ -115,8 +115,10 @@ namespace WindowsFormsApp8
             this.ClientSize = new System.Drawing.Size(512, 269);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form13";
-            this.Text = "Form13";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Справочник";
             this.Load += new System.EventHandler(this.Form13_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomenklaturaBindingSource)).EndInit();
@@ -131,10 +133,10 @@ namespace WindowsFormsApp8
         private ProvisorBaseDataDataSet provisorBaseDataDataSet;
         private System.Windows.Forms.BindingSource nomenklaturaBindingSource;
         private ProvisorBaseDataDataSetTableAdapters.NomenklaturaTableAdapter nomenklaturaTableAdapter;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn naimenovanieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn edIzmDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kontragentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
     }
 }

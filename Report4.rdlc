@@ -303,7 +303,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>CornflowerBlue</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -336,7 +336,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>HotPink</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -369,7 +369,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Yellow</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -402,7 +402,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Red</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -437,7 +437,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Lime</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -472,7 +472,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Aqua</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -644,7 +644,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Brown</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -679,7 +679,7 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundColor>Brown</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
