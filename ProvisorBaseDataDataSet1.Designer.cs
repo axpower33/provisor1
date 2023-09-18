@@ -775,6 +775,7 @@ namespace WindowsFormsApp8 {
                 this.columnKontragent = new global::System.Data.DataColumn("Kontragent", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKontragent);
                 this.columnDataDoc.AllowDBNull = false;
+                this.columnNomerDoc.AllowDBNull = false;
                 this.columnNomerDoc.MaxLength = 10;
                 this.columnKontragent.MaxLength = 10;
             }
@@ -1019,12 +1020,7 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string NomerDoc {
                 get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.NomerDocColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NomerDoc\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableDataTable1.NomerDocColumn]));
                 }
                 set {
                     this[this.tableDataTable1.NomerDocColumn] = value;
@@ -1045,18 +1041,6 @@ namespace WindowsFormsApp8 {
                 set {
                     this[this.tableDataTable1.KontragentColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNomerDocNull() {
-                return this.IsNull(this.tableDataTable1.NomerDocColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNomerDocNull() {
-                this[this.tableDataTable1.NomerDocColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

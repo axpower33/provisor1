@@ -57,7 +57,7 @@ namespace WindowsFormsApp8
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp8.Report5.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(720, 459);
+            this.reportViewer1.Size = new System.Drawing.Size(704, 600);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
             // 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 450);
+            this.ClientSize = new System.Drawing.Size(706, 570);
             this.Controls.Add(this.reportViewer1);
             this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form12";

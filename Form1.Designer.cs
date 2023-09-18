@@ -78,7 +78,7 @@ namespace WindowsFormsApp8
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(10);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(733, 741);
+            this.reportViewer1.Size = new System.Drawing.Size(708, 741);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
@@ -96,7 +96,7 @@ namespace WindowsFormsApp8
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(732, 733);
+            this.ClientSize = new System.Drawing.Size(715, 570);
             this.Controls.Add(this.reportViewer1);
             this.Location = new System.Drawing.Point(110, 90);
             this.MaximizeBox = false;

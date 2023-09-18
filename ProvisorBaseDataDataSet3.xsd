@@ -72,10 +72,10 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)</C
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ProvisorBaseDataConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ProvisorBaseDataConnectionString1 (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        TableDoc2.DataDoc, TableDoc2.NomerDoc, Kontragent.Naimenovanie
+                    <CommandText>SELECT        TableDoc2.DataDoc, TableDoc2.NomerDoc, Kontragent.Naimenovanie as Kontragent
 FROM            TableDoc2 LEFT OUTER JOIN
                          Kontragent ON Kontragent.Id = TableDoc2.Kontragent
 WHERE        (TableDoc2.Id = 1)</CommandText>
@@ -87,7 +87,7 @@ WHERE        (TableDoc2.Id = 1)</CommandText>
             <Mappings>
               <Mapping SourceColumn="DataDoc" DataSetColumn="DataDoc" />
               <Mapping SourceColumn="NomerDoc" DataSetColumn="NomerDoc" />
-              <Mapping SourceColumn="Naimenovanie" DataSetColumn="Naimenovanie" />
+              <Mapping SourceColumn="Kontragent" DataSetColumn="Kontragent" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -99,7 +99,7 @@ WHERE        (TableDoc2.Id = 1)</CommandText>
   <xs:element name="ProvisorBaseDataDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ProvisorBaseDataDataSet3" msprop:Generator_UserDSName="ProvisorBaseDataDataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TableDoc2" msprop:Generator_TableClassName="TableDoc2DataTable" msprop:Generator_TableVarName="tableTableDoc2" msprop:Generator_RowChangedName="TableDoc2RowChanged" msprop:Generator_TablePropName="TableDoc2" msprop:Generator_RowDeletingName="TableDoc2RowDeleting" msprop:Generator_RowChangingName="TableDoc2RowChanging" msprop:Generator_RowEvHandlerName="TableDoc2RowChangeEventHandler" msprop:Generator_RowDeletedName="TableDoc2RowDeleted" msprop:Generator_RowClassName="TableDoc2Row" msprop:Generator_UserTableName="TableDoc2" msprop:Generator_RowEvArgName="TableDoc2RowChangeEvent">
+        <xs:element name="TableDoc2" msprop:Generator_TableClassName="TableDoc2DataTable" msprop:Generator_TableVarName="tableTableDoc2" msprop:Generator_TablePropName="TableDoc2" msprop:Generator_RowDeletingName="TableDoc2RowDeleting" msprop:Generator_RowChangingName="TableDoc2RowChanging" msprop:Generator_RowEvHandlerName="TableDoc2RowChangeEventHandler" msprop:Generator_RowDeletedName="TableDoc2RowDeleted" msprop:Generator_UserTableName="TableDoc2" msprop:Generator_RowChangedName="TableDoc2RowChanged" msprop:Generator_RowEvArgName="TableDoc2RowChangeEvent" msprop:Generator_RowClassName="TableDoc2Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -116,7 +116,7 @@ WHERE        (TableDoc2.Id = 1)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DataDoc" msprop:Generator_ColumnVarNameInTable="columnDataDoc" msprop:Generator_ColumnPropNameInRow="DataDoc" msprop:Generator_ColumnPropNameInTable="DataDocColumn" msprop:Generator_UserColumnName="DataDoc" type="xs:dateTime" />
@@ -127,7 +127,7 @@ WHERE        (TableDoc2.Id = 1)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Naimenovanie" msprop:Generator_ColumnVarNameInTable="columnNaimenovanie" msprop:Generator_ColumnPropNameInRow="Naimenovanie" msprop:Generator_ColumnPropNameInTable="NaimenovanieColumn" msprop:Generator_UserColumnName="Naimenovanie" minOccurs="0">
+              <xs:element name="Kontragent" msprop:Generator_ColumnVarNameInTable="columnKontragent" msprop:Generator_ColumnPropNameInRow="Kontragent" msprop:Generator_ColumnPropNameInTable="KontragentColumn" msprop:Generator_UserColumnName="Kontragent" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />

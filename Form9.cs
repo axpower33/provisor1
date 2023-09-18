@@ -36,6 +36,7 @@ namespace WindowsFormsApp8
             string sql3 = @"select Id, Kontragent.naimenovanie as Kontragent from Kontragent";
             SqlCommand c3 = new SqlCommand(sql3, connection);
             SqlDataReader r3 = c3.ExecuteReader();
+            comboBox1.Items.Clear();
             while (r3.Read())
             {
                 comboBox1.Items.Add(r3.GetValue(1));
@@ -122,8 +123,7 @@ namespace WindowsFormsApp8
                 ii++;
                 Nomenklatura.Items.Add(r4.GetValue(1));
                 idNomen[ii] = (int)r4.GetValue(0);
-
-            }
+           }
             r4.Close();
 
             string sql7 = @"select Id, Naimenovanie as EdIzm from EdIzm";
@@ -408,14 +408,8 @@ namespace WindowsFormsApp8
                 }
                 nn++;
             } while (pId1 == pId.ToString());
-
-            Form9.ActiveForm.Close();
-            Form8.ActiveForm.Close();
-            Form2.ActiveForm.Activate();
-            Form x = new Form8();
-            x.Show();
-            Dispose(true);
-        }
+    }
+        
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             decimal nsum, nsum1, nsum2;
@@ -510,6 +504,25 @@ namespace WindowsFormsApp8
                 }
             }
             if (!pDel) MessageBox.Show("0 строк выбрано!");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string pId1 = tId.Text;
+
+            Form x = new Form17(pId1);
+            x.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Button1_Click(sender, e);
+            Form9.ActiveForm.Close();
+            Form8.ActiveForm.Close();
+            Form2.ActiveForm.Activate();
+            Form x = new Form8();
+            x.Show();
+            Dispose(true);
         }
     }
 }

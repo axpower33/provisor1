@@ -90,5 +90,11 @@ namespace WindowsFormsApp8
             Form x = new Form13();
             x.Show();
         }
+
+        private void ghToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form15();
+            x.Show();
+        }
     }
 }

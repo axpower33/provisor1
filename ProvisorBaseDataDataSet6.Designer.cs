@@ -20,19 +20,17 @@ namespace WindowsFormsApp8 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("ProvisorBaseDataDataSet3")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ProvisorBaseDataDataSet6")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ProvisorBaseDataDataSet3 : global::System.Data.DataSet {
+    public partial class ProvisorBaseDataDataSet6 : global::System.Data.DataSet {
         
-        private TableDoc2DataTable tableTableDoc2;
-        
-        private DataTable1DataTable tableDataTable1;
+        private NomenklaturaDataTable tableNomenklatura;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ProvisorBaseDataDataSet3() {
+        public ProvisorBaseDataDataSet6() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +41,7 @@ namespace WindowsFormsApp8 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected ProvisorBaseDataDataSet3(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ProvisorBaseDataDataSet6(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -56,11 +54,8 @@ namespace WindowsFormsApp8 {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["TableDoc2"] != null)) {
-                    base.Tables.Add(new TableDoc2DataTable(ds.Tables["TableDoc2"]));
-                }
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["Nomenklatura"] != null)) {
+                    base.Tables.Add(new NomenklaturaDataTable(ds.Tables["Nomenklatura"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,19 +79,9 @@ namespace WindowsFormsApp8 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TableDoc2DataTable TableDoc2 {
+        public NomenklaturaDataTable Nomenklatura {
             get {
-                return this.tableTableDoc2;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DataTable1DataTable DataTable1 {
-            get {
-                return this.tableDataTable1;
+                return this.tableNomenklatura;
             }
         }
         
@@ -142,7 +127,7 @@ namespace WindowsFormsApp8 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ProvisorBaseDataDataSet3 cln = ((ProvisorBaseDataDataSet3)(base.Clone()));
+            ProvisorBaseDataDataSet6 cln = ((ProvisorBaseDataDataSet6)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -167,11 +152,8 @@ namespace WindowsFormsApp8 {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["TableDoc2"] != null)) {
-                    base.Tables.Add(new TableDoc2DataTable(ds.Tables["TableDoc2"]));
-                }
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["Nomenklatura"] != null)) {
+                    base.Tables.Add(new NomenklaturaDataTable(ds.Tables["Nomenklatura"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +188,10 @@ namespace WindowsFormsApp8 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableTableDoc2 = ((TableDoc2DataTable)(base.Tables["TableDoc2"]));
+            this.tableNomenklatura = ((NomenklaturaDataTable)(base.Tables["Nomenklatura"]));
             if ((initTable == true)) {
-                if ((this.tableTableDoc2 != null)) {
-                    this.tableTableDoc2.InitVars();
-                }
-            }
-            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
-            if ((initTable == true)) {
-                if ((this.tableDataTable1 != null)) {
-                    this.tableDataTable1.InitVars();
+                if ((this.tableNomenklatura != null)) {
+                    this.tableNomenklatura.InitVars();
                 }
             }
         }
@@ -223,26 +199,18 @@ namespace WindowsFormsApp8 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "ProvisorBaseDataDataSet3";
+            this.DataSetName = "ProvisorBaseDataDataSet6";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/ProvisorBaseDataDataSet3.xsd";
+            this.Namespace = "http://tempuri.org/ProvisorBaseDataDataSet6.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableTableDoc2 = new TableDoc2DataTable();
-            base.Tables.Add(this.tableTableDoc2);
-            this.tableDataTable1 = new DataTable1DataTable();
-            base.Tables.Add(this.tableDataTable1);
+            this.tableNomenklatura = new NomenklaturaDataTable();
+            base.Tables.Add(this.tableNomenklatura);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeTableDoc2() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDataTable1() {
+        private bool ShouldSerializeNomenklatura() {
             return false;
         }
         
@@ -257,7 +225,7 @@ namespace WindowsFormsApp8 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ProvisorBaseDataDataSet3 ds = new ProvisorBaseDataDataSet3();
+            ProvisorBaseDataDataSet6 ds = new ProvisorBaseDataDataSet6();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -302,32 +270,27 @@ namespace WindowsFormsApp8 {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void TableDoc2RowChangeEventHandler(object sender, TableDoc2RowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
+        public delegate void NomenklaturaRowChangeEventHandler(object sender, NomenklaturaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TableDoc2DataTable : global::System.Data.TypedTableBase<TableDoc2Row> {
+        public partial class NomenklaturaDataTable : global::System.Data.TypedTableBase<NomenklaturaRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnDataDoc;
+            private global::System.Data.DataColumn columnNaimenovanie;
             
-            private global::System.Data.DataColumn columnNomerDoc;
+            private global::System.Data.DataColumn columnEdIzm;
             
             private global::System.Data.DataColumn columnKontragent;
             
-            private global::System.Data.DataColumn columnUid;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2DataTable() {
-                this.TableName = "TableDoc2";
+            public NomenklaturaDataTable() {
+                this.TableName = "Nomenklatura";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -335,7 +298,7 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal TableDoc2DataTable(global::System.Data.DataTable table) {
+            internal NomenklaturaDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -352,7 +315,7 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected TableDoc2DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected NomenklaturaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -367,17 +330,17 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DataDocColumn {
+            public global::System.Data.DataColumn NaimenovanieColumn {
                 get {
-                    return this.columnDataDoc;
+                    return this.columnNaimenovanie;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NomerDocColumn {
+            public global::System.Data.DataColumn EdIzmColumn {
                 get {
-                    return this.columnNomerDoc;
+                    return this.columnEdIzm;
                 }
             }
             
@@ -386,14 +349,6 @@ namespace WindowsFormsApp8 {
             public global::System.Data.DataColumn KontragentColumn {
                 get {
                     return this.columnKontragent;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn UidColumn {
-                get {
-                    return this.columnUid;
                 }
             }
             
@@ -408,56 +363,55 @@ namespace WindowsFormsApp8 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2Row this[int index] {
+            public NomenklaturaRow this[int index] {
                 get {
-                    return ((TableDoc2Row)(this.Rows[index]));
+                    return ((NomenklaturaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TableDoc2RowChangeEventHandler TableDoc2RowChanging;
+            public event NomenklaturaRowChangeEventHandler NomenklaturaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TableDoc2RowChangeEventHandler TableDoc2RowChanged;
+            public event NomenklaturaRowChangeEventHandler NomenklaturaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TableDoc2RowChangeEventHandler TableDoc2RowDeleting;
+            public event NomenklaturaRowChangeEventHandler NomenklaturaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event TableDoc2RowChangeEventHandler TableDoc2RowDeleted;
+            public event NomenklaturaRowChangeEventHandler NomenklaturaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddTableDoc2Row(TableDoc2Row row) {
+            public void AddNomenklaturaRow(NomenklaturaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2Row AddTableDoc2Row(int Id, System.DateTime DataDoc, string NomerDoc, int Kontragent, int Uid) {
-                TableDoc2Row rowTableDoc2Row = ((TableDoc2Row)(this.NewRow()));
+            public NomenklaturaRow AddNomenklaturaRow(int Id, string Naimenovanie, int EdIzm, int Kontragent) {
+                NomenklaturaRow rowNomenklaturaRow = ((NomenklaturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
-                        DataDoc,
-                        NomerDoc,
-                        Kontragent,
-                        Uid};
-                rowTableDoc2Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTableDoc2Row);
-                return rowTableDoc2Row;
+                        Naimenovanie,
+                        EdIzm,
+                        Kontragent};
+                rowNomenklaturaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNomenklaturaRow);
+                return rowNomenklaturaRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2Row FindById(int Id) {
-                return ((TableDoc2Row)(this.Rows.Find(new object[] {
+            public NomenklaturaRow FindById(int Id) {
+                return ((NomenklaturaRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TableDoc2DataTable cln = ((TableDoc2DataTable)(base.Clone()));
+                NomenklaturaDataTable cln = ((NomenklaturaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -465,17 +419,16 @@ namespace WindowsFormsApp8 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TableDoc2DataTable();
+                return new NomenklaturaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnDataDoc = base.Columns["DataDoc"];
-                this.columnNomerDoc = base.Columns["NomerDoc"];
+                this.columnNaimenovanie = base.Columns["Naimenovanie"];
+                this.columnEdIzm = base.Columns["EdIzm"];
                 this.columnKontragent = base.Columns["Kontragent"];
-                this.columnUid = base.Columns["Uid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -483,49 +436,46 @@ namespace WindowsFormsApp8 {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnDataDoc = new global::System.Data.DataColumn("DataDoc", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataDoc);
-                this.columnNomerDoc = new global::System.Data.DataColumn("NomerDoc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNomerDoc);
+                this.columnNaimenovanie = new global::System.Data.DataColumn("Naimenovanie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNaimenovanie);
+                this.columnEdIzm = new global::System.Data.DataColumn("EdIzm", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEdIzm);
                 this.columnKontragent = new global::System.Data.DataColumn("Kontragent", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKontragent);
-                this.columnUid = new global::System.Data.DataColumn("Uid", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUid);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
-                this.columnDataDoc.AllowDBNull = false;
-                this.columnNomerDoc.AllowDBNull = false;
-                this.columnNomerDoc.MaxLength = 10;
+                this.columnNaimenovanie.AllowDBNull = false;
+                this.columnNaimenovanie.MaxLength = 10;
+                this.columnEdIzm.AllowDBNull = false;
                 this.columnKontragent.AllowDBNull = false;
-                this.columnUid.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2Row NewTableDoc2Row() {
-                return ((TableDoc2Row)(this.NewRow()));
+            public NomenklaturaRow NewNomenklaturaRow() {
+                return ((NomenklaturaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TableDoc2Row(builder);
+                return new NomenklaturaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TableDoc2Row);
+                return typeof(NomenklaturaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TableDoc2RowChanged != null)) {
-                    this.TableDoc2RowChanged(this, new TableDoc2RowChangeEvent(((TableDoc2Row)(e.Row)), e.Action));
+                if ((this.NomenklaturaRowChanged != null)) {
+                    this.NomenklaturaRowChanged(this, new NomenklaturaRowChangeEvent(((NomenklaturaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -533,8 +483,8 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TableDoc2RowChanging != null)) {
-                    this.TableDoc2RowChanging(this, new TableDoc2RowChangeEvent(((TableDoc2Row)(e.Row)), e.Action));
+                if ((this.NomenklaturaRowChanging != null)) {
+                    this.NomenklaturaRowChanging(this, new NomenklaturaRowChangeEvent(((NomenklaturaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -542,8 +492,8 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TableDoc2RowDeleted != null)) {
-                    this.TableDoc2RowDeleted(this, new TableDoc2RowChangeEvent(((TableDoc2Row)(e.Row)), e.Action));
+                if ((this.NomenklaturaRowDeleted != null)) {
+                    this.NomenklaturaRowDeleted(this, new NomenklaturaRowChangeEvent(((NomenklaturaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -551,14 +501,14 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TableDoc2RowDeleting != null)) {
-                    this.TableDoc2RowDeleting(this, new TableDoc2RowChangeEvent(((TableDoc2Row)(e.Row)), e.Action));
+                if ((this.NomenklaturaRowDeleting != null)) {
+                    this.NomenklaturaRowDeleting(this, new NomenklaturaRowChangeEvent(((NomenklaturaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveTableDoc2Row(TableDoc2Row row) {
+            public void RemoveNomenklaturaRow(NomenklaturaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -567,7 +517,7 @@ namespace WindowsFormsApp8 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProvisorBaseDataDataSet3 ds = new ProvisorBaseDataDataSet3();
+                ProvisorBaseDataDataSet6 ds = new ProvisorBaseDataDataSet6();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -585,286 +535,7 @@ namespace WindowsFormsApp8 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TableDoc2DataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
-            
-            private global::System.Data.DataColumn columnDataDoc;
-            
-            private global::System.Data.DataColumn columnNomerDoc;
-            
-            private global::System.Data.DataColumn columnKontragent;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1DataTable() {
-                this.TableName = "DataTable1";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DataTable1DataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DataDocColumn {
-                get {
-                    return this.columnDataDoc;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NomerDocColumn {
-                get {
-                    return this.columnNomerDoc;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn KontragentColumn {
-                get {
-                    return this.columnKontragent;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1Row this[int index] {
-                get {
-                    return ((DataTable1Row)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDataTable1Row(DataTable1Row row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1Row AddDataTable1Row(System.DateTime DataDoc, string NomerDoc, string Kontragent) {
-                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        DataDoc,
-                        NomerDoc,
-                        Kontragent};
-                rowDataTable1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDataTable1Row);
-                return rowDataTable1Row;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DataTable1DataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnDataDoc = base.Columns["DataDoc"];
-                this.columnNomerDoc = base.Columns["NomerDoc"];
-                this.columnKontragent = base.Columns["Kontragent"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnDataDoc = new global::System.Data.DataColumn("DataDoc", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataDoc);
-                this.columnNomerDoc = new global::System.Data.DataColumn("NomerDoc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNomerDoc);
-                this.columnKontragent = new global::System.Data.DataColumn("Kontragent", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKontragent);
-                this.columnDataDoc.AllowDBNull = false;
-                this.columnNomerDoc.AllowDBNull = false;
-                this.columnNomerDoc.MaxLength = 10;
-                this.columnKontragent.MaxLength = 10;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1Row NewDataTable1Row() {
-                return ((DataTable1Row)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DataTable1Row(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DataTable1Row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DataTable1RowChanged != null)) {
-                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DataTable1RowChanging != null)) {
-                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DataTable1RowDeleted != null)) {
-                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DataTable1RowDeleting != null)) {
-                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDataTable1Row(DataTable1Row row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ProvisorBaseDataDataSet3 ds = new ProvisorBaseDataDataSet3();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DataTable1DataTable";
+                attribute2.FixedValue = "NomenklaturaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -908,47 +579,47 @@ namespace WindowsFormsApp8 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TableDoc2Row : global::System.Data.DataRow {
+        public partial class NomenklaturaRow : global::System.Data.DataRow {
             
-            private TableDoc2DataTable tableTableDoc2;
+            private NomenklaturaDataTable tableNomenklatura;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal TableDoc2Row(global::System.Data.DataRowBuilder rb) : 
+            internal NomenklaturaRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableTableDoc2 = ((TableDoc2DataTable)(this.Table));
+                this.tableNomenklatura = ((NomenklaturaDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
-                    return ((int)(this[this.tableTableDoc2.IdColumn]));
+                    return ((int)(this[this.tableNomenklatura.IdColumn]));
                 }
                 set {
-                    this[this.tableTableDoc2.IdColumn] = value;
+                    this[this.tableNomenklatura.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime DataDoc {
+            public string Naimenovanie {
                 get {
-                    return ((global::System.DateTime)(this[this.tableTableDoc2.DataDocColumn]));
+                    return ((string)(this[this.tableNomenklatura.NaimenovanieColumn]));
                 }
                 set {
-                    this[this.tableTableDoc2.DataDocColumn] = value;
+                    this[this.tableNomenklatura.NaimenovanieColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NomerDoc {
+            public int EdIzm {
                 get {
-                    return ((string)(this[this.tableTableDoc2.NomerDocColumn]));
+                    return ((int)(this[this.tableNomenklatura.EdIzmColumn]));
                 }
                 set {
-                    this[this.tableTableDoc2.NomerDocColumn] = value;
+                    this[this.tableNomenklatura.EdIzmColumn] = value;
                 }
             }
             
@@ -956,120 +627,10 @@ namespace WindowsFormsApp8 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Kontragent {
                 get {
-                    return ((int)(this[this.tableTableDoc2.KontragentColumn]));
+                    return ((int)(this[this.tableNomenklatura.KontragentColumn]));
                 }
                 set {
-                    this[this.tableTableDoc2.KontragentColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Uid {
-                get {
-                    return ((int)(this[this.tableTableDoc2.UidColumn]));
-                }
-                set {
-                    this[this.tableTableDoc2.UidColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DataTable1Row : global::System.Data.DataRow {
-            
-            private DataTable1DataTable tableDataTable1;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime DataDoc {
-                get {
-                    return ((global::System.DateTime)(this[this.tableDataTable1.DataDocColumn]));
-                }
-                set {
-                    this[this.tableDataTable1.DataDocColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string NomerDoc {
-                get {
-                    return ((string)(this[this.tableDataTable1.NomerDocColumn]));
-                }
-                set {
-                    this[this.tableDataTable1.NomerDocColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Kontragent {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.KontragentColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Kontragent\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.KontragentColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKontragentNull() {
-                return this.IsNull(this.tableDataTable1.KontragentColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKontragentNull() {
-                this[this.tableDataTable1.KontragentColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class TableDoc2RowChangeEvent : global::System.EventArgs {
-            
-            private TableDoc2Row eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2RowChangeEvent(TableDoc2Row row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TableDoc2Row Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
+                    this[this.tableNomenklatura.KontragentColumn] = value;
                 }
             }
         }
@@ -1078,22 +639,22 @@ namespace WindowsFormsApp8 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DataTable1RowChangeEvent : global::System.EventArgs {
+        public class NomenklaturaRowChangeEvent : global::System.EventArgs {
             
-            private DataTable1Row eventRow;
+            private NomenklaturaRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
+            public NomenklaturaRowChangeEvent(NomenklaturaRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DataTable1Row Row {
+            public NomenklaturaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1109,7 +670,7 @@ namespace WindowsFormsApp8 {
         }
     }
 }
-namespace WindowsFormsApp8.ProvisorBaseDataDataSet3TableAdapters {
+namespace WindowsFormsApp8.ProvisorBaseDataDataSet6TableAdapters {
     
     
     /// <summary>
@@ -1121,7 +682,7 @@ namespace WindowsFormsApp8.ProvisorBaseDataDataSet3TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TableDoc2TableAdapter : global::System.ComponentModel.Component {
+    public partial class NomenklaturaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1135,7 +696,7 @@ namespace WindowsFormsApp8.ProvisorBaseDataDataSet3TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public TableDoc2TableAdapter() {
+        public NomenklaturaTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1232,50 +793,45 @@ namespace WindowsFormsApp8.ProvisorBaseDataDataSet3TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TableDoc2";
+            tableMapping.DataSetTable = "Nomenklatura";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("DataDoc", "DataDoc");
-            tableMapping.ColumnMappings.Add("NomerDoc", "NomerDoc");
+            tableMapping.ColumnMappings.Add("Naimenovanie", "Naimenovanie");
+            tableMapping.ColumnMappings.Add("EdIzm", "EdIzm");
             tableMapping.ColumnMappings.Add("Kontragent", "Kontragent");
-            tableMapping.ColumnMappings.Add("Uid", "Uid");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TableDoc2] WHERE (([Id] = @Original_Id) AND ([DataDoc] = @Orig" +
-                "inal_DataDoc) AND ([NomerDoc] = @Original_NomerDoc) AND ([Kontragent] = @Origina" +
-                "l_Kontragent) AND ([Uid] = @Original_Uid))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Nomenklatura] WHERE (([Id] = @Original_Id) AND ([Naimenovanie]" +
+                " = @Original_Naimenovanie) AND ([EdIzm] = @Original_EdIzm) AND ([Kontragent] = @" +
+                "Original_Kontragent))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DataDoc", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataDoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomerDoc", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomerDoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Naimenovanie", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naimenovanie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EdIzm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EdIzm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kontragent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kontragent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Uid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[TableDoc2] ([Id], [DataDoc], [NomerDoc], [Kontragent], [Uid]) " +
-                "VALUES (@Id, @DataDoc, @NomerDoc, @Kontragent, @Uid);\r\nSELECT Id, DataDoc, Nomer" +
-                "Doc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Nomenklatura] ([Id], [Naimenovanie], [EdIzm], [Kontragent]) VA" +
+                "LUES (@Id, @Naimenovanie, @EdIzm, @Kontragent);\r\nSELECT Id, Naimenovanie, EdIzm," +
+                " Kontragent FROM Nomenklatura WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataDoc", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataDoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomerDoc", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomerDoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Naimenovanie", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naimenovanie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EdIzm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EdIzm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kontragent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kontragent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Uid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TableDoc2] SET [Id] = @Id, [DataDoc] = @DataDoc, [NomerDoc] = @NomerDoc, [Kontragent] = @Kontragent, [Uid] = @Uid WHERE (([Id] = @Original_Id) AND ([DataDoc] = @Original_DataDoc) AND ([NomerDoc] = @Original_NomerDoc) AND ([Kontragent] = @Original_Kontragent) AND ([Uid] = @Original_Uid));
-SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Nomenklatura] SET [Id] = @Id, [Naimenovanie] = @Naimenovanie, [EdIzm] = @EdIzm, [Kontragent] = @Kontragent WHERE (([Id] = @Original_Id) AND ([Naimenovanie] = @Original_Naimenovanie) AND ([EdIzm] = @Original_EdIzm) AND ([Kontragent] = @Original_Kontragent));
+SELECT Id, Naimenovanie, EdIzm, Kontragent FROM Nomenklatura WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataDoc", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataDoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomerDoc", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomerDoc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Naimenovanie", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naimenovanie", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EdIzm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EdIzm", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kontragent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kontragent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Uid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DataDoc", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataDoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NomerDoc", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NomerDoc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Naimenovanie", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naimenovanie", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EdIzm", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EdIzm", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kontragent", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kontragent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Uid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1291,7 +847,7 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM dbo.TableDoc2";
+            this._commandCollection[0].CommandText = "SELECT Id, Naimenovanie, EdIzm, Kontragent FROM dbo.Nomenklatura";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1299,7 +855,7 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProvisorBaseDataDataSet3.TableDoc2DataTable dataTable) {
+        public virtual int Fill(ProvisorBaseDataDataSet6.NomenklaturaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1312,9 +868,9 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProvisorBaseDataDataSet3.TableDoc2DataTable GetData() {
+        public virtual ProvisorBaseDataDataSet6.NomenklaturaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProvisorBaseDataDataSet3.TableDoc2DataTable dataTable = new ProvisorBaseDataDataSet3.TableDoc2DataTable();
+            ProvisorBaseDataDataSet6.NomenklaturaDataTable dataTable = new ProvisorBaseDataDataSet6.NomenklaturaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1322,15 +878,15 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProvisorBaseDataDataSet3.TableDoc2DataTable dataTable) {
+        public virtual int Update(ProvisorBaseDataDataSet6.NomenklaturaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ProvisorBaseDataDataSet3 dataSet) {
-            return this.Adapter.Update(dataSet, "TableDoc2");
+        public virtual int Update(ProvisorBaseDataDataSet6 dataSet) {
+            return this.Adapter.Update(dataSet, "Nomenklatura");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1352,17 +908,16 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, System.DateTime Original_DataDoc, string Original_NomerDoc, int Original_Kontragent, int Original_Uid) {
+        public virtual int Delete(int Original_Id, string Original_Naimenovanie, int Original_EdIzm, int Original_Kontragent) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_DataDoc));
-            if ((Original_NomerDoc == null)) {
-                throw new global::System.ArgumentNullException("Original_NomerDoc");
+            if ((Original_Naimenovanie == null)) {
+                throw new global::System.ArgumentNullException("Original_Naimenovanie");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NomerDoc));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Naimenovanie));
             }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_EdIzm));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Kontragent));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Uid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1383,17 +938,16 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, System.DateTime DataDoc, string NomerDoc, int Kontragent, int Uid) {
+        public virtual int Insert(int Id, string Naimenovanie, int EdIzm, int Kontragent) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DataDoc));
-            if ((NomerDoc == null)) {
-                throw new global::System.ArgumentNullException("NomerDoc");
+            if ((Naimenovanie == null)) {
+                throw new global::System.ArgumentNullException("Naimenovanie");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(NomerDoc));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Naimenovanie));
             }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(EdIzm));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Kontragent));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Uid));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1414,27 +968,25 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, System.DateTime DataDoc, string NomerDoc, int Kontragent, int Uid, int Original_Id, System.DateTime Original_DataDoc, string Original_NomerDoc, int Original_Kontragent, int Original_Uid) {
+        public virtual int Update(int Id, string Naimenovanie, int EdIzm, int Kontragent, int Original_Id, string Original_Naimenovanie, int Original_EdIzm, int Original_Kontragent) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DataDoc));
-            if ((NomerDoc == null)) {
-                throw new global::System.ArgumentNullException("NomerDoc");
+            if ((Naimenovanie == null)) {
+                throw new global::System.ArgumentNullException("Naimenovanie");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(NomerDoc));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Naimenovanie));
             }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(EdIzm));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Kontragent));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Uid));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_DataDoc));
-            if ((Original_NomerDoc == null)) {
-                throw new global::System.ArgumentNullException("Original_NomerDoc");
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            if ((Original_Naimenovanie == null)) {
+                throw new global::System.ArgumentNullException("Original_Naimenovanie");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_NomerDoc));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Naimenovanie));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Kontragent));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Uid));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_EdIzm));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Kontragent));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1455,180 +1007,8 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime DataDoc, string NomerDoc, int Kontragent, int Uid, int Original_Id, System.DateTime Original_DataDoc, string Original_NomerDoc, int Original_Kontragent, int Original_Uid) {
-            return this.Update(Original_Id, DataDoc, NomerDoc, Kontragent, Uid, Original_Id, Original_DataDoc, Original_NomerDoc, Original_Kontragent, Original_Uid);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DataTable1TableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DataTable1TableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DataTable1";
-            tableMapping.ColumnMappings.Add("DataDoc", "DataDoc");
-            tableMapping.ColumnMappings.Add("NomerDoc", "NomerDoc");
-            tableMapping.ColumnMappings.Add("Kontragent", "Kontragent");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp8.Properties.Settings.Default.ProvisorBaseDataConnectionString1;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        TableDoc2.DataDoc, TableDoc2.NomerDoc, Kontragent.Naimenovanie as K" +
-                "ontragent\r\nFROM            TableDoc2 LEFT OUTER JOIN\r\n                         K" +
-                "ontragent ON Kontragent.Id = TableDoc2.Kontragent\r\nWHERE        (TableDoc2.Id = " +
-                "1)";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ProvisorBaseDataDataSet3.DataTable1DataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ProvisorBaseDataDataSet3.DataTable1DataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            ProvisorBaseDataDataSet3.DataTable1DataTable dataTable = new ProvisorBaseDataDataSet3.DataTable1DataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+        public virtual int Update(string Naimenovanie, int EdIzm, int Kontragent, int Original_Id, string Original_Naimenovanie, int Original_EdIzm, int Original_Kontragent) {
+            return this.Update(Original_Id, Naimenovanie, EdIzm, Kontragent, Original_Id, Original_Naimenovanie, Original_EdIzm, Original_Kontragent);
         }
     }
     
@@ -1644,7 +1024,7 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         
         private UpdateOrderOption _updateOrder;
         
-        private TableDoc2TableAdapter _tableDoc2TableAdapter;
+        private NomenklaturaTableAdapter _nomenklaturaTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1666,12 +1046,12 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TableDoc2TableAdapter TableDoc2TableAdapter {
+        public NomenklaturaTableAdapter NomenklaturaTableAdapter {
             get {
-                return this._tableDoc2TableAdapter;
+                return this._nomenklaturaTableAdapter;
             }
             set {
-                this._tableDoc2TableAdapter = value;
+                this._nomenklaturaTableAdapter = value;
             }
         }
         
@@ -1694,9 +1074,9 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._tableDoc2TableAdapter != null) 
-                            && (this._tableDoc2TableAdapter.Connection != null))) {
-                    return this._tableDoc2TableAdapter.Connection;
+                if (((this._nomenklaturaTableAdapter != null) 
+                            && (this._nomenklaturaTableAdapter.Connection != null))) {
+                    return this._nomenklaturaTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1711,7 +1091,7 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._tableDoc2TableAdapter != null)) {
+                if ((this._nomenklaturaTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1723,14 +1103,14 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(ProvisorBaseDataDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ProvisorBaseDataDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tableDoc2TableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TableDoc2.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._nomenklaturaTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Nomenklatura.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._tableDoc2TableAdapter.Update(updatedRows));
+                    result = (result + this._nomenklaturaTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1742,13 +1122,13 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(ProvisorBaseDataDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ProvisorBaseDataDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tableDoc2TableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TableDoc2.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._nomenklaturaTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Nomenklatura.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._tableDoc2TableAdapter.Update(addedRows));
+                    result = (result + this._nomenklaturaTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1760,13 +1140,13 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(ProvisorBaseDataDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ProvisorBaseDataDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._tableDoc2TableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TableDoc2.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._nomenklaturaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Nomenklatura.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._tableDoc2TableAdapter.Update(deletedRows));
+                    result = (result + this._nomenklaturaTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1802,15 +1182,15 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(ProvisorBaseDataDataSet3 dataSet) {
+        public virtual int UpdateAll(ProvisorBaseDataDataSet6 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._tableDoc2TableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tableDoc2TableAdapter.Connection) == false))) {
+            if (((this._nomenklaturaTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nomenklaturaTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -1846,13 +1226,13 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._tableDoc2TableAdapter != null)) {
-                    revertConnections.Add(this._tableDoc2TableAdapter, this._tableDoc2TableAdapter.Connection);
-                    this._tableDoc2TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._tableDoc2TableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._tableDoc2TableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tableDoc2TableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tableDoc2TableAdapter.Adapter);
+                if ((this._nomenklaturaTableAdapter != null)) {
+                    revertConnections.Add(this._nomenklaturaTableAdapter, this._nomenklaturaTableAdapter.Connection);
+                    this._nomenklaturaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._nomenklaturaTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._nomenklaturaTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nomenklaturaTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nomenklaturaTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1913,9 +1293,9 @@ SELECT Id, DataDoc, NomerDoc, Kontragent, Uid FROM TableDoc2 WHERE (Id = @Id)";
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._tableDoc2TableAdapter != null)) {
-                    this._tableDoc2TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tableDoc2TableAdapter]));
-                    this._tableDoc2TableAdapter.Transaction = null;
+                if ((this._nomenklaturaTableAdapter != null)) {
+                    this._nomenklaturaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._nomenklaturaTableAdapter]));
+                    this._nomenklaturaTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

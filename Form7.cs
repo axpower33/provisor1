@@ -102,6 +102,7 @@ namespace WindowsFormsApp8
             SqlDataReader r3 = c3.ExecuteReader();
             int[] idKont = new int[100];
             int ii = 0;
+            comboBox1.Items.Clear();
             while (r3.Read())
             {
                 ii++;
@@ -415,15 +416,8 @@ namespace WindowsFormsApp8
                 }
                 nn++;
             } while (pId1 == pId.ToString());
+    }
 
-            Form7.ActiveForm.Close();
-            Form6.ActiveForm.Close();
-            Form2.ActiveForm.Activate();
-            Form x = new Form6();
-            x.Show();
-            Dispose(true);
-        }
-        
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             decimal nsum, nsum1, nsum2;
@@ -519,6 +513,24 @@ namespace WindowsFormsApp8
                 }
             }
             if (!pDel) MessageBox.Show("0 строк выбрано!");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string pId1 = tId.Text;
+            Form x = new Form16(pId1);
+            x.Show(); 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {   
+            Button1_Click(sender, e);
+            Form7.ActiveForm.Close();
+            Form6.ActiveForm.Close();
+            Form2.ActiveForm.Activate();
+            Form x = new Form6();
+            x.Show();
+            Dispose(true);
         }
     }
 }

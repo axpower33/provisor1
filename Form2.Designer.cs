@@ -43,6 +43,7 @@ namespace WindowsFormsApp8
             this.расходнаяНакладнаяToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.приходрасходНоменклатурыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ghToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,7 +127,8 @@ namespace WindowsFormsApp8
             this.приходнаяНакладнаяToolStripMenuItem1,
             this.расходнаяНакладнаяToolStripMenuItem1,
             this.приходрасходНоменклатурыToolStripMenuItem,
-            this.оборотнаяВедомостьНоменклатураToolStripMenuItem});
+            this.оборотнаяВедомостьНоменклатураToolStripMenuItem,
+            this.ghToolStripMenuItem});
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.отчетыToolStripMenuItem.Text = "Отчеты";
@@ -158,6 +160,13 @@ namespace WindowsFormsApp8
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Text = "Оборотно-сальдовая ведомость";
             this.оборотнаяВедомостьНоменклатураToolStripMenuItem.Click += new System.EventHandler(this.ОборотнаяВедомостьНоменклатураToolStripMenuItem_Click);
+            // 
+            // ghToolStripMenuItem
+            // 
+            this.ghToolStripMenuItem.Name = "ghToolStripMenuItem";
+            this.ghToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.ghToolStripMenuItem.Text = "Отчет координат фракталов";
+            this.ghToolStripMenuItem.Click += new System.EventHandler(this.ghToolStripMenuItem_Click);
             // 
             // Form2
             // 
@@ -194,5 +203,6 @@ namespace WindowsFormsApp8
         private System.Windows.Forms.ToolStripMenuItem приходрасходНоменклатурыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оборотнаяВедомостьНоменклатураToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem номенToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ghToolStripMenuItem;
     }
 }
