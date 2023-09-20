@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Dapper;
+using Microsoft.Reporting.WinForms;
 
 
 namespace WindowsFormsApp8
@@ -25,6 +26,8 @@ namespace WindowsFormsApp8
         }
         private void Form17_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet2.DataTable1". При необходимости она может быть перемещена или удалена.
+            
             string _selectQuery = @"SELECT TableTableChast2.Id, Nomenklatura.Naimenovanie as Nomenklatura, Edizm.Naimenovanie as EdIzm, Kolichestvo, Cena, Summa, UID FROM TableTableChast2 left join EdIzm on EdIzm.Id=EdIzm left join Nomenklatura on Nomenklatura.Id=Nomenklatura where TableTableChast2.Id=" + pId1+" ORDER BY UID";
             string _selectQuery2 = @"Select DataDoc, NomerDoc, Kontragent.Naimenovanie as Kontragent, TableDoc2.Id from TableDoc2 left join Kontragent ON Kontragent.Id = Kontragent where TableDoc2.Id=" + pId1;
 
@@ -38,6 +41,13 @@ namespace WindowsFormsApp8
 
             this.DataTable1BindingSource.DataSource = dt;
             this.dataTable1BindingSource1.DataSource = dt2;
+            ReportParameter[] p = new ReportParameter[]
+            {
+                new ReportParameter("ReportParameter1","123"),
+                new ReportParameter("ReportParameter2","256")
+            };
+            reportViewer1.LocalReport.SetParameters(p);
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet1.DataTable1". При необходимости она может быть перемещена или удалена.
             reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
