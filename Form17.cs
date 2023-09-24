@@ -43,8 +43,8 @@ namespace WindowsFormsApp8
             this.dataTable1BindingSource1.DataSource = dt2;
             ReportParameter[] p = new ReportParameter[]
             {
-                new ReportParameter("ReportParameter1","123"),
-                new ReportParameter("ReportParameter2","256")
+                new ReportParameter("ReportParameter1","Петров"),
+                new ReportParameter("ReportParameter2","Васечкин")
             };
             reportViewer1.LocalReport.SetParameters(p);
 

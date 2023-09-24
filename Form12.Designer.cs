@@ -35,6 +35,10 @@ namespace WindowsFormsApp8
             this.ProvisorBaseDataDataSet5 = new WindowsFormsApp8.ProvisorBaseDataDataSet5();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.DataTable1TableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSet5TableAdapters.DataTable1TableAdapter();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toDate = new System.Windows.Forms.DateTimePicker();
+            this.fromDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet5)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +59,9 @@ namespace WindowsFormsApp8
             reportDataSource1.Value = this.DataTable1BindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApp8.Report5.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(1, 0);
+            this.reportViewer1.Location = new System.Drawing.Point(1, 36);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(704, 600);
+            this.reportViewer1.Size = new System.Drawing.Size(704, 564);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.ReportRefresh += new System.ComponentModel.CancelEventHandler(this.reportViewer1_ReportRefresh);
             // 
@@ -65,11 +69,47 @@ namespace WindowsFormsApp8
             // 
             this.DataTable1TableAdapter.ClearBeforeFill = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(279, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "To:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(61, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Date from:";
+            // 
+            // toDate
+            // 
+            this.toDate.Location = new System.Drawing.Point(305, 6);
+            this.toDate.Name = "toDate";
+            this.toDate.Size = new System.Drawing.Size(129, 20);
+            this.toDate.TabIndex = 6;
+            // 
+            // fromDate
+            // 
+            this.fromDate.Location = new System.Drawing.Point(120, 6);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(129, 20);
+            this.fromDate.TabIndex = 5;
+            // 
             // Form12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 570);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.toDate);
+            this.Controls.Add(this.fromDate);
             this.Controls.Add(this.reportViewer1);
             this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form12";
@@ -79,6 +119,7 @@ namespace WindowsFormsApp8
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet5)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -88,5 +129,9 @@ namespace WindowsFormsApp8
         private System.Windows.Forms.BindingSource DataTable1BindingSource;
         private ProvisorBaseDataDataSet5 ProvisorBaseDataDataSet5;
         private ProvisorBaseDataDataSet5TableAdapters.DataTable1TableAdapter DataTable1TableAdapter;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker toDate;
+        private System.Windows.Forms.DateTimePicker fromDate;
     }
 }
