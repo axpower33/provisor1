@@ -96,5 +96,11 @@ namespace WindowsFormsApp8
             Form x = new Form15();
             x.Show();
         }
+
+        private void crystalReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form x = new Form18();
+            x.Show();
+        }
     }
 }
