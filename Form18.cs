@@ -28,7 +28,10 @@ namespace WindowsFormsApp8
             List<FRSP> dt = db.Query<FRSP>(_selectQuery).AsList<FRSP>().ToList();
             db.Close();         
             crystalReport11.SetDataSource(dt);
-            
+            crystalReport11.SetParameterValue("Rep1","Акула");
+            crystalReport11.SetParameterValue("Rep2", "Дельфин");
+
+            this.crystalReportViewer1.ReuseParameterValuesOnRefresh = true;
             this.crystalReportViewer1.ReportSource = crystalReport11;
             this.crystalReportViewer1.Refresh();
         }
@@ -37,5 +40,6 @@ namespace WindowsFormsApp8
         {
             Form18_Load(source, e);
         }
+           
     }
 }

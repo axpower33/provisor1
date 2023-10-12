@@ -35,7 +35,7 @@ namespace WindowsFormsApp8
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.ActiveViewIndex = 0;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -43,6 +43,7 @@ namespace WindowsFormsApp8
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.ReportRefresh += new CrystalDecisions.Windows.Forms.RefreshEventHandler(this.crystalReportViewer1_ReportRefresh);
             // 
             // Form18
@@ -53,6 +54,7 @@ namespace WindowsFormsApp8
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Form18";
             this.Text = "Form18";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form18_Load);
             this.ResumeLayout(false);
 
