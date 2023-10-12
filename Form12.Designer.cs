@@ -37,8 +37,8 @@ namespace WindowsFormsApp8
             this.DataTable1TableAdapter = new WindowsFormsApp8.ProvisorBaseDataDataSet5TableAdapters.DataTable1TableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.toDate = new System.Windows.Forms.DateTimePicker();
-            this.fromDate = new System.Windows.Forms.DateTimePicker();
+            this.tfromDate = new System.Windows.Forms.TextBox();
+            this.ttoDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProvisorBaseDataDataSet5)).BeginInit();
             this.SuspendLayout();
@@ -87,29 +87,29 @@ namespace WindowsFormsApp8
             this.label1.TabIndex = 7;
             this.label1.Text = "Date from:";
             // 
-            // toDate
+            // tfromDate
             // 
-            this.toDate.Location = new System.Drawing.Point(305, 6);
-            this.toDate.Name = "toDate";
-            this.toDate.Size = new System.Drawing.Size(129, 20);
-            this.toDate.TabIndex = 6;
+            this.tfromDate.Location = new System.Drawing.Point(123, 6);
+            this.tfromDate.Name = "tfromDate";
+            this.tfromDate.Size = new System.Drawing.Size(100, 20);
+            this.tfromDate.TabIndex = 9;
             // 
-            // fromDate
+            // ttoDate
             // 
-            this.fromDate.Location = new System.Drawing.Point(120, 6);
-            this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(129, 20);
-            this.fromDate.TabIndex = 5;
+            this.ttoDate.Location = new System.Drawing.Point(308, 6);
+            this.ttoDate.Name = "ttoDate";
+            this.ttoDate.Size = new System.Drawing.Size(100, 20);
+            this.ttoDate.TabIndex = 10;
             // 
             // Form12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 570);
+            this.Controls.Add(this.ttoDate);
+            this.Controls.Add(this.tfromDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.toDate);
-            this.Controls.Add(this.fromDate);
             this.Controls.Add(this.reportViewer1);
             this.Location = new System.Drawing.Point(110, 90);
             this.Name = "Form12";
@@ -131,7 +131,7 @@ namespace WindowsFormsApp8
         private ProvisorBaseDataDataSet5TableAdapters.DataTable1TableAdapter DataTable1TableAdapter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker toDate;
-        private System.Windows.Forms.DateTimePicker fromDate;
+        private System.Windows.Forms.TextBox tfromDate;
+        private System.Windows.Forms.TextBox ttoDate;
     }
 }

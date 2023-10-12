@@ -10,37 +10,41 @@ using System.Windows.Forms;
 using Dapper;
 using Microsoft.Reporting.WinForms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace WindowsFormsApp8
 {
     public partial class Form12 : Form
     {
+        DateTime fromDate;
+        DateTime toDate;
+        DateTime fromDate2;
         public Form12()
         {
             InitializeComponent();
-            fromDate.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            toDate.CustomFormat = "dd/MM/yyyy hh:mm:ss";
-            fromDate.Value = new DateTime(2010, 05, 03);
-            toDate.Value = new DateTime(2021, 12, 03);
+            tfromDate.Text = "05.03.2010";
+            ttoDate.Text = "05.03.2021";
+            fromDate2 = Convert.ToDateTime(tfromDate.Text, CultureInfo.CurrentCulture);
         }
 
         private void Form12_Load(object sender, EventArgs e)
         {
-            DateTime fromDate2 = new DateTime(2010, 05, 03);
+            fromDate = Convert.ToDateTime(tfromDate.Text,CultureInfo.CurrentCulture);
+            toDate = Convert.ToDateTime(ttoDate.Text, CultureInfo.CurrentCulture);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "ProvisorBaseDataDataSet5.DataTable1". При необходимости она может быть перемещена или удалена.
             string _selectQuery = @"SELECT    Nomenklatura, SUM(NachOst) AS NachOst, SUM(Prihod) AS Prihod, SUM(Rashod) AS Rashod, SUM(KonOst) AS KonOst" +
 " FROM            (SELECT   Nomenklatura.Naimenovanie AS Nomenklatura, SUM(0.00) AS NachOst, SUM(TableTableChast.Summa) AS Prihod, SUM(0.00) AS Rashod, SUM(TableTableChast.Summa - 0.00) AS KonOst" +
                           " FROM            TableTableChast LEFT OUTER JOIN" +
                           " Nomenklatura AS Nomenklatura ON TableTableChast.Nomenklatura = Nomenklatura.Id" +
                           " left outer join TableDoc on TableDoc.Id=TableTableChast.Id"+
-                          " WHERE (TableDoc.DataDoc BETWEEN '" + fromDate.Value + "' AND '" + toDate.Value + "') " +
+                          " WHERE (TableDoc.DataDoc BETWEEN '" + fromDate + "' AND '" + toDate + "') " +
                           " GROUP BY Nomenklatura.Naimenovanie" +
                           " UNION" +
                           " SELECT  Nomenklatura.Naimenovanie AS Nomenklatura, SUM(0.00) AS NachOst, SUM(0.00) AS Prihod, SUM(D.Summa) AS Rashod, SUM(0.00 - D.Summa) AS KonOst" +
                           " FROM            TableTableChast2 AS D LEFT OUTER JOIN" +
                           " Nomenklatura AS Nomenklatura ON D.Nomenklatura = Nomenklatura.Id" +
                           " left outer join TableDoc2 on TableDoc2.Id=D.Id" +
-                          " WHERE (TableDoc2.DataDoc BETWEEN '" + fromDate.Value + "' AND '" + toDate.Value + "') " +
+                          " WHERE (TableDoc2.DataDoc BETWEEN '" + fromDate + "' AND '" + toDate + "') " +
                           " GROUP BY Nomenklatura.Naimenovanie) AS derivedtbl_1" +
 " GROUP BY Nomenklatura";
             string _selectQuery2 = @"SELECT     Nomenklatura, SUM(NachOst) AS NachOst, Sum(0.00) AS Prihod, SUM(0.00) AS Rashod, SUM(0.00) AS KonOst" +
@@ -48,14 +52,14 @@ namespace WindowsFormsApp8
                           " FROM            TableTableChast LEFT OUTER JOIN" +
                           " Nomenklatura AS Nomenklatura ON TableTableChast.Nomenklatura = Nomenklatura.Id" +
                           " left outer join TableDoc on TableDoc.Id=TableTableChast.Id" +
-                          " WHERE (TableDoc.DataDoc BETWEEN '" + fromDate2 + "' AND '" + fromDate.Value + "') " +
+                          " WHERE (TableDoc.DataDoc BETWEEN '" + fromDate2 + "' AND '" + fromDate.AddDays(-1) + "') " +
                           " GROUP BY Nomenklatura.Naimenovanie" +
                           " UNION" +
-                          " SELECT  Nomenklatura.Naimenovanie AS Nomenklatura, SUM(0.00) AS NachOst, SUM(0.00) AS Prihod, SUM(D.Summa) AS Rashod, SUM(0.00 - D.Summa) AS KonOst" +
+                          " SELECT  Nomenklatura.Naimenovanie AS Nomenklatura, SUM(-D.Summa) AS NachOst, SUM(0.00) AS Prihod, SUM(0.00) AS Rashod, SUM(0.00) AS KonOst" +
                           " FROM            TableTableChast2 AS D LEFT OUTER JOIN" +
                           " Nomenklatura AS Nomenklatura ON D.Nomenklatura = Nomenklatura.Id" +
                           " left outer join TableDoc2 on TableDoc2.Id=D.Id" +
-                          " WHERE (TableDoc2.DataDoc BETWEEN '" + fromDate2 + "' AND '" + fromDate.Value + "') " +
+                          " WHERE (TableDoc2.DataDoc BETWEEN '" + fromDate2 + "' AND '" + fromDate.AddDays(-1) + "') " +
                           " GROUP BY Nomenklatura.Naimenovanie) AS derivedtbl_2" +
 " GROUP BY Nomenklatura";
 
@@ -73,7 +77,7 @@ namespace WindowsFormsApp8
                 j = 0;
                 while (j < dt2.Count())
                 {
-                    if (dt[i].Nomenklatura.ToString() == dt2[j].Nomenklatura.ToString())
+                    if (dt[i].Nomenklatura == dt2[j].Nomenklatura)
                     {
                         dt[i].NachOst = dt2[j].NachOst;
                         dt[i].KonOst = dt[i].NachOst + dt[i].Prihod - dt[i].Rashod;
@@ -87,8 +91,8 @@ namespace WindowsFormsApp8
             this.DataTable1BindingSource.DataSource = dt;
             ReportParameter[] p = new ReportParameter[]
             {
-                new ReportParameter("ReportParameter1",fromDate.Value.ToString()),
-                new ReportParameter("ReportParameter2",toDate.Value.ToString())
+                new ReportParameter("ReportParameter1",tfromDate.Text.ToString()),
+                new ReportParameter("ReportParameter2",ttoDate.Text.ToString())
             };
             reportViewer1.LocalReport.SetParameters(p);
 
