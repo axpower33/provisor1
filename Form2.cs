@@ -102,5 +102,11 @@ namespace WindowsFormsApp8
             Form x = new Form18();
             x.Show();
         }
-    }
+
+		private void windowsMediaPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            Form x = new Form19();
+            x.Show();
+        }
+	}
 }
